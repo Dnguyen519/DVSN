@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVSN.RealEstate - Premium Real Estate Video Production Toronto</title>
+    <meta name="description" content="Cinematic real estate video production in Toronto. Luxury property showcases, aerial footage, and virtual tours that sell homes faster.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .media-hero { background: linear-gradient(180deg, rgba(74,144,226,0.1) 0%, transparent 100%); }
+        .media-accent { color: var(--accent-media); }
+        .service-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+        .service-card {
+            text-align: center;
+            padding: 3rem 2rem;
+            background: var(--black-soft);
+            border: 1px solid var(--gray-dark);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .service-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--accent-media);
+            box-shadow: 0 20px 40px rgba(74, 144, 226, 0.1);
+        }
+        .service-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            opacity: 0.8;
+        }
+        .case-studies {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 3rem;
+            margin: 4rem 0;
+        }
+        .case-study {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16/10;
+            background: var(--black-elevated);
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        .case-study:hover {
+            transform: scale(1.02);
+        }
+        .case-study-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(135deg, rgba(74,144,226,0.9) 0%, rgba(0,0,0,0.7) 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .case-study:hover .case-study-overlay {
+            opacity: 1;
+        }
+        .stats-section {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+            text-align: center;
+        }
+        .stat-item {
+            padding: 2rem;
+            border: 1px solid var(--gray-dark);
+            transition: all 0.3s ease;
+        }
+        .stat-item:hover {
+            border-color: var(--accent-media);
+        }
+        .stat-number {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 3rem;
+            color: var(--accent-media);
+            margin-bottom: 0.5rem;
+        }
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        .process-step {
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+        }
+        .process-step::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            right: -1rem;
+            width: 2rem;
+            height: 1px;
+            background: var(--gray-dark);
+            display: none;
+        }
+        @media (min-width: 768px) {
+            .process-step:not(:last-child)::after {
+                display: block;
+            }
+        }
+        .step-number {
+            display: inline-block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            border: 2px solid var(--accent-media);
+            border-radius: 50%;
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            color: var(--accent-media);
+            margin-bottom: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Film Grain Overlay -->
+    <div class="film-grain"></div>
+    
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">DVSN</a>
+            <div class="nav-links">
+                <a href="films.html" class="nav-link">Films</a>
+                <a href="realestate.html" class="nav-link media-accent">Real Estate</a>
+                <a href="x.html" class="nav-link">X</a>
+                <a href="contact.html" class="nav-link nav-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <header class="hero-section media-hero">
+            <div class="brand-number animate-fade-in">02</div>
+            <h1 class="logo animate-fade-in media-accent">DVSN.RealEstate</h1>
+            <p class="tagline animate-fade-in-delay">Cinematic Property Showcases That Sell</p>
+        </header>
+        
+        <main>
+            <!-- Introduction -->
+            <section class="intro-section">
+                <h2 class="section-heading">Showcase Properties Like Never Before</h2>
+                <p class="section-text">
+                    In today's competitive real estate market, stunning visuals are essential. 
+                    We specialize in creating cinematic property videos that capture the essence of each home, 
+                    highlight unique features, and create an emotional connection with potential buyers.
+                </p>
+            </section>
+            
+            <!-- Services -->
+            <section class="services-section">
+                <h2 class="section-heading">Our Services</h2>
+                <div class="service-grid">
+                    <div class="service-card animate-slide-up">
+                        <div class="service-icon media-accent">🏠</div>
+                        <h3>Luxury Home Tours</h3>
+                        <p>Cinematic walkthroughs that highlight architectural details, premium finishes, and lifestyle potential.</p>
+                    </div>
+                    <div class="service-card animate-slide-up delay-1">
+                        <div class="service-icon media-accent">🚁</div>
+                        <h3>Aerial Drone Footage</h3>
+                        <p>Stunning aerial perspectives showcasing properties, neighborhoods, and surrounding amenities.</p>
+                    </div>
+                    <div class="service-card animate-slide-up delay-2">
+                        <div class="service-icon media-accent">🎬</div>
+                        <h3>Virtual Property Tours</h3>
+                        <p>Interactive 360° tours and virtual staging that let buyers explore properties from anywhere.</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Case Studies -->
+            <section class="case-studies-section">
+                <h2 class="section-heading">Recent Projects</h2>
+                <div class="case-studies">
+                    <div class="case-study animate-slide-up">
+                        <div class="case-study-overlay">
+                            <h3>Forest Hill Estate</h3>
+                            <p>$4.2M Luxury Home</p>
+                            <p class="media-accent">Sold in 5 days over asking</p>
+                        </div>
+                    </div>
+                    <div class="case-study animate-slide-up delay-1">
+                        <div class="case-study-overlay">
+                            <h3>Yorkville Penthouse</h3>
+                            <p>$2.8M Condo Showcase</p>
+                            <p class="media-accent">Multiple offers within 48 hours</p>
+                        </div>
+                    </div>
+                    <div class="case-study animate-slide-up delay-2">
+                        <div class="case-study-overlay">
+                            <h3>Rosedale Heritage Home</h3>
+                            <p>$3.5M Historic Property</p>
+                            <p class="media-accent">Sold to international buyers via video</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Stats -->
+            <section class="stats-section">
+                <div class="stat-item">
+                    <div class="stat-number">500+</div>
+                    <p>Properties Filmed</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">$850M+</div>
+                    <p>Real Estate Sold</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">15 Days</div>
+                    <p>Average Days on Market</p>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">4K/8K</div>
+                    <p>Ultra HD Standard</p>
+                </div>
+            </section>
+            
+            <!-- Process -->
+            <section class="process-section">
+                <h2 class="section-heading">Our Process</h2>
+                <div class="process-steps">
+                    <div class="process-step">
+                        <div class="step-number">1</div>
+                        <h3>Discover</h3>
+                        <p>Understanding your property's unique features and target buyers</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">2</div>
+                        <h3>Develop</h3>
+                        <p>Planning shots that showcase the property's best angles and features</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">3</div>
+                        <h3>Produce</h3>
+                        <p>Professional filming with cinema cameras and drone technology</p>
+                    </div>
+                    <div class="process-step">
+                        <div class="step-number">4</div>
+                        <h3>Deliver</h3>
+                        <p>Color grading, editing, and optimized delivery for MLS and social media</p>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- CTA -->
+            <section class="cta-section">
+                <h2 class="cta-heading">Ready to Showcase Your Property?</h2>
+                <a href="contact.html" class="cta-button">Get a Quote</a>
+            </section>
+        </main>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="footer-brand">DVSN.RealEstate</div>
+                <p>© 2024 DVSN Studios • Premium Real Estate Video Production</p>
+                <p class="contact">hello@dvsn.studio • (416) 555-DVSN</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sanctuary | A Meditation on Living</title>
+    <link href="https://fonts.googleapis.com/css2?family=Crimson+Text:wght@400;600&family=Karla:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --off-white: #FAFAF8;
+            --charcoal: #1C1C1C;
+            --wood: #A0826D;
+            --sage: #87A96B;
+            --light-gray: #E8E6E1;
+        }
+
+        body {
+            font-family: 'Karla', sans-serif;
+            font-weight: 300;
+            color: var(--charcoal);
+            background-color: var(--off-white);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            z-index: 1000;
+            background: linear-gradient(to bottom, var(--off-white) 0%, rgba(250, 250, 248, 0.9) 100%);
+            backdrop-filter: blur(10px);
+            padding: 2rem 4rem;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'Crimson Text', serif;
+            font-size: 1.8rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.6;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            position: relative;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: var(--off-white);
+            overflow: hidden;
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 2;
+            animation: fadeInUp 1.5s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-family: 'Crimson Text', serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 400;
+            margin-bottom: 1rem;
+            letter-spacing: -2px;
+        }
+
+        .hero-subtitle {
+            font-size: 1.1rem;
+            color: var(--wood);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        /* Vertical Text Element */
+        .vertical-text {
+            position: absolute;
+            right: 3rem;
+            top: 50%;
+            transform: translateY(-50%) rotate(90deg);
+            font-family: 'Crimson Text', serif;
+            font-size: 1rem;
+            letter-spacing: 8px;
+            color: var(--sage);
+            opacity: 0.5;
+        }
+
+        /* Philosophy Section */
+        .philosophy {
+            padding: 8rem 4rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 6rem;
+            align-items: center;
+        }
+
+        .philosophy-text h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .philosophy-text p {
+            font-size: 1.1rem;
+            line-height: 2;
+            color: var(--charcoal);
+            opacity: 0.8;
+        }
+
+        .philosophy-image {
+            position: relative;
+            height: 400px;
+            overflow: hidden;
+            border-radius: 3px;
+        }
+
+        .philosophy-image::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><rect width="100" height="100" fill="%23FAFAF8" /><circle cx="50" cy="50" r="40" fill="none" stroke="%23A0826D" stroke-width="0.5" opacity="0.1" /></svg>');
+            opacity: 0.3;
+            z-index: 1;
+        }
+
+        /* Property Showcase */
+        .property-showcase {
+            padding: 4rem 0;
+            background: var(--light-gray);
+            position: relative;
+        }
+
+        .property-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4rem;
+        }
+
+        .property-grid {
+            display: grid;
+            grid-template-columns: 3fr 2fr;
+            gap: 4rem;
+            margin-bottom: 8rem;
+            opacity: 0;
+            animation: fadeIn 1s ease forwards;
+            animation-delay: 0.3s;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+            }
+        }
+
+        .property-image {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+            border-radius: 3px;
+            background: var(--sage);
+        }
+
+        .property-image::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to bottom, transparent 70%, rgba(28, 28, 28, 0.3) 100%);
+        }
+
+        .property-details {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+        }
+
+        .property-title {
+            font-family: 'Crimson Text', serif;
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            font-weight: 400;
+        }
+
+        .property-location {
+            color: var(--wood);
+            font-size: 1.1rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 3rem;
+        }
+
+        .property-description {
+            font-size: 1.1rem;
+            line-height: 2;
+            margin-bottom: 3rem;
+            opacity: 0.8;
+        }
+
+        .property-features {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .feature {
+            text-align: center;
+        }
+
+        .feature-number {
+            font-family: 'Crimson Text', serif;
+            font-size: 2rem;
+            color: var(--sage);
+            margin-bottom: 0.5rem;
+        }
+
+        .feature-label {
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            opacity: 0.7;
+        }
+
+        /* Zen Quote Section */
+        .zen-quote {
+            padding: 8rem 4rem;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .quote-text {
+            font-family: 'Crimson Text', serif;
+            font-size: 2rem;
+            font-style: italic;
+            margin-bottom: 2rem;
+            line-height: 1.8;
+        }
+
+        .quote-author {
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--wood);
+        }
+
+        /* Contact Section */
+        .contact {
+            background: var(--charcoal);
+            color: var(--off-white);
+            padding: 6rem 4rem;
+            text-align: center;
+        }
+
+        .contact h2 {
+            font-family: 'Crimson Text', serif;
+            font-size: 2.5rem;
+            margin-bottom: 2rem;
+            font-weight: 400;
+        }
+
+        .contact-info {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            margin-top: 3rem;
+        }
+
+        .contact-item {
+            font-size: 1rem;
+            letter-spacing: 1px;
+        }
+
+        /* Organic shape decorations */
+        .organic-shape {
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            background: var(--sage);
+            opacity: 0.05;
+            border-radius: 50% 40% 60% 30%;
+            filter: blur(40px);
+            z-index: -1;
+        }
+
+        .shape-1 {
+            top: 20%;
+            left: -100px;
+        }
+
+        .shape-2 {
+            bottom: 20%;
+            right: -100px;
+        }
+
+        /* Button */
+        .cta-button {
+            display: inline-block;
+            padding: 1rem 3rem;
+            background: transparent;
+            border: 1px solid var(--charcoal);
+            color: var(--charcoal);
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            margin-top: 2rem;
+        }
+
+        .cta-button:hover {
+            background: var(--charcoal);
+            color: var(--off-white);
+        }
+
+        /* Responsive */
+        @media (max-width: 968px) {
+            .philosophy,
+            .property-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+
+            .property-image {
+                height: 400px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .vertical-text {
+                display: none;
+            }
+
+            nav {
+                padding: 1.5rem 2rem;
+            }
+
+            .philosophy,
+            .zen-quote,
+            .contact {
+                padding: 4rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">SANCTUARY</div>
+            <ul class="nav-links">
+                <li><a href="#philosophy">Philosophy</a></li>
+                <li><a href="#spaces">Spaces</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="organic-shape shape-1"></div>
+        <div class="hero-content">
+            <h1>The Art of Living</h1>
+            <p class="hero-subtitle">Where Space Meets Soul</p>
+        </div>
+        <div class="vertical-text">和 · HARMONY</div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy" id="philosophy">
+        <div class="philosophy-image">
+            <div style="width: 100%; height: 100%; background: linear-gradient(135deg, var(--sage) 0%, var(--wood) 100%); opacity: 0.3;"></div>
+        </div>
+        <div class="philosophy-text">
+            <h2>Finding Beauty in Imperfection</h2>
+            <p>In the gentle embrace of wabi-sabi, we discover that true luxury lies not in excess, but in the thoughtful curation of space. Each home we present is a canvas for living—where natural light dances with shadow, where materials age gracefully, and where simplicity becomes profound.</p>
+        </div>
+    </section>
+
+    <!-- Property Showcase -->
+    <section class="property-showcase" id="spaces">
+        <div class="property-container">
+            <div class="property-grid">
+                <div class="property-image">
+                    <div style="width: 100%; height: 100%; background: linear-gradient(to bottom, var(--wood) 0%, var(--sage) 100%); opacity: 0.4;"></div>
+                </div>
+                <div class="property-details">
+                    <h3 class="property-title">Meadow House</h3>
+                    <p class="property-location">Kyoto Prefecture</p>
+                    <p class="property-description">A harmonious blend of traditional Japanese architecture and Scandinavian minimalism. Cedar wood breathes life into every corner, while floor-to-ceiling windows frame the ever-changing garden views.</p>
+                    <div class="property-features">
+                        <div class="feature">
+                            <div class="feature-number">3</div>
+                            <div class="feature-label">Bedrooms</div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-number">2</div>
+                            <div class="feature-label">Baths</div>
+                        </div>
+                        <div class="feature">
+                            <div class="feature-number">180</div>
+                            <div class="feature-label">Square Meters</div>
+                        </div>
+                    </div>
+                    <a href="#" class="cta-button">Experience This Space</a>
+                </div>
+            </div>
+        </div>
+        <div class="organic-shape shape-2"></div>
+    </section>
+
+    <!-- Zen Quote -->
+    <section class="zen-quote">
+        <p class="quote-text">"In the midst of our daily lives, we must find the juice to nourish our creative souls."</p>
+        <p class="quote-author">— Sark</p>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Begin Your Journey</h2>
+        <p>Let us guide you to spaces that resonate with your spirit.</p>
+        <div class="contact-info">
+            <div class="contact-item">hello@sanctuary.com</div>
+            <div class="contact-item">+81 03 1234 5678</div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth fade-in on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.philosophy, .zen-quote').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 1s ease';
+            observer.observe(el);
+        });
+
+        // Parallax effect for organic shapes
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const shapes = document.querySelectorAll('.organic-shape');
+            
+            shapes.forEach((shape, index) => {
+                const speed = index === 0 ? 0.5 : -0.3;
+                shape.style.transform = `translateY(${scrolled * speed}px)`;
+            });
+        });
+
+        // Navigation background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(250, 250, 248, 0.95)';
+                nav.style.backdropFilter = 'blur(20px)';
+            } else {
+                nav.style.background = 'linear-gradient(to bottom, var(--off-white) 0%, rgba(250, 250, 248, 0.9) 100%)';
+                nav.style.backdropFilter = 'blur(10px)';
+            }
+        });
+    </script>
+</body>
+</html>
