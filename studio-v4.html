@@ -1,0 +1,1316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVSN Digital | Strategic Digital Transformation Consulting</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #003366;
+            --light-blue: #E6F2FF;
+            --gold: #FFB900;
+            --white: #FFFFFF;
+            --gray-light: #F5F5F5;
+            --gray-medium: #E0E0E0;
+            --gray-dark: #333333;
+            --text-primary: #1A1A1A;
+            --text-secondary: #666666;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Sans', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+            background: var(--white);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-weight: 700;
+            font-size: 24px;
+            color: var(--navy);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 40px;
+        }
+
+        .nav-menu a {
+            color: var(--text-primary);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 15px;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-menu a:hover {
+            color: var(--navy);
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        .contact-nav {
+            background: var(--navy);
+            color: var(--white);
+            padding: 12px 30px;
+            text-decoration: none;
+            font-weight: 500;
+            border-radius: 3px;
+            transition: all 0.3s ease;
+            font-size: 15px;
+        }
+
+        .contact-nav:hover {
+            background: #002244;
+            transform: translateY(-1px);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            height: 100vh;
+            min-height: 700px;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .video-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -2;
+        }
+
+        .hero-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(0,51,102,0.9) 0%, rgba(0,51,102,0.7) 100%);
+            z-index: -1;
+        }
+
+        .hero-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            color: var(--white);
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-size: 56px;
+            font-weight: 300;
+            line-height: 1.2;
+            margin-bottom: 30px;
+            letter-spacing: -1px;
+        }
+
+        .hero h1 strong {
+            font-weight: 600;
+            color: var(--gold);
+        }
+
+        .hero-subtitle {
+            font-size: 22px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            max-width: 700px;
+            line-height: 1.5;
+        }
+
+        .hero-stats {
+            display: flex;
+            gap: 60px;
+            margin-top: 60px;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 48px;
+            font-weight: 700;
+            color: var(--gold);
+            line-height: 1;
+        }
+
+        .stat-label {
+            font-size: 16px;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        /* Value Proposition */
+        .value-prop {
+            background: var(--gray-light);
+            padding: 100px 0;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-header h2 {
+            font-size: 42px;
+            font-weight: 300;
+            color: var(--navy);
+            margin-bottom: 20px;
+            letter-spacing: -0.5px;
+        }
+
+        .section-header p {
+            font-size: 18px;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .value-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .value-card {
+            background: var(--white);
+            padding: 40px;
+            border: 1px solid var(--gray-medium);
+            transition: all 0.3s ease;
+        }
+
+        .value-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            border-color: transparent;
+        }
+
+        .value-icon {
+            width: 60px;
+            height: 60px;
+            background: var(--light-blue);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            font-size: 28px;
+            color: var(--navy);
+        }
+
+        .value-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        .value-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 50px;
+            margin-top: 60px;
+        }
+
+        .service-item {
+            display: flex;
+            gap: 30px;
+            padding: 40px;
+            background: var(--white);
+            border: 1px solid var(--gray-medium);
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            border-color: var(--navy);
+            box-shadow: 0 5px 20px rgba(0,51,102,0.1);
+        }
+
+        .service-icon {
+            flex-shrink: 0;
+            width: 80px;
+            height: 80px;
+            background: var(--navy);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 36px;
+        }
+
+        .service-content h3 {
+            font-size: 22px;
+            margin-bottom: 15px;
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        .service-content p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .service-features {
+            list-style: none;
+        }
+
+        .service-features li {
+            padding: 8px 0;
+            color: var(--text-secondary);
+            position: relative;
+            padding-left: 25px;
+            font-size: 15px;
+        }
+
+        .service-features li::before {
+            content: '▸';
+            position: absolute;
+            left: 0;
+            color: var(--gold);
+            font-weight: bold;
+        }
+
+        /* Case Studies */
+        .case-studies {
+            background: var(--gray-light);
+            padding: 100px 0;
+        }
+
+        .case-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .case-card {
+            background: var(--white);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            border: 1px solid var(--gray-medium);
+        }
+
+        .case-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .case-image {
+            height: 200px;
+            background: var(--navy);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .case-category {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--gold);
+            color: var(--navy);
+            padding: 5px 15px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .case-content {
+            padding: 30px;
+        }
+
+        .case-content h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        .case-results {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid var(--gray-medium);
+        }
+
+        .result-item {
+            text-align: center;
+        }
+
+        .result-number {
+            font-size: 32px;
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1;
+        }
+
+        .result-label {
+            font-size: 13px;
+            color: var(--text-secondary);
+            margin-top: 5px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        /* Methodology */
+        .methodology {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .process-timeline {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 80px;
+            position: relative;
+        }
+
+        .process-timeline::before {
+            content: '';
+            position: absolute;
+            top: 40px;
+            left: 10%;
+            right: 10%;
+            height: 2px;
+            background: var(--gray-medium);
+            z-index: 0;
+        }
+
+        .process-step {
+            flex: 1;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        .step-number {
+            width: 80px;
+            height: 80px;
+            background: var(--white);
+            border: 3px solid var(--navy);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 30px;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--navy);
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover .step-number {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        .process-step h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: var(--navy);
+            font-weight: 600;
+        }
+
+        .process-step p {
+            font-size: 14px;
+            color: var(--text-secondary);
+            max-width: 200px;
+            margin: 0 auto;
+            line-height: 1.5;
+        }
+
+        /* Credentials */
+        .credentials {
+            background: var(--navy);
+            color: var(--white);
+            padding: 80px 0;
+        }
+
+        .credentials-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 60px;
+            text-align: center;
+        }
+
+        .credential-item h3 {
+            font-size: 48px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+
+        .credential-item p {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* Partners */
+        .partners {
+            padding: 60px 0;
+            background: var(--gray-light);
+        }
+
+        .partners-grid {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 40px;
+            opacity: 0.7;
+        }
+
+        .partner-logo {
+            height: 40px;
+            filter: grayscale(100%);
+            transition: all 0.3s ease;
+        }
+
+        .partner-logo:hover {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* Resources */
+        .resources {
+            padding: 100px 0;
+            background: var(--white);
+        }
+
+        .resources-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .resource-card {
+            background: var(--white);
+            border: 1px solid var(--gray-medium);
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .resource-type {
+            background: var(--light-blue);
+            padding: 10px 20px;
+            font-size: 13px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--navy);
+        }
+
+        .resource-content {
+            padding: 30px;
+        }
+
+        .resource-content h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+            color: var(--navy);
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+        .resource-content p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .resource-link {
+            color: var(--navy);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 15px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: gap 0.3s ease;
+        }
+
+        .resource-link:hover {
+            gap: 10px;
+        }
+
+        /* Quote Section */
+        .quote-section {
+            background: var(--navy);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        .quote {
+            font-family: 'Georgia', serif;
+            font-size: 28px;
+            font-style: italic;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto 30px;
+        }
+
+        .quote-author {
+            font-size: 16px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .quote-title {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: var(--light-blue);
+            padding: 100px 0;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: 42px;
+            color: var(--navy);
+            margin-bottom: 20px;
+            font-weight: 300;
+        }
+
+        .cta-section p {
+            font-size: 20px;
+            color: var(--text-secondary);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .btn-primary {
+            background: var(--navy);
+            color: var(--white);
+            padding: 18px 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: 2px solid var(--navy);
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: transparent;
+            color: var(--navy);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--navy);
+            padding: 18px 40px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 16px;
+            border: 2px solid var(--navy);
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--navy);
+            color: var(--white);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--navy);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 60px;
+            margin-bottom: 40px;
+        }
+
+        .footer-about h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .footer-about p {
+            opacity: 0.8;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .footer-column h4 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column ul li {
+            margin-bottom: 12px;
+        }
+
+        .footer-column ul li a {
+            color: var(--white);
+            text-decoration: none;
+            opacity: 0.8;
+            transition: opacity 0.3s ease;
+            font-size: 15px;
+        }
+
+        .footer-column ul li a:hover {
+            opacity: 1;
+        }
+
+        .footer-bottom {
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            opacity: 0.6;
+            font-size: 14px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 20px;
+        }
+
+        .social-links a {
+            color: var(--white);
+            font-size: 20px;
+            opacity: 0.6;
+            transition: opacity 0.3s ease;
+        }
+
+        .social-links a:hover {
+            opacity: 1;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .value-grid,
+            .case-grid,
+            .resources-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .credentials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .process-timeline {
+                flex-direction: column;
+                gap: 40px;
+            }
+
+            .process-timeline::before {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-menu {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero-subtitle {
+                font-size: 18px;
+            }
+
+            .hero-stats {
+                flex-direction: column;
+                gap: 30px;
+            }
+
+            .value-grid,
+            .case-grid,
+            .resources-grid,
+            .credentials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                width: 100%;
+                max-width: 300px;
+                margin: 0 auto;
+            }
+
+            .cta-buttons a {
+                width: 100%;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">DVSN Digital</div>
+            <ul class="nav-menu">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#expertise">Expertise</a></li>
+                <li><a href="#case-studies">Case Studies</a></li>
+                <li><a href="#insights">Insights</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            <a href="#contact" class="contact-nav">Get Started</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <video autoplay muted loop class="video-background">
+            <source src="https://cdn.videvo.net/videvo_files/video/free/2019-09/large_watermarked/190828_27_SuperTrees_HD_17_preview.mp4" type="video/mp4">
+        </video>
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>Transform Your Business<br>with <strong>Strategic Digital Excellence</strong></h1>
+            <p class="hero-subtitle">We partner with forward-thinking organizations to navigate digital transformation, unlock growth opportunities, and build sustainable competitive advantages.</p>
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <div class="stat-number">250+</div>
+                    <div class="stat-label">Transformations Delivered</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">$2.3B</div>
+                    <div class="stat-label">Client Value Generated</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">45%</div>
+                    <div class="stat-label">Average ROI Increase</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-number">98%</div>
+                    <div class="stat-label">Client Retention Rate</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition -->
+    <section class="value-prop">
+        <div class="container">
+            <div class="section-header">
+                <h2>Why Leading Organizations Choose DVSN Digital</h2>
+                <p>We combine deep industry expertise with cutting-edge digital capabilities to deliver measurable business impact.</p>
+            </div>
+            <div class="value-grid">
+                <div class="value-card">
+                    <div class="value-icon">📊</div>
+                    <h3>Data-Driven Insights</h3>
+                    <p>Leverage advanced analytics and AI to uncover opportunities and drive strategic decision-making across your organization.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🚀</div>
+                    <h3>Accelerated Growth</h3>
+                    <p>Implement proven methodologies that fast-track digital initiatives and deliver results 3x faster than traditional approaches.</p>
+                </div>
+                <div class="value-card">
+                    <div class="value-icon">🔄</div>
+                    <h3>End-to-End Transformation</h3>
+                    <p>From strategy to execution, we guide you through every phase of your digital journey with hands-on expertise.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Core Services</h2>
+                <p>Comprehensive solutions tailored to accelerate your digital transformation journey.</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-item">
+                    <div class="service-icon">💡</div>
+                    <div class="service-content">
+                        <h3>Digital Strategy & Roadmap</h3>
+                        <p>Define your digital vision and create actionable roadmaps that align technology investments with business objectives.</p>
+                        <ul class="service-features">
+                            <li>Digital maturity assessment</li>
+                            <li>Technology stack optimization</li>
+                            <li>Innovation pipeline development</li>
+                            <li>Change management strategy</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">📈</div>
+                    <div class="service-content">
+                        <h3>Data & Analytics Transformation</h3>
+                        <p>Build data-driven cultures with advanced analytics, AI, and machine learning capabilities.</p>
+                        <ul class="service-features">
+                            <li>Enterprise data strategy</li>
+                            <li>AI/ML implementation</li>
+                            <li>Real-time analytics platforms</li>
+                            <li>Data governance frameworks</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">☁️</div>
+                    <div class="service-content">
+                        <h3>Cloud & Infrastructure Modernization</h3>
+                        <p>Migrate and optimize your infrastructure for scalability, security, and cost-efficiency.</p>
+                        <ul class="service-features">
+                            <li>Cloud migration strategy</li>
+                            <li>Hybrid cloud architecture</li>
+                            <li>DevOps transformation</li>
+                            <li>Security & compliance</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="service-item">
+                    <div class="service-icon">🎯</div>
+                    <div class="service-content">
+                        <h3>Customer Experience Innovation</h3>
+                        <p>Design and implement omnichannel experiences that drive engagement and loyalty.</p>
+                        <ul class="service-features">
+                            <li>Journey mapping & design</li>
+                            <li>Digital commerce platforms</li>
+                            <li>Personalization engines</li>
+                            <li>Customer data platforms</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="case-studies" id="case-studies">
+        <div class="container">
+            <div class="section-header">
+                <h2>Proven Results Across Industries</h2>
+                <p>See how we've helped organizations achieve transformational outcomes.</p>
+            </div>
+            <div class="case-grid">
+                <div class="case-card">
+                    <div class="case-image">
+                        <div class="case-category">Financial Services</div>
+                    </div>
+                    <div class="case-content">
+                        <h3>Global Bank Digital Transformation</h3>
+                        <p>Modernized core banking systems and launched innovative digital products for 10M+ customers.</p>
+                        <div class="case-results">
+                            <div class="result-item">
+                                <div class="result-number">68%</div>
+                                <div class="result-label">Cost Reduction</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">3.2x</div>
+                                <div class="result-label">Revenue Growth</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">45</div>
+                                <div class="result-label">NPS Increase</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <div class="case-image">
+                        <div class="case-category">Healthcare</div>
+                    </div>
+                    <div class="case-content">
+                        <h3>AI-Powered Patient Care Platform</h3>
+                        <p>Implemented predictive analytics to improve patient outcomes and operational efficiency.</p>
+                        <div class="case-results">
+                            <div class="result-item">
+                                <div class="result-number">42%</div>
+                                <div class="result-label">Readmission Drop</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">$18M</div>
+                                <div class="result-label">Annual Savings</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">94%</div>
+                                <div class="result-label">Satisfaction</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="case-card">
+                    <div class="case-image">
+                        <div class="case-category">Retail</div>
+                    </div>
+                    <div class="case-content">
+                        <h3>Omnichannel Commerce Revolution</h3>
+                        <p>Created seamless shopping experiences across 2,000+ stores and digital channels.</p>
+                        <div class="case-results">
+                            <div class="result-item">
+                                <div class="result-number">156%</div>
+                                <div class="result-label">Online Growth</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">2.8x</div>
+                                <div class="result-label">Conversion Rate</div>
+                            </div>
+                            <div class="result-item">
+                                <div class="result-number">$85M</div>
+                                <div class="result-label">New Revenue</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Methodology -->
+    <section class="methodology">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Proven Methodology</h2>
+                <p>A systematic approach to digital transformation that ensures sustainable results.</p>
+            </div>
+            <div class="process-timeline">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h4>Discover</h4>
+                    <p>Comprehensive assessment of current state and opportunity identification</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h4>Design</h4>
+                    <p>Strategic roadmap development with clear milestones and KPIs</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h4>Deliver</h4>
+                    <p>Agile implementation with continuous optimization and testing</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h4>Scale</h4>
+                    <p>Enterprise-wide rollout and change management</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">5</div>
+                    <h4>Sustain</h4>
+                    <p>Ongoing support and continuous improvement programs</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Credentials -->
+    <section class="credentials">
+        <div class="container">
+            <div class="credentials-grid">
+                <div class="credential-item">
+                    <h3>15+</h3>
+                    <p>Years of Excellence</p>
+                </div>
+                <div class="credential-item">
+                    <h3>500+</h3>
+                    <p>Expert Consultants</p>
+                </div>
+                <div class="credential-item">
+                    <h3>30+</h3>
+                    <p>Industry Awards</p>
+                </div>
+                <div class="credential-item">
+                    <h3>12</h3>
+                    <p>Global Offices</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Partners -->
+    <section class="partners">
+        <div class="container">
+            <div class="partners-grid">
+                <img src="/api/placeholder/120/40" alt="Microsoft Partner" class="partner-logo">
+                <img src="/api/placeholder/120/40" alt="AWS Partner" class="partner-logo">
+                <img src="/api/placeholder/120/40" alt="Google Cloud Partner" class="partner-logo">
+                <img src="/api/placeholder/120/40" alt="Salesforce Partner" class="partner-logo">
+                <img src="/api/placeholder/120/40" alt="SAP Partner" class="partner-logo">
+            </div>
+        </div>
+    </section>
+
+    <!-- Resources -->
+    <section class="resources" id="insights">
+        <div class="container">
+            <div class="section-header">
+                <h2>Latest Insights & Resources</h2>
+                <p>Stay ahead with our thought leadership and industry research.</p>
+            </div>
+            <div class="resources-grid">
+                <div class="resource-card">
+                    <div class="resource-type">White Paper</div>
+                    <div class="resource-content">
+                        <h3>The Future of Digital Banking: AI-Driven Transformation</h3>
+                        <p>Explore how artificial intelligence is reshaping financial services and creating new opportunities for growth.</p>
+                        <a href="#" class="resource-link">Download PDF →</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-type">Research Report</div>
+                    <div class="resource-content">
+                        <h3>2024 Digital Maturity Index: Benchmarking Excellence</h3>
+                        <p>Comprehensive analysis of digital transformation trends across 500+ enterprises worldwide.</p>
+                        <a href="#" class="resource-link">Read Report →</a>
+                    </div>
+                </div>
+                <div class="resource-card">
+                    <div class="resource-type">Case Study</div>
+                    <div class="resource-content">
+                        <h3>Cloud Migration at Scale: Lessons from Fortune 500</h3>
+                        <p>Best practices and insights from successful enterprise cloud transformation initiatives.</p>
+                        <a href="#" class="resource-link">View Case Study →</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote Section -->
+    <section class="quote-section">
+        <div class="container">
+            <blockquote class="quote">
+                "DVSN Digital didn't just transform our technology—they transformed our entire approach to business. Their strategic guidance and execution excellence delivered results that exceeded our most ambitious goals."
+            </blockquote>
+            <div class="quote-author">Sarah Chen</div>
+            <div class="quote-title">CEO, Global Financial Services Leader</div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section" id="contact">
+        <div class="container">
+            <h2>Ready to Transform Your Business?</h2>
+            <p>Let's discuss how we can help you achieve your digital ambitions.</p>
+            <div class="cta-buttons">
+                <a href="#" class="btn-primary">Schedule Consultation</a>
+                <a href="#" class="btn-secondary">Download Capabilities</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-grid">
+                <div class="footer-about">
+                    <h3>DVSN Digital</h3>
+                    <p>Leading digital transformation consulting firm helping organizations navigate change, embrace innovation, and achieve sustainable growth in the digital age.</p>
+                    <p>© 2024 DVSN Digital. All rights reserved.</p>
+                </div>
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Digital Strategy</a></li>
+                        <li><a href="#">Data & Analytics</a></li>
+                        <li><a href="#">Cloud Solutions</a></li>
+                        <li><a href="#">Customer Experience</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Company</h4>
+                    <ul>
+                        <li><a href="#">About Us</a></li>
+                        <li><a href="#">Leadership</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Resources</h4>
+                    <ul>
+                        <li><a href="#">Insights</a></li>
+                        <li><a href="#">Case Studies</a></li>
+                        <li><a href="#">White Papers</a></li>
+                        <li><a href="#">Webinars</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>Privacy Policy | Terms of Service | Cookie Policy</p>
+                <div class="social-links">
+                    <a href="#">LinkedIn</a>
+                    <a href="#">Twitter</a>
+                    <a href="#">Medium</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Navigation background on scroll
+        window.addEventListener('scroll', function() {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 50) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
+            } else {
+                nav.style.background = 'var(--white)';
+                nav.style.boxShadow = '0 2px 10px rgba(0,0,0,0.05)';
+            }
+        });
+
+        // Animate elements on scroll
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver(function(entries) {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe all cards and sections
+        document.querySelectorAll('.value-card, .service-item, .case-card, .resource-card, .process-step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'all 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
