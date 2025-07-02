@@ -1,0 +1,1027 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estate & Living - Curated Properties</title>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cream: #FFF8F0;
+            --warm-white: #FEFEFE;
+            --terracotta: #E27D60;
+            --dark-brown: #3E2723;
+            --light-brown: #6D4C41;
+            --beige: #F5E6D3;
+        }
+
+        body {
+            font-family: 'Lato', sans-serif;
+            background-color: var(--cream);
+            color: var(--dark-brown);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Editorial Typography */
+        .editorial-heading {
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            line-height: 0.9;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 248, 240, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            padding: 20px 40px;
+            border-bottom: 1px solid rgba(62, 39, 35, 0.1);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark-brown);
+            font-size: 14px;
+            font-weight: 400;
+            letter-spacing: 0.05em;
+            transition: color 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: var(--terracotta);
+        }
+
+        /* Hero Section - Editorial Spread */
+        .hero {
+            margin-top: 80px;
+            min-height: 100vh;
+            position: relative;
+            display: grid;
+            grid-template-columns: 1fr 1.2fr;
+            align-items: center;
+            overflow: hidden;
+        }
+
+        .hero-content {
+            padding: 80px;
+            z-index: 2;
+        }
+
+        .hero-subtitle {
+            font-size: 14px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 20px;
+        }
+
+        .hero-title {
+            font-size: clamp(60px, 8vw, 120px);
+            margin-bottom: 30px;
+            color: var(--dark-brown);
+        }
+
+        .hero-description {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--light-brown);
+            max-width: 500px;
+            margin-bottom: 40px;
+            font-weight: 300;
+        }
+
+        .editorial-cta {
+            display: inline-block;
+            padding: 18px 50px;
+            background: var(--terracotta);
+            color: var(--warm-white);
+            text-decoration: none;
+            font-size: 14px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            font-weight: 400;
+        }
+
+        .editorial-cta:hover {
+            background: var(--dark-brown);
+            transform: translateX(5px);
+        }
+
+        .hero-image {
+            position: relative;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: contrast(1.1);
+        }
+
+        .image-overlay {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            background: var(--warm-white);
+            padding: 30px 40px;
+            max-width: 300px;
+        }
+
+        .overlay-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-style: italic;
+            line-height: 1.4;
+            color: var(--dark-brown);
+        }
+
+        /* Editorial Stats */
+        .stats-section {
+            padding: 120px 40px;
+            background: var(--warm-white);
+        }
+
+        .stats-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 80px;
+            text-align: center;
+        }
+
+        .stat-item {
+            position: relative;
+        }
+
+        .stat-number {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 80px;
+            font-weight: 300;
+            color: var(--terracotta);
+            line-height: 1;
+            margin-bottom: 10px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--light-brown);
+        }
+
+        /* Services - Editorial Columns */
+        .services {
+            padding: 120px 40px;
+            background: var(--cream);
+        }
+
+        .services-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 80px;
+            margin-bottom: 80px;
+            align-items: end;
+        }
+
+        .section-title {
+            font-size: clamp(60px, 6vw, 90px);
+            line-height: 0.9;
+        }
+
+        .section-intro {
+            font-size: 18px;
+            line-height: 1.8;
+            color: var(--light-brown);
+            padding-bottom: 10px;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+        }
+
+        .service-card {
+            position: relative;
+            padding-top: 60px;
+        }
+
+        .service-number {
+            position: absolute;
+            top: 0;
+            left: 0;
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 120px;
+            font-weight: 300;
+            color: var(--terracotta);
+            opacity: 0.3;
+            line-height: 1;
+        }
+
+        .service-title {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 32px;
+            font-weight: 400;
+            margin-bottom: 20px;
+            margin-top: 40px;
+        }
+
+        .service-description {
+            font-size: 16px;
+            line-height: 1.8;
+            color: var(--light-brown);
+            margin-bottom: 30px;
+        }
+
+        .service-link {
+            font-size: 14px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            transition: gap 0.3s ease;
+        }
+
+        .service-link:hover {
+            gap: 20px;
+        }
+
+        .service-link::after {
+            content: '→';
+            font-size: 18px;
+        }
+
+        /* Case Studies - Magazine Features */
+        .case-studies {
+            padding: 120px 40px;
+            background: var(--warm-white);
+        }
+
+        .case-study {
+            max-width: 1400px;
+            margin: 0 auto 120px;
+            display: grid;
+            grid-template-columns: 1.5fr 1fr;
+            gap: 80px;
+            align-items: center;
+        }
+
+        .case-study:nth-child(even) {
+            grid-template-columns: 1fr 1.5fr;
+        }
+
+        .case-study:nth-child(even) .case-image {
+            order: 2;
+        }
+
+        .case-study:nth-child(even) .case-content {
+            order: 1;
+        }
+
+        .case-image {
+            position: relative;
+            height: 600px;
+            overflow: hidden;
+        }
+
+        .case-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+
+        .case-study:hover .case-image img {
+            transform: scale(1.05);
+        }
+
+        .case-content {
+            padding: 40px;
+        }
+
+        .case-category {
+            font-size: 14px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 20px;
+        }
+
+        .case-title {
+            font-size: clamp(40px, 4vw, 60px);
+            margin-bottom: 30px;
+            line-height: 1.1;
+        }
+
+        .pull-quote {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 28px;
+            font-style: italic;
+            line-height: 1.4;
+            color: var(--light-brown);
+            margin: 40px 0;
+            padding-left: 30px;
+            border-left: 3px solid var(--terracotta);
+        }
+
+        .case-details {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .detail-item {
+            padding: 20px 0;
+            border-top: 1px solid rgba(62, 39, 35, 0.1);
+        }
+
+        .detail-label {
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: var(--light-brown);
+            margin-bottom: 8px;
+        }
+
+        .detail-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 22px;
+            color: var(--dark-brown);
+        }
+
+        /* Gallery - Pinterest Style */
+        .gallery {
+            padding: 120px 40px;
+            background: var(--cream);
+        }
+
+        .gallery-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .gallery-title {
+            font-size: clamp(60px, 6vw, 90px);
+            margin-bottom: 20px;
+        }
+
+        .gallery-subtitle {
+            font-size: 18px;
+            color: var(--light-brown);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .mood-board {
+            max-width: 1400px;
+            margin: 0 auto;
+            column-count: 4;
+            column-gap: 30px;
+        }
+
+        .mood-item {
+            break-inside: avoid;
+            margin-bottom: 30px;
+            position: relative;
+            overflow: hidden;
+            background: var(--warm-white);
+        }
+
+        .mood-item img {
+            width: 100%;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .mood-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .mood-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(62, 39, 35, 0.8), transparent);
+            color: var(--warm-white);
+            padding: 30px 20px 20px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .mood-item:hover .mood-overlay {
+            opacity: 1;
+        }
+
+        .mood-caption {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            font-style: italic;
+        }
+
+        /* Testimonials - Fashion Magazine Style */
+        .testimonials {
+            padding: 120px 40px;
+            background: var(--warm-white);
+        }
+
+        .testimonials-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 80px;
+            margin-top: 80px;
+        }
+
+        .testimonial {
+            position: relative;
+            padding: 40px;
+        }
+
+        .quote-mark {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 120px;
+            color: var(--terracotta);
+            opacity: 0.2;
+            position: absolute;
+            top: -20px;
+            left: 20px;
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 24px;
+            font-style: italic;
+            line-height: 1.6;
+            color: var(--dark-brown);
+            margin-bottom: 30px;
+            position: relative;
+            z-index: 1;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .author-image {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            object-fit: cover;
+        }
+
+        .author-info {
+            flex: 1;
+        }
+
+        .author-name {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--dark-brown);
+            margin-bottom: 4px;
+        }
+
+        .author-role {
+            font-size: 14px;
+            color: var(--light-brown);
+            font-style: italic;
+        }
+
+        /* Contact - Editorial Footer */
+        .contact {
+            padding: 120px 40px;
+            background: var(--dark-brown);
+            color: var(--warm-white);
+        }
+
+        .contact-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 80px;
+        }
+
+        .contact-content h2 {
+            font-size: clamp(60px, 6vw, 80px);
+            margin-bottom: 30px;
+            color: var(--warm-white);
+        }
+
+        .contact-text {
+            font-size: 18px;
+            line-height: 1.8;
+            margin-bottom: 40px;
+            opacity: 0.9;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+        }
+
+        .info-item {
+            padding-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .info-label {
+            font-size: 12px;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            opacity: 0.6;
+            margin-bottom: 8px;
+        }
+
+        .info-value {
+            font-family: 'Cormorant Garamond', serif;
+            font-size: 20px;
+            color: var(--warm-white);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-content {
+                padding: 60px 40px;
+            }
+
+            .hero-image {
+                height: 60vh;
+            }
+
+            .mood-board {
+                column-count: 3;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+                gap: 80px;
+            }
+
+            .case-study,
+            .case-study:nth-child(even) {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .case-study:nth-child(even) .case-image {
+                order: 1;
+            }
+
+            .case-study:nth-child(even) .case-content {
+                order: 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                padding: 15px 20px;
+            }
+
+            .nav-links {
+                display: none;
+            }
+
+            .hero-title {
+                font-size: clamp(40px, 10vw, 60px);
+            }
+
+            .stats-container {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+
+            .mood-board {
+                column-count: 2;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-container {
+                grid-template-columns: 1fr;
+            }
+
+            .section-header {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+
+            .section-title {
+                font-size: clamp(40px, 8vw, 60px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content {
+                padding: 40px 20px;
+            }
+
+            .mood-board {
+                column-count: 1;
+            }
+
+            .case-content {
+                padding: 20px;
+            }
+
+            .testimonial {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">ESTATE & LIVING</div>
+            <ul class="nav-links">
+                <li><a href="#properties">PROPERTIES</a></li>
+                <li><a href="#services">SERVICES</a></li>
+                <li><a href="#portfolio">PORTFOLIO</a></li>
+                <li><a href="#testimonials">STORIES</a></li>
+                <li><a href="#contact">CONTACT</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <p class="hero-subtitle">Curated Living Spaces</p>
+            <h1 class="hero-title editorial-heading">Where Architecture<br>Meets Artistry</h1>
+            <p class="hero-description">
+                Discover exceptional properties that transcend the ordinary. 
+                Each space tells a story of refined taste, thoughtful design, 
+                and uncompromising quality.
+            </p>
+            <a href="#contact" class="editorial-cta">Begin Your Journey</a>
+        </div>
+        <div class="hero-image">
+            <img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1200" alt="Luxury Property">
+            <div class="image-overlay">
+                <p class="overlay-text">"Every home is a canvas waiting for its perfect inhabitant"</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Section -->
+    <section class="stats-section">
+        <div class="stats-container">
+            <div class="stat-item">
+                <div class="stat-number">127</div>
+                <div class="stat-label">Curated Properties</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">15</div>
+                <div class="stat-label">Years of Excellence</div>
+            </div>
+            <div class="stat-item">
+                <div class="stat-number">98%</div>
+                <div class="stat-label">Client Satisfaction</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="services-container">
+            <div class="section-header">
+                <h2 class="section-title editorial-heading">Our<br>Services</h2>
+                <p class="section-intro">
+                    A comprehensive approach to luxury real estate, 
+                    where every detail is meticulously curated to exceed expectations.
+                </p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-number">01</div>
+                    <h3 class="service-title">Property Curation</h3>
+                    <p class="service-description">
+                        Hand-selected properties that represent the pinnacle of 
+                        architectural excellence and lifestyle sophistication.
+                    </p>
+                    <a href="#" class="service-link">Explore Collection</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-number">02</div>
+                    <h3 class="service-title">Bespoke Consultation</h3>
+                    <p class="service-description">
+                        Personalized guidance through every step of your property 
+                        journey, tailored to your unique vision and requirements.
+                    </p>
+                    <a href="#" class="service-link">Learn More</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-number">03</div>
+                    <h3 class="service-title">Interior Styling</h3>
+                    <p class="service-description">
+                        Transform spaces into stunning showcases with our exclusive 
+                        staging and design services by renowned interior artists.
+                    </p>
+                    <a href="#" class="service-link">View Portfolio</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Case Studies -->
+    <section class="case-studies" id="properties">
+        <div class="case-study">
+            <div class="case-image">
+                <img src="https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200" alt="Modern Villa">
+            </div>
+            <div class="case-content">
+                <p class="case-category">Featured Property</p>
+                <h3 class="case-title editorial-heading">Sunset Ridge<br>Modern Villa</h3>
+                <p class="pull-quote">
+                    "Where minimalist design meets maximum comfort"
+                </p>
+                <div class="case-details">
+                    <div class="detail-item">
+                        <p class="detail-label">Location</p>
+                        <p class="detail-value">Beverly Hills</p>
+                    </div>
+                    <div class="detail-item">
+                        <p class="detail-label">Size</p>
+                        <p class="detail-value">8,500 sq ft</p>
+                    </div>
+                    <div class="detail-item">
+                        <p class="detail-label">Bedrooms</p>
+                        <p class="detail-value">5 Suites</p>
+                    </div>
+                    <div class="detail-item">
+                        <p class="detail-label">Price</p>
+                        <p class="detail-value">$12.5M</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="case-study">
+            <div class="case-image">
+                <img src="https://images.unsplash.com/photo-1600566753086-00f18fb6b3ea?w=1200" alt="Urban Penthouse">
+            </div>
+            <div class="case-content">
+                <p class="case-category">Exclusive Listing</p>
+                <h3 class="case-title editorial-heading">Metropolitan<br>Penthouse</h3>
+                <p class="pull-quote">
+                    "Sky-high luxury with panoramic city views"
+                </p>
+                <div class="case-details">
+                    <div class="detail-item">
+                        <p class="detail-label">Location</p>
+                        <p class="detail-value">Manhattan</p>
+                    </div>
+                    <div class="detail-item">
+                        <p class="detail-label">Size</p>
+                        <p class="detail-value">6,200 sq ft</p>
+                    </div>
+                    <div class="detail-item">
+                        <p class="detail-label">Bedrooms</p>
+                        <p class="detail-value">4 Suites</p>
+                    </div>
+                    <div class="detail-item">
+                        <p class="detail-label">Price</p>
+                        <p class="detail-value">$18.9M</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="portfolio">
+        <div class="gallery-header">
+            <h2 class="gallery-title editorial-heading">Interior<br>Inspiration</h2>
+            <p class="gallery-subtitle">
+                A curated collection of spaces that inspire and delight
+            </p>
+        </div>
+        <div class="mood-board">
+            <div class="mood-item">
+                <img src="https://images.unsplash.com/photo-1600607687644-aac4c3eac7f4?w=600" alt="Living Space">
+                <div class="mood-overlay">
+                    <p class="mood-caption">Minimalist Living Room</p>
+                </div>
+            </div>
+            <div class="mood-item">
+                <img src="https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=600" alt="Kitchen Design">
+                <div class="mood-overlay">
+                    <p class="mood-caption">Chef's Dream Kitchen</p>
+                </div>
+            </div>
+            <div class="mood-item">
+                <img src="https://images.unsplash.com/photo-1600607687920-4e2a09cf159d?w=600" alt="Bedroom Suite">
+                <div class="mood-overlay">
+                    <p class="mood-caption">Master Suite Retreat</p>
+                </div>
+            </div>
+            <div class="mood-item">
+                <img src="https://images.unsplash.com/photo-1600566752355-35792bedcfea?w=600" alt="Bathroom">
+                <div class="mood-overlay">
+                    <p class="mood-caption">Spa-Inspired Bath</p>
+                </div>
+            </div>
+            <div class="mood-item">
+                <img src="https://images.unsplash.com/photo-1600585154526-990dced4db0d?w=600" alt="Outdoor Space">
+                <div class="mood-overlay">
+                    <p class="mood-caption">Outdoor Oasis</p>
+                </div>
+            </div>
+            <div class="mood-item">
+                <img src="https://images.unsplash.com/photo-1600573472591-401b3d0ac5a1?w=600" alt="Study">
+                <div class="mood-overlay">
+                    <p class="mood-caption">Executive Study</p>
+                </div>
+            </div>
+            <div class="mood-item">
+                <img src="https://images.unsplash.com/photo-1600585152220-90363fe7e115?w=600" alt="Dining Room">
+                <div class="mood-overlay">
+                    <p class="mood-caption">Elegant Dining</p>
+                </div>
+            </div>
+            <div class="mood-item">
+                <img src="https://images.unsplash.com/photo-1600210492493-0946911123ea?w=600" alt="Pool Area">
+                <div class="mood-overlay">
+                    <p class="mood-caption">Infinity Pool Paradise</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="testimonials-container">
+            <h2 class="section-title editorial-heading">Client<br>Stories</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial">
+                    <span class="quote-mark">"</span>
+                    <p class="testimonial-text">
+                        Working with Estate & Living was an extraordinary experience. 
+                        They understood our vision and found us a home that exceeded 
+                        every expectation. Their attention to detail is unparalleled.
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100" alt="Client" class="author-image">
+                        <div class="author-info">
+                            <p class="author-name">Alexander Chen</p>
+                            <p class="author-role">Tech Entrepreneur</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial">
+                    <span class="quote-mark">"</span>
+                    <p class="testimonial-text">
+                        The level of sophistication and expertise they bring to luxury 
+                        real estate is remarkable. They transformed our property search 
+                        into a curated journey of discovery.
+                    </p>
+                    <div class="testimonial-author">
+                        <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100" alt="Client" class="author-image">
+                        <div class="author-info">
+                            <p class="author-name">Victoria Laurent</p>
+                            <p class="author-role">Fashion Designer</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-container">
+            <div class="contact-content">
+                <h2 class="editorial-heading">Let's Create<br>Your Story</h2>
+                <p class="contact-text">
+                    Every exceptional property journey begins with a conversation. 
+                    Share your vision with us, and let's explore the possibilities together.
+                </p>
+                <a href="#" class="editorial-cta">Schedule Consultation</a>
+            </div>
+            <div class="contact-info">
+                <div class="info-item">
+                    <p class="info-label">Address</p>
+                    <p class="info-value">9200 Sunset Boulevard<br>Beverly Hills, CA 90210</p>
+                </div>
+                <div class="info-item">
+                    <p class="info-label">Contact</p>
+                    <p class="info-value">+1 (310) 555-0100<br>hello@estateandliving.com</p>
+                </div>
+                <div class="info-item">
+                    <p class="info-label">Hours</p>
+                    <p class="info-value">Monday - Saturday<br>9:00 AM - 7:00 PM</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect for hero image
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImage = document.querySelector('.hero-image img');
+            if (heroImage && scrolled < window.innerHeight) {
+                heroImage.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add scroll-based animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        // Observe elements
+        document.querySelectorAll('.case-study, .service-card, .mood-item, .testimonial').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
