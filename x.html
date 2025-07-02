@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X.DVSN - Experimental Films & Visual Art</title>
+    <meta name="description" content="Pushing boundaries in visual storytelling. Experimental films, music videos, and artistic collaborations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .x-hero { 
+            background: linear-gradient(180deg, rgba(0,255,0,0.05) 0%, transparent 100%);
+            min-height: 100vh;
+        }
+        .x-accent { color: var(--accent-x); }
+        
+        /* Glitch effect for experimental vibe */
+        .glitch {
+            position: relative;
+            animation: glitch 2s infinite;
+        }
+        .glitch::before,
+        .glitch::after {
+            content: attr(data-text);
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+        .glitch::before {
+            animation: glitch-1 0.5s infinite;
+            color: var(--accent-x);
+            z-index: -1;
+        }
+        .glitch::after {
+            animation: glitch-2 0.5s infinite;
+            color: var(--accent-main);
+            z-index: -2;
+        }
+        
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+        }
+        
+        @keyframes glitch-1 {
+            0%, 100% { clip: rect(0, 9999px, 9999px, 0); }
+            25% { clip: rect(20px, 9999px, 40px, 0); }
+            50% { clip: rect(60px, 9999px, 80px, 0); }
+            75% { clip: rect(100px, 9999px, 120px, 0); }
+        }
+        
+        @keyframes glitch-2 {
+            0%, 100% { clip: rect(0, 9999px, 9999px, 0); }
+            25% { clip: rect(30px, 9999px, 50px, 0); }
+            50% { clip: rect(70px, 9999px, 90px, 0); }
+            75% { clip: rect(110px, 9999px, 130px, 0); }
+        }
+        
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 1px;
+            margin: 4rem 0;
+            background: var(--gray-dark);
+        }
+        
+        .project-item {
+            position: relative;
+            aspect-ratio: 1;
+            overflow: hidden;
+            background: var(--black-pure);
+            cursor: pointer;
+            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+        
+        .project-item:hover {
+            transform: scale(0.95);
+        }
+        
+        .project-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 255, 0, 0.9);
+            mix-blend-mode: multiply;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        
+        .project-item:hover .project-overlay {
+            opacity: 1;
+        }
+        
+        .project-info {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            right: 2rem;
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.4s ease;
+        }
+        
+        .project-item:hover .project-info {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .manifesto {
+            max-width: 800px;
+            margin: 6rem auto;
+            text-align: center;
+            font-size: 1.2rem;
+            line-height: 2;
+            color: var(--gray-silver);
+        }
+        
+        .manifesto em {
+            color: var(--accent-x);
+            font-style: normal;
+            font-weight: 600;
+        }
+        
+        .collaborators {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+            margin: 4rem 0;
+        }
+        
+        .collaborator {
+            padding: 1rem 2rem;
+            border: 1px solid var(--accent-x);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            color: var(--gray-silver);
+        }
+        
+        .collaborator:hover {
+            background: var(--accent-x);
+            color: var(--black-pure);
+            transform: translateY(-4px);
+        }
+        
+        .experimental-nav {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 100;
+        }
+        
+        .experimental-nav a {
+            width: 10px;
+            height: 10px;
+            border: 1px solid var(--accent-x);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .experimental-nav a:hover {
+            background: var(--accent-x);
+            transform: scale(1.5);
+        }
+        
+        .ascii-art {
+            font-family: monospace;
+            font-size: 0.8rem;
+            line-height: 1.2;
+            color: var(--accent-x);
+            opacity: 0.3;
+            white-space: pre;
+            margin: 4rem 0;
+            text-align: center;
+        }
+        
+        @media (max-width: 768px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
+            .experimental-nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Film Grain Overlay -->
+    <div class="film-grain"></div>
+    
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">DVSN</a>
+            <div class="nav-links">
+                <a href="films.html" class="nav-link">Films</a>
+                <a href="media.html" class="nav-link">Media</a>
+                <a href="x.html" class="nav-link x-accent">X</a>
+                <a href="contact.html" class="nav-link nav-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Experimental Navigation -->
+    <div class="experimental-nav">
+        <a href="#manifesto" title="Manifesto"></a>
+        <a href="#projects" title="Projects"></a>
+        <a href="#collaborate" title="Collaborate"></a>
+    </div>
+    
+    <div class="container">
+        <header class="hero-section x-hero">
+            <div class="brand-number animate-fade-in">03</div>
+            <h1 class="logo animate-fade-in glitch" data-text="X.DVSN">X.DVSN</h1>
+            <p class="tagline animate-fade-in-delay">Experimental • Boundary-Pushing • Artistic</p>
+            
+            <div class="ascii-art animate-fade-in-delay">
+    ╔═══════════════════════════════════╗
+    ║  BREAK THE RULES. CREATE NEW ONES ║
+    ╚═══════════════════════════════════╝
+            </div>
+        </header>
+        
+        <main>
+            <!-- Manifesto -->
+            <section id="manifesto" class="manifesto animate-slide-up">
+                <p>
+                    We exist at the <em>intersection</em> of art and technology, 
+                    where <em>conventional</em> meets <em>chaos</em>. 
+                    X.DVSN is our laboratory for visual experimentation—a space where 
+                    we <em>deconstruct</em> traditional filmmaking and <em>reconstruct</em> 
+                    it into something entirely new. This is where we push pixels to their limits, 
+                    where frames become <em>fragments</em> of larger ideas, and where every project 
+                    is an <em>exploration</em> into the unknown.
+                </p>
+            </section>
+            
+            <!-- Projects -->
+            <section id="projects">
+                <h2 class="section-heading">Selected Works</h2>
+                <div class="project-grid">
+                    <div class="project-item">
+                        <div class="project-overlay"></div>
+                        <div class="project-info">
+                            <h3>VOID//001</h3>
+                            <p>Digital Decay Series</p>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-overlay"></div>
+                        <div class="project-info">
+                            <h3>NEON DREAMS</h3>
+                            <p>Music Video</p>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-overlay"></div>
+                        <div class="project-info">
+                            <h3>FRAGMENTS</h3>
+                            <p>Short Film</p>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-overlay"></div>
+                        <div class="project-info">
+                            <h3>GLITCH.REALITY</h3>
+                            <p>AR Experience</p>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-overlay"></div>
+                        <div class="project-info">
+                            <h3>ECHO//CHAMBER</h3>
+                            <p>Installation</p>
+                        </div>
+                    </div>
+                    <div class="project-item">
+                        <div class="project-overlay"></div>
+                        <div class="project-info">
+                            <h3>SYNTHETIC</h3>
+                            <p>AI Collaboration</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Collaborators -->
+            <section id="collaborate">
+                <h2 class="section-heading">Collaborators</h2>
+                <div class="collaborators">
+                    <a href="#" class="collaborator">Electronic Musicians</a>
+                    <a href="#" class="collaborator">Digital Artists</a>
+                    <a href="#" class="collaborator">Creative Technologists</a>
+                    <a href="#" class="collaborator">Fashion Designers</a>
+                    <a href="#" class="collaborator">VJs & Light Artists</a>
+                </div>
+            </section>
+            
+            <!-- Process -->
+            <section class="process-section">
+                <h2 class="section-heading">Our Approach</h2>
+                <div class="manifesto">
+                    <p>
+                        No scripts. No storyboards. Just <em>raw creative energy</em> channeled through 
+                        cutting-edge technology. We embrace <em>accidents</em>, celebrate <em>glitches</em>, 
+                        and find beauty in the <em>unexpected</em>. Every project is a journey into 
+                        uncharted visual territory.
+                    </p>
+                </div>
+            </section>
+            
+            <!-- CTA -->
+            <section class="cta-section">
+                <h2 class="cta-heading glitch" data-text="Create Something Different">Create Something Different</h2>
+                <a href="contact.html" class="cta-button">Start Experimenting</a>
+            </section>
+        </main>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="footer-brand">X.DVSN</div>
+                <p>© 2024 DVSN Studios • Experimental Division</p>
+                <p class="contact">x@dvsn.studio • Toronto</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

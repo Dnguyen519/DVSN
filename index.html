@@ -5,44 +5,77 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DVSN Studios - Cinematic Video Production Toronto</title>
     <meta name="description" content="Premium cinematic videography in Toronto. Wedding films, real estate video, corporate production.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <!-- Film Grain Overlay -->
+    <div class="film-grain"></div>
+    
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">DVSN</a>
+            <div class="nav-links">
+                <a href="films.html" class="nav-link">Films</a>
+                <a href="media.html" class="nav-link">Media</a>
+                <a href="x.html" class="nav-link">X</a>
+                <a href="contact.html" class="nav-link nav-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
     <div class="container">
-        <header>
-            <h1 class="logo">DVSN STUDIOS</h1>
-            <p class="tagline">Cinematic Video Production • Toronto</p>
+        <header class="hero-section">
+            <h1 class="logo animate-fade-in">DVSN STUDIOS</h1>
+            <p class="tagline animate-fade-in-delay">Cinematic Video Production • Toronto</p>
+            <div class="scroll-indicator">
+                <span>Scroll</span>
+                <div class="scroll-line"></div>
+            </div>
         </header>
         
         <main>
-            <div class="brands">
-                <div class="brand-card films-card">
+            <section class="brands">
+                <a href="films.html" class="brand-card films-card animate-slide-up">
+                    <div class="brand-number">01</div>
                     <h2>DVSN.Films</h2>
                     <h3>Wedding Cinematography</h3>
                     <p>Timeless wedding films that capture every emotion</p>
-                </div>
+                    <div class="brand-arrow">→</div>
+                </a>
                 
-                <div class="brand-card media-card">
+                <a href="media.html" class="brand-card media-card animate-slide-up delay-1">
+                    <div class="brand-number">02</div>
                     <h2>DVSN.Media</h2>
                     <h3>Corporate & Real Estate</h3>
                     <p>Professional video production for business</p>
-                </div>
+                    <div class="brand-arrow">→</div>
+                </a>
                 
-                <div class="brand-card x-card">
+                <a href="x.html" class="brand-card x-card animate-slide-up delay-2">
+                    <div class="brand-number">03</div>
                     <h2>X.DVSN</h2>
                     <h3>Experimental Films</h3>
                     <p>Pushing boundaries in visual storytelling</p>
-                </div>
-            </div>
+                    <div class="brand-arrow">→</div>
+                </a>
+            </section>
             
-            <div class="cta-section">
-                <a href="mailto:hello@dvsn.studio" class="cta-button">START YOUR PROJECT</a>
-            </div>
+            <section class="cta-section">
+                <h2 class="cta-heading">Ready to Create Something Extraordinary?</h2>
+                <a href="contact.html" class="cta-button">Start Your Project</a>
+            </section>
         </main>
         
         <footer>
-            <p>© 2024 DVSN Studios • Serving GTA & Southern Ontario</p>
-            <p class="contact">hello@dvsn.studio • (416) 555-DVSN</p>
+            <div class="footer-content">
+                <div class="footer-brand">DVSN Studios</div>
+                <p>© 2024 DVSN Studios • Serving GTA & Southern Ontario</p>
+                <p class="contact">hello@dvsn.studio • (416) 555-DVSN</p>
+            </div>
         </footer>
     </div>
 </body>

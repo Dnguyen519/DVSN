@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVSN.Films - Wedding Cinematography Toronto</title>
+    <meta name="description" content="Cinematic wedding films that capture every emotion. Toronto's premier wedding videography studio.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .films-hero { background: linear-gradient(180deg, rgba(255,215,0,0.1) 0%, transparent 100%); }
+        .films-accent { color: var(--accent-films); }
+        .portfolio-grid { 
+            display: grid; 
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+            gap: 2rem; 
+            margin: 4rem 0; 
+        }
+        .portfolio-item {
+            position: relative;
+            aspect-ratio: 16/9;
+            background: var(--black-soft);
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s ease;
+        }
+        .portfolio-item:hover {
+            transform: scale(1.03);
+            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
+        }
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2rem;
+            opacity: 0;
+            transition: opacity 0.4s ease;
+        }
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 60px;
+            height: 60px;
+            border: 2px solid white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .portfolio-item:hover .play-icon {
+            transform: translate(-50%, -50%) scale(1.1);
+            background: rgba(255, 215, 0, 0.9);
+            border-color: var(--accent-films);
+        }
+        .services-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+        .service-item {
+            padding: 2rem;
+            background: var(--black-soft);
+            border: 1px solid var(--gray-dark);
+            transition: all 0.3s ease;
+        }
+        .service-item:hover {
+            border-color: var(--accent-films);
+            transform: translateY(-4px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Film Grain Overlay -->
+    <div class="film-grain"></div>
+    
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">DVSN</a>
+            <div class="nav-links">
+                <a href="films.html" class="nav-link films-accent">Films</a>
+                <a href="media.html" class="nav-link">Media</a>
+                <a href="x.html" class="nav-link">X</a>
+                <a href="contact.html" class="nav-link nav-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <header class="hero-section films-hero">
+            <div class="brand-number animate-fade-in">01</div>
+            <h1 class="logo animate-fade-in films-accent">DVSN.Films</h1>
+            <p class="tagline animate-fade-in-delay">Your Love Story, Cinematically Told</p>
+        </header>
+        
+        <main>
+            <!-- Introduction -->
+            <section class="intro-section">
+                <h2 class="section-heading">Wedding Cinematography</h2>
+                <p class="section-text">
+                    We believe every love story deserves to be told with the artistry and emotion of cinema. 
+                    Our approach combines documentary authenticity with cinematic beauty, creating films that 
+                    transport you back to every moment, every emotion, every heartbeat of your wedding day.
+                </p>
+            </section>
+            
+            <!-- Portfolio -->
+            <section class="portfolio-section">
+                <h2 class="section-heading">Featured Films</h2>
+                <div class="portfolio-grid">
+                    <div class="portfolio-item animate-slide-up">
+                        <div class="play-icon">▶</div>
+                        <div class="portfolio-overlay">
+                            <h3>Sarah & Michael</h3>
+                            <p>Casa Loma, Toronto</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item animate-slide-up delay-1">
+                        <div class="play-icon">▶</div>
+                        <div class="portfolio-overlay">
+                            <h3>Emily & James</h3>
+                            <p>Niagara Vineyard Wedding</p>
+                        </div>
+                    </div>
+                    <div class="portfolio-item animate-slide-up delay-2">
+                        <div class="play-icon">▶</div>
+                        <div class="portfolio-overlay">
+                            <h3>Jessica & David</h3>
+                            <p>Downtown Toronto Rooftop</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- Services -->
+            <section class="services-section">
+                <h2 class="section-heading">Our Packages</h2>
+                <div class="services-list">
+                    <div class="service-item">
+                        <h3 class="films-accent">Essential</h3>
+                        <p class="service-price">From $2,500</p>
+                        <ul>
+                            <li>6-8 hours coverage</li>
+                            <li>4-6 minute highlight film</li>
+                            <li>Professional color grading</li>
+                            <li>Digital delivery</li>
+                        </ul>
+                    </div>
+                    <div class="service-item">
+                        <h3 class="films-accent">Signature</h3>
+                        <p class="service-price">From $3,500</p>
+                        <ul>
+                            <li>Full day coverage</li>
+                            <li>8-10 minute cinematic film</li>
+                            <li>Drone footage</li>
+                            <li>Raw footage archive</li>
+                        </ul>
+                    </div>
+                    <div class="service-item">
+                        <h3 class="films-accent">Director's Cut</h3>
+                        <p class="service-price">From $5,000</p>
+                        <ul>
+                            <li>Multi-day coverage</li>
+                            <li>20-30 minute documentary</li>
+                            <li>Same-day edit option</li>
+                            <li>Second shooter</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            
+            <!-- CTA -->
+            <section class="cta-section">
+                <h2 class="cta-heading">Let's Tell Your Love Story</h2>
+                <a href="contact.html" class="cta-button">Book a Consultation</a>
+            </section>
+        </main>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="footer-brand">DVSN.Films</div>
+                <p>© 2024 DVSN Studios • Wedding Cinematography</p>
+                <p class="contact">hello@dvsn.studio • (416) 555-DVSN</p>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

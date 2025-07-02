@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact DVSN Studios - Let's Create Together</title>
+    <meta name="description" content="Get in touch with DVSN Studios for cinematic video production in Toronto. Wedding films, corporate videos, and creative collaborations.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .contact-hero {
+            min-height: 60vh;
+            background: linear-gradient(135deg, 
+                rgba(255,215,0,0.05) 0%, 
+                rgba(74,144,226,0.05) 50%, 
+                rgba(0,255,0,0.05) 100%);
+        }
+        
+        .contact-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 6rem;
+            margin: 4rem 0;
+            align-items: start;
+        }
+        
+        .contact-form {
+            background: var(--black-soft);
+            padding: 3rem;
+            border: 1px solid var(--gray-dark);
+        }
+        
+        .form-group {
+            margin-bottom: 2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray-silver);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 1rem;
+            background: var(--black-pure);
+            border: 1px solid var(--gray-dark);
+            color: var(--white);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: var(--gray-medium);
+        }
+        
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+        
+        .service-options {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+        
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .checkbox-group input[type="checkbox"] {
+            width: auto;
+            cursor: pointer;
+        }
+        
+        .checkbox-group label {
+            margin: 0;
+            font-size: 0.9rem;
+            text-transform: none;
+            cursor: pointer;
+        }
+        
+        .submit-btn {
+            width: 100%;
+            padding: 1.2rem;
+            background: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .submit-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0;
+            height: 100%;
+            background: var(--white);
+            transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            z-index: -1;
+        }
+        
+        .submit-btn:hover {
+            color: var(--black-pure);
+        }
+        
+        .submit-btn:hover::before {
+            width: 100%;
+        }
+        
+        .contact-info {
+            padding: 3rem;
+        }
+        
+        .info-section {
+            margin-bottom: 3rem;
+        }
+        
+        .info-section h3 {
+            font-family: 'Bebas Neue', sans-serif;
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            letter-spacing: 0.05em;
+        }
+        
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+            color: var(--gray-silver);
+        }
+        
+        .info-icon {
+            font-size: 1.5rem;
+            opacity: 0.6;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .social-link {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 1px solid var(--gray-medium);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--gray-silver);
+            transition: all 0.3s ease;
+        }
+        
+        .social-link:hover {
+            border-color: var(--white);
+            color: var(--white);
+            transform: translateY(-4px);
+        }
+        
+        .map-placeholder {
+            width: 100%;
+            height: 300px;
+            background: var(--black-elevated);
+            border: 1px solid var(--gray-dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--gray-medium);
+            margin-top: 2rem;
+        }
+        
+        .faq-section {
+            max-width: 800px;
+            margin: 6rem auto;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid var(--gray-dark);
+            padding: 2rem 0;
+        }
+        
+        .faq-question {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--white);
+        }
+        
+        .faq-answer {
+            color: var(--gray-silver);
+            line-height: 1.8;
+        }
+        
+        @media (max-width: 768px) {
+            .contact-container {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+            
+            .service-options {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-form,
+            .contact-info {
+                padding: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Film Grain Overlay -->
+    <div class="film-grain"></div>
+    
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">DVSN</a>
+            <div class="nav-links">
+                <a href="films.html" class="nav-link">Films</a>
+                <a href="media.html" class="nav-link">Media</a>
+                <a href="x.html" class="nav-link">X</a>
+                <a href="contact.html" class="nav-link nav-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <div class="container">
+        <header class="hero-section contact-hero">
+            <h1 class="logo animate-fade-in">Let's Create</h1>
+            <p class="tagline animate-fade-in-delay">Your Vision, Our Expertise</p>
+        </header>
+        
+        <main>
+            <div class="contact-container">
+                <!-- Contact Form -->
+                <div class="contact-form animate-slide-up">
+                    <h2>Start Your Project</h2>
+                    <form id="contact-form" action="#" method="POST">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">Email Address</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="phone">Phone Number</label>
+                            <input type="tel" id="phone" name="phone">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Services Interested In</label>
+                            <div class="service-options">
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="wedding" name="services" value="wedding">
+                                    <label for="wedding">Wedding Films</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="corporate" name="services" value="corporate">
+                                    <label for="corporate">Corporate Video</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="realestate" name="services" value="realestate">
+                                    <label for="realestate">Real Estate</label>
+                                </div>
+                                <div class="checkbox-group">
+                                    <input type="checkbox" id="experimental" name="services" value="experimental">
+                                    <label for="experimental">Experimental</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="budget">Estimated Budget</label>
+                            <select id="budget" name="budget">
+                                <option value="">Select Budget Range</option>
+                                <option value="under-2500">Under $2,500</option>
+                                <option value="2500-5000">$2,500 - $5,000</option>
+                                <option value="5000-10000">$5,000 - $10,000</option>
+                                <option value="over-10000">Over $10,000</option>
+                            </select>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Tell Us About Your Project</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">Send Message</button>
+                    </form>
+                </div>
+                
+                <!-- Contact Info -->
+                <div class="contact-info animate-slide-up delay-1">
+                    <div class="info-section">
+                        <h3>Get In Touch</h3>
+                        <div class="info-item">
+                            <span class="info-icon">📧</span>
+                            <span>hello@dvsn.studio</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📱</span>
+                            <span>(416) 555-DVSN</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="info-icon">📍</span>
+                            <span>Toronto, Ontario</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>Office Hours</h3>
+                        <div class="info-item">
+                            <span>Monday - Friday: 9AM - 6PM</span>
+                        </div>
+                        <div class="info-item">
+                            <span>Saturday: 10AM - 4PM</span>
+                        </div>
+                        <div class="info-item">
+                            <span>Sunday: By Appointment</span>
+                        </div>
+                    </div>
+                    
+                    <div class="info-section">
+                        <h3>Follow Us</h3>
+                        <div class="social-links">
+                            <a href="#" class="social-link">IG</a>
+                            <a href="#" class="social-link">YT</a>
+                            <a href="#" class="social-link">VM</a>
+                            <a href="#" class="social-link">LI</a>
+                        </div>
+                    </div>
+                    
+                    <div class="map-placeholder">
+                        <span>Map Integration Here</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- FAQ Section -->
+            <section class="faq-section">
+                <h2 class="section-heading">Frequently Asked Questions</h2>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">How far in advance should I book?</h3>
+                    <p class="faq-answer">We recommend booking at least 2-3 months in advance for weddings, and 4-6 weeks for corporate projects. However, we can sometimes accommodate rush projects depending on availability.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">Do you travel outside of Toronto?</h3>
+                    <p class="faq-answer">Yes! We serve all of the GTA and Southern Ontario. We're also available for destination weddings and corporate projects across Canada and internationally.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">What's included in your packages?</h3>
+                    <p class="faq-answer">All packages include professional 4K filming, color grading, sound design, and digital delivery. Specific inclusions vary by package - contact us for detailed information.</p>
+                </div>
+                
+                <div class="faq-item">
+                    <h3 class="faq-question">How long does post-production take?</h3>
+                    <p class="faq-answer">Wedding films are typically delivered within 8-12 weeks. Corporate projects have a 2-4 week turnaround. Rush delivery is available for an additional fee.</p>
+                </div>
+            </section>
+        </main>
+        
+        <footer>
+            <div class="footer-content">
+                <div class="footer-brand">DVSN Studios</div>
+                <p>© 2024 DVSN Studios • Cinematic Video Production</p>
+                <p class="contact">hello@dvsn.studio • Toronto, ON</p>
+            </div>
+        </footer>
+    </div>
+    
+    <script>
+        // Simple form handler
+        document.getElementById('contact-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            alert('Thank you for your message! We\'ll get back to you within 24 hours.');
+            this.reset();
+        });
+    </script>
+</body>
+</html>
