@@ -1,0 +1,692 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVSN STUDIO — FILMS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-300: #d4d4d4;
+            --gray-400: #a3a3a3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --gray-900: #171717;
+            --accent: #ff0000;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1;
+            overflow-x: hidden;
+            cursor: default;
+        }
+        
+        ::selection {
+            background: var(--black);
+            color: var(--white);
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--white);
+            border-bottom: 1px solid var(--black);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+        }
+        
+        .logo {
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: -0.02em;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            transition: none;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: var(--gray-600);
+        }
+        
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--accent);
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: 60px;
+            min-height: 100vh;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: calc(100vh - 60px);
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(12, 1fr);
+            background: var(--gray-100);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-title {
+            grid-column: 2 / 8;
+            grid-row: 3 / 7;
+            z-index: 10;
+        }
+        
+        .hero-title h1 {
+            font-size: clamp(80px, 15vw, 200px);
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            line-height: 0.8;
+            text-transform: uppercase;
+        }
+        
+        .hero-subtitle {
+            grid-column: 9 / 12;
+            grid-row: 8 / 10;
+            display: flex;
+            align-items: flex-end;
+        }
+        
+        .hero-subtitle p {
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+            letter-spacing: 0.02em;
+            color: var(--gray-700);
+        }
+        
+        .hero-accent {
+            grid-column: 11 / 12;
+            grid-row: 1 / 2;
+            background: var(--accent);
+        }
+        
+        /* Film Grid */
+        .films-container {
+            padding: 120px 0;
+        }
+        
+        .film-section {
+            border-top: 1px solid var(--black);
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .film-section:hover {
+            background: var(--gray-100);
+        }
+        
+        .film-section.expanded {
+            background: var(--black);
+            color: var(--white);
+        }
+        
+        .film-header {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            padding: 40px;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .film-number {
+            grid-column: 1 / 2;
+            font-size: 14px;
+            font-weight: 500;
+            color: var(--gray-500);
+        }
+        
+        .film-section.expanded .film-number {
+            color: var(--gray-400);
+        }
+        
+        .film-title {
+            grid-column: 2 / 7;
+            font-size: clamp(24px, 4vw, 48px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+        
+        .film-meta {
+            grid-column: 8 / 11;
+            display: flex;
+            gap: 40px;
+            font-size: 14px;
+            color: var(--gray-600);
+        }
+        
+        .film-section.expanded .film-meta {
+            color: var(--gray-400);
+        }
+        
+        .film-meta span {
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .film-expand {
+            grid-column: 12 / 13;
+            text-align: right;
+            font-size: 24px;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+        
+        .film-section.expanded .film-expand {
+            transform: rotate(45deg);
+        }
+        
+        .film-content {
+            display: none;
+            padding: 0 40px 80px;
+        }
+        
+        .film-section.expanded .film-content {
+            display: block;
+        }
+        
+        .film-video {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: var(--gray-900);
+            margin-bottom: 40px;
+            border: 1px solid var(--gray-700);
+        }
+        
+        .film-video iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        .film-details {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 40px;
+            margin-top: 40px;
+        }
+        
+        .film-description {
+            grid-column: 1 / 7;
+            font-size: 18px;
+            line-height: 1.6;
+            color: var(--gray-300);
+        }
+        
+        .film-info {
+            grid-column: 8 / 11;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .film-info-item {
+            border-bottom: 1px solid var(--gray-800);
+            padding-bottom: 10px;
+        }
+        
+        .film-info-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray-500);
+            margin-bottom: 5px;
+        }
+        
+        .film-info-value {
+            font-size: 16px;
+            color: var(--gray-200);
+        }
+        
+        /* Brutalist Grid Break */
+        .grid-break {
+            height: 200px;
+            background: var(--black);
+            margin: 120px 0;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .grid-break::before {
+            content: 'WEDDING FILMS';
+            position: absolute;
+            font-size: 200px;
+            font-weight: 900;
+            color: var(--gray-900);
+            letter-spacing: -0.05em;
+            white-space: nowrap;
+            animation: scroll 20s linear infinite;
+        }
+        
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--white);
+            padding: 80px 40px 40px;
+            border-top: 2px solid var(--black);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-brand {
+            grid-column: 1 / 4;
+        }
+        
+        .footer-brand h3 {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+        
+        .footer-links {
+            grid-column: 5 / 12;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .footer-column h4 {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-column a:hover {
+            color: var(--black);
+        }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--gray-200);
+            font-size: 12px;
+            color: var(--gray-500);
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 20px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-title {
+                grid-column: 1 / 12;
+                grid-row: 4 / 8;
+                padding: 0 20px;
+            }
+            
+            .hero-subtitle {
+                grid-column: 1 / 12;
+                grid-row: 9 / 11;
+                padding: 0 20px;
+            }
+            
+            .film-header {
+                padding: 20px;
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .film-number,
+            .film-title,
+            .film-meta,
+            .film-expand {
+                grid-column: 1 / -1;
+            }
+            
+            .film-expand {
+                text-align: left;
+            }
+            
+            .film-content {
+                padding: 0 20px 40px;
+            }
+            
+            .film-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .film-description,
+            .film-info {
+                grid-column: 1 / -1;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-brand,
+            .footer-links {
+                grid-column: 1 / -1;
+            }
+            
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">DVSN STUDIO</div>
+        <ul class="nav-links">
+            <li><a href="index.html">HOME</a></li>
+            <li><a href="films.html" class="active">FILMS</a></li>
+            <li><a href="about.html">ABOUT</a></li>
+            <li><a href="contact.html">CONTACT</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <section class="hero">
+            <div class="hero-title">
+                <h1>Wedding<br>Films</h1>
+            </div>
+            <div class="hero-subtitle">
+                <p>Cinematic storytelling<br>for modern couples</p>
+            </div>
+            <div class="hero-accent"></div>
+        </section>
+        
+        <div class="films-container">
+            <!-- Film 1 -->
+            <div class="film-section" onclick="toggleFilm(this)">
+                <div class="film-header">
+                    <div class="film-number">01</div>
+                    <h2 class="film-title">Sarah & Michael</h2>
+                    <div class="film-meta">
+                        <span>Napa Valley</span>
+                        <span>2024</span>
+                    </div>
+                    <div class="film-expand">+</div>
+                </div>
+                <div class="film-content">
+                    <div class="film-video">
+                        <iframe src="https://player.vimeo.com/video/123456789?color=ffffff&title=0&byline=0&portrait=0" allowfullscreen></iframe>
+                    </div>
+                    <div class="film-details">
+                        <div class="film-description">
+                            <p>An intimate vineyard celebration where rolling hills met golden hour light. Sarah and Michael's day unfolded against the backdrop of Napa's most scenic winery, creating moments of pure elegance and joy.</p>
+                        </div>
+                        <div class="film-info">
+                            <div class="film-info-item">
+                                <div class="film-info-label">Venue</div>
+                                <div class="film-info-value">Calistoga Ranch</div>
+                            </div>
+                            <div class="film-info-item">
+                                <div class="film-info-label">Season</div>
+                                <div class="film-info-value">Fall</div>
+                            </div>
+                            <div class="film-info-item">
+                                <div class="film-info-label">Style</div>
+                                <div class="film-info-value">Modern Elegance</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Film 2 -->
+            <div class="film-section" onclick="toggleFilm(this)">
+                <div class="film-header">
+                    <div class="film-number">02</div>
+                    <h2 class="film-title">Emma & James</h2>
+                    <div class="film-meta">
+                        <span>Big Sur</span>
+                        <span>2024</span>
+                    </div>
+                    <div class="film-expand">+</div>
+                </div>
+                <div class="film-content">
+                    <div class="film-video">
+                        <iframe src="https://player.vimeo.com/video/123456790?color=ffffff&title=0&byline=0&portrait=0" allowfullscreen></iframe>
+                    </div>
+                    <div class="film-details">
+                        <div class="film-description">
+                            <p>Where mountains meet the sea, Emma and James exchanged vows on dramatic cliffs overlooking the Pacific. Their celebration embraced the raw beauty of California's coastline with bohemian elegance.</p>
+                        </div>
+                        <div class="film-info">
+                            <div class="film-info-item">
+                                <div class="film-info-label">Venue</div>
+                                <div class="film-info-value">Ventana Big Sur</div>
+                            </div>
+                            <div class="film-info-item">
+                                <div class="film-info-label">Season</div>
+                                <div class="film-info-value">Summer</div>
+                            </div>
+                            <div class="film-info-item">
+                                <div class="film-info-label">Style</div>
+                                <div class="film-info-value">Coastal Bohemian</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grid Break -->
+            <div class="grid-break"></div>
+            
+            <!-- Film 3 -->
+            <div class="film-section" onclick="toggleFilm(this)">
+                <div class="film-header">
+                    <div class="film-number">03</div>
+                    <h2 class="film-title">Olivia & Daniel</h2>
+                    <div class="film-meta">
+                        <span>San Francisco</span>
+                        <span>2023</span>
+                    </div>
+                    <div class="film-expand">+</div>
+                </div>
+                <div class="film-content">
+                    <div class="film-video">
+                        <iframe src="https://player.vimeo.com/video/123456791?color=ffffff&title=0&byline=0&portrait=0" allowfullscreen></iframe>
+                    </div>
+                    <div class="film-details">
+                        <div class="film-description">
+                            <p>Urban sophistication meets timeless romance in the heart of San Francisco. Olivia and Daniel's black-tie affair at a historic venue showcased the city's architectural grandeur.</p>
+                        </div>
+                        <div class="film-info">
+                            <div class="film-info-item">
+                                <div class="film-info-label">Venue</div>
+                                <div class="film-info-value">SF City Hall</div>
+                            </div>
+                            <div class="film-info-item">
+                                <div class="film-info-label">Season</div>
+                                <div class="film-info-value">Spring</div>
+                            </div>
+                            <div class="film-info-item">
+                                <div class="film-info-label">Style</div>
+                                <div class="film-info-value">Classic Urban</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Film 4 -->
+            <div class="film-section" onclick="toggleFilm(this)">
+                <div class="film-header">
+                    <div class="film-number">04</div>
+                    <h2 class="film-title">Isabella & Ryan</h2>
+                    <div class="film-meta">
+                        <span>Carmel</span>
+                        <span>2023</span>
+                    </div>
+                    <div class="film-expand">+</div>
+                </div>
+                <div class="film-content">
+                    <div class="film-video">
+                        <iframe src="https://player.vimeo.com/video/123456792?color=ffffff&title=0&byline=0&portrait=0" allowfullscreen></iframe>
+                    </div>
+                    <div class="film-details">
+                        <div class="film-description">
+                            <p>A garden party transformed into an enchanted evening under the stars. Isabella and Ryan's intimate celebration featured lush florals and candlelit pathways in Carmel's hidden gardens.</p>
+                        </div>
+                        <div class="film-info">
+                            <div class="film-info-item">
+                                <div class="film-info-label">Venue</div>
+                                <div class="film-info-value">Holman Ranch</div>
+                            </div>
+                            <div class="film-info-item">
+                                <div class="film-info-label">Season</div>
+                                <div class="film-info-value">Fall</div>
+                            </div>
+                            <div class="film-info-item">
+                                <div class="film-info-label">Style</div>
+                                <div class="film-info-value">Garden Romance</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>DVSN STUDIO</h3>
+                <p>Cinematic Wedding Films</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Portfolio</h4>
+                    <ul>
+                        <li><a href="#">Featured Films</a></li>
+                        <li><a href="#">Recent Work</a></li>
+                        <li><a href="#">Highlights</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Information</h4>
+                    <ul>
+                        <li><a href="#">Investment</a></li>
+                        <li><a href="#">Process</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Vimeo</a></li>
+                        <li><a href="#">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2024 DVSN Studio. All rights reserved.</span>
+            <span>California, USA</span>
+        </div>
+    </footer>
+    
+    <script>
+        function toggleFilm(section) {
+            // Close all other sections
+            const allSections = document.querySelectorAll('.film-section');
+            allSections.forEach(s => {
+                if (s !== section) {
+                    s.classList.remove('expanded');
+                }
+            });
+            
+            // Toggle current section
+            section.classList.toggle('expanded');
+            
+            // Smooth scroll to section if expanding
+            if (section.classList.contains('expanded')) {
+                setTimeout(() => {
+                    section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
+        }
+    </script>
+</body>
+</html>

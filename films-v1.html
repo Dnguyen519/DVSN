@@ -1,0 +1,1264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVSN.Films - Luxury Wedding Cinematography Toronto</title>
+    <meta name="description" content="Where timeless romance meets cinematic artistry. Toronto's premier luxury wedding videography studio.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:wght@300;400;600&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        /* Custom Properties */
+        :root {
+            --black-pure: #000000;
+            --black-soft: #0A0A0A;
+            --black-elevated: #111111;
+            --gray-dark: #1a1a1a;
+            --gray-medium: #666666;
+            --gray-light: #999999;
+            --white: #FFFFFF;
+            --champagne-gold: #D4AF37;
+            --champagne-light: #E6C757;
+            --pearl-white: #F8F6F0;
+            --pearl-accent: #FAF9F6;
+            --rose-gold: #B76E79;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: var(--black-pure);
+            color: var(--white);
+            font-family: 'Cormorant Garamond', serif;
+            font-weight: 300;
+            line-height: 1.6;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        /* Luxury Film Grain Effect */
+        .film-grain {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1000;
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 2px,
+                    rgba(212, 175, 55, 0.02) 2px,
+                    rgba(212, 175, 55, 0.02) 4px
+                );
+            animation: grain 8s steps(10) infinite;
+        }
+
+        @keyframes grain {
+            0%, 100% { transform: translate(0, 0); }
+            10% { transform: translate(-2%, -5%); }
+            20% { transform: translate(2%, 5%); }
+        }
+
+        /* Navigation */
+        .main-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            padding: 2rem 0;
+            background: linear-gradient(to bottom, rgba(0,0,0,0.95) 0%, transparent 100%);
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 3rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--champagne-gold);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .nav-logo:hover {
+            color: var(--champagne-light);
+            transform: scale(1.05);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 3rem;
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--pearl-white);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 400;
+            letter-spacing: 0.15em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--champagne-gold);
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover {
+            color: var(--champagne-gold);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .nav-cta {
+            padding: 0.7rem 2rem;
+            border: 1px solid var(--champagne-gold);
+            color: var(--champagne-gold);
+            background: transparent;
+            transition: all 0.4s ease;
+        }
+
+        .nav-cta:hover {
+            background: var(--champagne-gold);
+            color: var(--black-pure);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(212, 175, 55, 0.3);
+        }
+
+        /* Split Screen Hero */
+        .hero-section {
+            min-height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-left {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 4rem;
+            background: linear-gradient(135deg, rgba(212, 175, 55, 0.05) 0%, transparent 50%);
+            z-index: 10;
+        }
+
+        .luxury-badge {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            color: var(--champagne-gold);
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero-title {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(3rem, 6vw, 5rem);
+            font-weight: 700;
+            line-height: 1.1;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, var(--champagne-gold) 0%, var(--pearl-white) 50%, var(--champagne-gold) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.2s forwards;
+        }
+
+        .hero-subtitle {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--champagne-gold);
+            margin-bottom: 2rem;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.4s forwards;
+        }
+
+        .hero-description {
+            font-size: 1.2rem;
+            color: var(--pearl-white);
+            line-height: 1.8;
+            margin-bottom: 3rem;
+            max-width: 500px;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.6s forwards;
+        }
+
+        .hero-cta {
+            display: inline-block;
+            padding: 1.2rem 3rem;
+            background: var(--champagne-gold);
+            color: var(--black-pure);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all 0.4s ease;
+            opacity: 0;
+            animation: fadeInUp 1s ease 0.8s forwards;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-cta::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--pearl-white);
+            transition: left 0.4s ease;
+            z-index: -1;
+        }
+
+        .hero-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(212, 175, 55, 0.4);
+        }
+
+        .hero-cta:hover::before {
+            left: 0;
+        }
+
+        .hero-right {
+            position: relative;
+            background: var(--black-soft);
+            overflow: hidden;
+        }
+
+        .video-placeholder {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, var(--black-soft) 0%, var(--gray-dark) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform-style: preserve-3d;
+            transform: translateZ(0);
+        }
+
+        .video-placeholder::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="%23000000" opacity="0.5"/><circle cx="50" cy="50" r="30" fill="none" stroke="%23D4AF37" stroke-width="1" opacity="0.3"/></svg>');
+            opacity: 0.1;
+        }
+
+        .play-button-hero {
+            width: 100px;
+            height: 100px;
+            border: 2px solid var(--champagne-gold);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.4s ease;
+            position: relative;
+            z-index: 10;
+        }
+
+        .play-button-hero::after {
+            content: '▶';
+            color: var(--champagne-gold);
+            font-size: 2rem;
+            margin-left: 0.5rem;
+        }
+
+        .play-button-hero:hover {
+            transform: scale(1.1);
+            background: var(--champagne-gold);
+            box-shadow: 0 0 50px rgba(212, 175, 55, 0.5);
+        }
+
+        .play-button-hero:hover::after {
+            color: var(--black-pure);
+        }
+
+        /* Testimonial Carousel */
+        .testimonials-section {
+            padding: 8rem 0;
+            background: linear-gradient(180deg, var(--black-pure) 0%, var(--black-soft) 50%, var(--black-pure) 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .testimonials-section::before {
+            content: '"';
+            position: absolute;
+            top: 2rem;
+            left: 50%;
+            transform: translateX(-50%);
+            font-family: 'Great Vibes', cursive;
+            font-size: 15rem;
+            color: var(--champagne-gold);
+            opacity: 0.05;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 5rem;
+        }
+
+        .section-badge {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            color: var(--champagne-gold);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .section-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            color: var(--pearl-white);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            color: var(--champagne-gold);
+        }
+
+        .testimonial-carousel {
+            max-width: 1000px;
+            margin: 0 auto;
+            position: relative;
+            padding: 0 4rem;
+        }
+
+        .testimonial-slide {
+            text-align: center;
+            padding: 3rem;
+            opacity: 0;
+            animation: fadeIn 0.8s ease forwards;
+        }
+
+        .testimonial-text {
+            font-size: 1.8rem;
+            line-height: 1.8;
+            color: var(--pearl-white);
+            margin-bottom: 2rem;
+            font-style: italic;
+        }
+
+        .testimonial-couple {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            color: var(--champagne-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .testimonial-venue {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            color: var(--gray-light);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+        }
+
+        .carousel-nav {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            background: transparent;
+            border: 1px solid var(--champagne-gold);
+            color: var(--champagne-gold);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .carousel-nav:hover {
+            background: var(--champagne-gold);
+            color: var(--black-pure);
+            transform: translateY(-50%) scale(1.1);
+        }
+
+        .carousel-prev {
+            left: 0;
+        }
+
+        .carousel-next {
+            right: 0;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+
+        .carousel-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--gray-medium);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .carousel-dot.active {
+            background: var(--champagne-gold);
+            transform: scale(1.3);
+        }
+
+        /* Timeline Section */
+        .timeline-section {
+            padding: 8rem 0;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .timeline {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--champagne-gold), transparent);
+            transform: translateX(-50%);
+        }
+
+        .timeline-item {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+            position: relative;
+        }
+
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 2rem;
+            width: 20px;
+            height: 20px;
+            background: var(--champagne-gold);
+            border-radius: 50%;
+            transform: translateX(-50%);
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.5);
+        }
+
+        .timeline-time {
+            text-align: right;
+            padding-top: 1.5rem;
+        }
+
+        .timeline-time h3 {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 2rem;
+            color: var(--champagne-gold);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content {
+            padding-top: 1.5rem;
+        }
+
+        .timeline-content h4 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--pearl-white);
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-content p {
+            color: var(--gray-light);
+            line-height: 1.6;
+        }
+
+        .timeline-item:nth-child(even) {
+            direction: rtl;
+        }
+
+        .timeline-item:nth-child(even) .timeline-time,
+        .timeline-item:nth-child(even) .timeline-content {
+            direction: ltr;
+        }
+
+        .timeline-item:nth-child(even) .timeline-time {
+            text-align: left;
+        }
+
+        .timeline-item:nth-child(even) .timeline-content {
+            text-align: right;
+        }
+
+        /* Pricing Cards */
+        .pricing-section {
+            padding: 8rem 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(212, 175, 55, 0.03) 50%, transparent 100%);
+        }
+
+        .pricing-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 3rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .pricing-card {
+            position: relative;
+            height: 500px;
+            perspective: 1000px;
+            cursor: pointer;
+        }
+
+        .card-inner {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.8s;
+            transform-style: preserve-3d;
+        }
+
+        .pricing-card:hover .card-inner {
+            transform: rotateY(180deg);
+        }
+
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border: 1px solid var(--champagne-gold);
+            background: var(--black-soft);
+            padding: 3rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+        }
+
+        .card-back {
+            transform: rotateY(180deg);
+            background: linear-gradient(135deg, var(--black-soft) 0%, var(--gray-dark) 100%);
+        }
+
+        .package-badge {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.8rem;
+            letter-spacing: 0.3em;
+            color: var(--champagne-gold);
+            text-transform: uppercase;
+            margin-bottom: 1rem;
+        }
+
+        .package-name {
+            font-family: 'Great Vibes', cursive;
+            font-size: 3rem;
+            color: var(--champagne-gold);
+            margin-bottom: 1rem;
+        }
+
+        .package-price {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--pearl-white);
+            margin-bottom: 2rem;
+        }
+
+        .package-features {
+            list-style: none;
+            color: var(--pearl-white);
+            font-size: 1.1rem;
+            line-height: 2;
+        }
+
+        .package-features li::before {
+            content: '◆';
+            color: var(--champagne-gold);
+            margin-right: 1rem;
+        }
+
+        .card-back .package-description {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            color: var(--pearl-white);
+            margin-bottom: 2rem;
+        }
+
+        .package-cta {
+            padding: 1rem 2.5rem;
+            background: transparent;
+            border: 1px solid var(--champagne-gold);
+            color: var(--champagne-gold);
+            text-decoration: none;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+        }
+
+        .package-cta:hover {
+            background: var(--champagne-gold);
+            color: var(--black-pure);
+            transform: translateY(-2px);
+        }
+
+        /* Featured Films with Hover Effects */
+        .portfolio-section {
+            padding: 8rem 0;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 2rem;
+            padding: 0 2rem;
+        }
+
+        .portfolio-item {
+            position: relative;
+            aspect-ratio: 16/9;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--black-soft);
+            border: 1px solid transparent;
+            transition: all 0.5s ease;
+        }
+
+        .portfolio-item::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(45deg, rgba(212, 175, 55, 0.1) 0%, transparent 100%);
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .portfolio-item:hover {
+            transform: scale(1.02);
+            border-color: var(--champagne-gold);
+            box-shadow: 0 20px 50px rgba(212, 175, 55, 0.2);
+        }
+
+        .portfolio-item:hover::before {
+            opacity: 1;
+        }
+
+        .portfolio-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover .portfolio-image {
+            transform: scale(1.1);
+        }
+
+        .portfolio-overlay {
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 2.5rem;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay {
+            opacity: 1;
+        }
+
+        .portfolio-overlay h3 {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2rem;
+            color: var(--champagne-gold);
+            margin-bottom: 0.5rem;
+            transform: translateY(20px);
+            transition: transform 0.5s ease;
+        }
+
+        .portfolio-item:hover .portfolio-overlay h3 {
+            transform: translateY(0);
+        }
+
+        .portfolio-overlay p {
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            color: var(--pearl-white);
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            transform: translateY(20px);
+            transition: transform 0.5s ease 0.1s;
+        }
+
+        .portfolio-item:hover .portfolio-overlay p {
+            transform: translateY(0);
+        }
+
+        .play-icon {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) scale(0.8);
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--pearl-white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0.8;
+            transition: all 0.5s ease;
+        }
+
+        .play-icon::after {
+            content: '▶';
+            color: var(--pearl-white);
+            font-size: 1.5rem;
+            margin-left: 0.3rem;
+        }
+
+        .portfolio-item:hover .play-icon {
+            transform: translate(-50%, -50%) scale(1);
+            background: var(--champagne-gold);
+            border-color: var(--champagne-gold);
+            opacity: 1;
+        }
+
+        .portfolio-item:hover .play-icon::after {
+            color: var(--black-pure);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            text-align: center;
+            padding: 8rem 0;
+            background: linear-gradient(180deg, transparent 0%, rgba(212, 175, 55, 0.05) 100%);
+        }
+
+        .cta-heading {
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            margin-bottom: 1rem;
+            color: var(--pearl-white);
+        }
+
+        .cta-subheading {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--champagne-gold);
+            margin-bottom: 3rem;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 4rem 0 2rem;
+            border-top: 1px solid var(--champagne-gold);
+            margin-top: 6rem;
+            background: var(--black-soft);
+        }
+
+        .footer-brand {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.5rem;
+            color: var(--champagne-gold);
+            margin-bottom: 1rem;
+        }
+
+        footer p {
+            color: var(--pearl-white);
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.9rem;
+            margin: 0.5rem 0;
+            letter-spacing: 0.05em;
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        /* Parallax Effect */
+        .parallax-container {
+            position: relative;
+            height: 100%;
+            overflow: hidden;
+        }
+
+        .parallax-element {
+            position: absolute;
+            width: 110%;
+            height: 110%;
+            top: -5%;
+            left: -5%;
+            transition: transform 0.5s ease-out;
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero-section {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr;
+            }
+
+            .timeline::before {
+                left: 2rem;
+            }
+
+            .timeline-item {
+                grid-template-columns: 100px 1fr;
+                gap: 2rem;
+            }
+
+            .timeline-item::before {
+                left: 2rem;
+            }
+
+            .timeline-item:nth-child(even) {
+                direction: ltr;
+            }
+
+            .timeline-item:nth-child(even) .timeline-time,
+            .timeline-item:nth-child(even) .timeline-content {
+                text-align: left;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .nav-container {
+                padding: 0 1.5rem;
+            }
+
+            .nav-links {
+                gap: 1.5rem;
+            }
+
+            .nav-link {
+                font-size: 0.8rem;
+            }
+
+            .hero-left {
+                padding: 0 2rem;
+            }
+
+            .hero-title {
+                font-size: 2.5rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1.8rem;
+            }
+
+            .pricing-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Film Grain Overlay -->
+    <div class="film-grain"></div>
+    
+    <!-- Navigation -->
+    <nav class="main-nav">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">DVSN</a>
+            <div class="nav-links">
+                <a href="films.html" class="nav-link">Films</a>
+                <a href="media.html" class="nav-link">Media</a>
+                <a href="x.html" class="nav-link">X</a>
+                <a href="contact.html" class="nav-link nav-cta">Contact</a>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Split Screen Hero -->
+    <section class="hero-section">
+        <div class="hero-left">
+            <div class="luxury-badge">Luxury Wedding Cinematography</div>
+            <h1 class="hero-title">Your Love Story Deserves Cinema</h1>
+            <p class="hero-subtitle">Timeless. Elegant. Unforgettable.</p>
+            <p class="hero-description">
+                We craft cinematic masterpieces that capture not just moments, 
+                but the essence of your love story. Every frame is composed with 
+                artistic precision to create a film as unique as your journey together.
+            </p>
+            <a href="#packages" class="hero-cta">Explore Collections</a>
+        </div>
+        <div class="hero-right">
+            <div class="parallax-container">
+                <div class="video-placeholder parallax-element">
+                    <div class="play-button-hero"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Testimonials Carousel -->
+    <section class="testimonials-section">
+        <div class="section-header">
+            <div class="section-badge">What Our Couples Say</div>
+            <h2 class="section-title">Love Letters</h2>
+            <p class="section-subtitle">From Our Beautiful Couples</p>
+        </div>
+        <div class="testimonial-carousel">
+            <div class="testimonial-slide">
+                <p class="testimonial-text">
+                    "DVSN Films captured our wedding day with such artistry and emotion. 
+                    Every time we watch our film, we're transported back to those precious moments. 
+                    It's not just a video, it's a timeless piece of art."
+                </p>
+                <h3 class="testimonial-couple">Sarah & Michael</h3>
+                <p class="testimonial-venue">Casa Loma, Toronto</p>
+            </div>
+            <button class="carousel-nav carousel-prev">‹</button>
+            <button class="carousel-nav carousel-next">›</button>
+            <div class="carousel-dots">
+                <span class="carousel-dot active"></span>
+                <span class="carousel-dot"></span>
+                <span class="carousel-dot"></span>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Timeline Section -->
+    <section class="timeline-section">
+        <div class="section-header">
+            <div class="section-badge">Your Wedding Day</div>
+            <h2 class="section-title">Coverage Timeline</h2>
+            <p class="section-subtitle">Every Moment, Perfectly Captured</p>
+        </div>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-time">
+                    <h3>10:00 AM</h3>
+                </div>
+                <div class="timeline-content">
+                    <h4>Getting Ready</h4>
+                    <p>Capturing the anticipation, the details, and intimate moments as you prepare for your big day.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">
+                    <h3>2:00 PM</h3>
+                </div>
+                <div class="timeline-content">
+                    <h4>First Look</h4>
+                    <p>The magical moment when you first see each other, filled with raw emotion and joy.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">
+                    <h3>4:00 PM</h3>
+                </div>
+                <div class="timeline-content">
+                    <h4>Ceremony</h4>
+                    <p>Every vow, every tear, every smile - documenting your commitment with cinematic grace.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">
+                    <h3>6:00 PM</h3>
+                </div>
+                <div class="timeline-content">
+                    <h4>Golden Hour</h4>
+                    <p>Romantic portraits in the most beautiful light, creating timeless imagery.</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-time">
+                    <h3>8:00 PM</h3>
+                </div>
+                <div class="timeline-content">
+                    <h4>Reception</h4>
+                    <p>The celebration begins - speeches, first dance, and all the joy of your party.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Featured Films -->
+    <section class="portfolio-section">
+        <div class="section-header">
+            <div class="section-badge">Our Portfolio</div>
+            <h2 class="section-title">Featured Films</h2>
+            <p class="section-subtitle">Love Stories We've Had the Honor to Tell</p>
+        </div>
+        <div class="portfolio-grid">
+            <div class="portfolio-item">
+                <div class="play-icon"></div>
+                <div class="portfolio-overlay">
+                    <h3>Sarah & Michael</h3>
+                    <p>Casa Loma, Toronto</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="play-icon"></div>
+                <div class="portfolio-overlay">
+                    <h3>Emily & James</h3>
+                    <p>Niagara Vineyard Wedding</p>
+                </div>
+            </div>
+            <div class="portfolio-item">
+                <div class="play-icon"></div>
+                <div class="portfolio-overlay">
+                    <h3>Jessica & David</h3>
+                    <p>Downtown Toronto Rooftop</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing Section -->
+    <section class="pricing-section" id="packages">
+        <div class="section-header">
+            <div class="section-badge">Investment</div>
+            <h2 class="section-title">Our Collections</h2>
+            <p class="section-subtitle">Choose Your Perfect Package</p>
+        </div>
+        <div class="pricing-grid">
+            <div class="pricing-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="package-badge">Most Popular</div>
+                        <h3 class="package-name">Essential</h3>
+                        <p class="package-price">From $2,500</p>
+                        <ul class="package-features">
+                            <li>6-8 hours coverage</li>
+                            <li>4-6 minute highlight film</li>
+                            <li>Professional color grading</li>
+                            <li>Digital delivery</li>
+                        </ul>
+                    </div>
+                    <div class="card-back">
+                        <h3 class="package-name">Essential</h3>
+                        <p class="package-description">
+                            Perfect for couples who want their most important moments 
+                            captured with cinematic excellence. Our Essential package 
+                            delivers a beautiful film that tells your love story.
+                        </p>
+                        <a href="contact.html" class="package-cta">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pricing-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="package-badge">Premium Choice</div>
+                        <h3 class="package-name">Signature</h3>
+                        <p class="package-price">From $3,500</p>
+                        <ul class="package-features">
+                            <li>Full day coverage</li>
+                            <li>8-10 minute cinematic film</li>
+                            <li>Drone footage</li>
+                            <li>Raw footage archive</li>
+                        </ul>
+                    </div>
+                    <div class="card-back">
+                        <h3 class="package-name">Signature</h3>
+                        <p class="package-description">
+                            Our Signature collection includes aerial cinematography 
+                            and extended coverage to ensure no precious moment is missed. 
+                            Experience your wedding from breathtaking perspectives.
+                        </p>
+                        <a href="contact.html" class="package-cta">Book Now</a>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="pricing-card">
+                <div class="card-inner">
+                    <div class="card-front">
+                        <div class="package-badge">Ultimate Luxury</div>
+                        <h3 class="package-name">Director's Cut</h3>
+                        <p class="package-price">From $5,000</p>
+                        <ul class="package-features">
+                            <li>Multi-day coverage</li>
+                            <li>20-30 minute documentary</li>
+                            <li>Same-day edit option</li>
+                            <li>Second shooter</li>
+                        </ul>
+                    </div>
+                    <div class="card-back">
+                        <h3 class="package-name">Director's Cut</h3>
+                        <p class="package-description">
+                            The ultimate cinematic experience. From rehearsal dinner 
+                            to farewell brunch, we document your entire wedding weekend 
+                            creating a feature-length film of your celebration.
+                        </p>
+                        <a href="contact.html" class="package-cta">Book Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <h2 class="cta-heading">Ready to Create Something Beautiful?</h2>
+        <p class="cta-subheading">Let's Tell Your Love Story</p>
+        <a href="contact.html" class="hero-cta">Schedule a Consultation</a>
+    </section>
+    
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">DVSN.Films</div>
+            <p>© 2024 DVSN Studios • Luxury Wedding Cinematography</p>
+            <p class="contact">hello@dvsn.studio • (416) 555-DVSN</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Parallax effect for hero video
+        document.addEventListener('mousemove', (e) => {
+            const parallaxElement = document.querySelector('.parallax-element');
+            if (parallaxElement) {
+                const x = (window.innerWidth - e.pageX) / 50;
+                const y = (window.innerHeight - e.pageY) / 50;
+                parallaxElement.style.transform = `translate(${x}px, ${y}px) scale(1.1)`;
+            }
+        });
+        
+        // Simple carousel functionality
+        const testimonials = [
+            {
+                text: "DVSN Films captured our wedding day with such artistry and emotion. Every time we watch our film, we're transported back to those precious moments. It's not just a video, it's a timeless piece of art.",
+                couple: "Sarah & Michael",
+                venue: "Casa Loma, Toronto"
+            },
+            {
+                text: "The team at DVSN went above and beyond our expectations. They captured moments we didn't even realize were happening. Our wedding film is our most treasured possession.",
+                couple: "Emily & James",
+                venue: "Niagara Vineyard Wedding"
+            },
+            {
+                text: "Professional, creative, and absolutely talented. DVSN Films gave us a cinematic masterpiece that we'll cherish forever. Every detail was perfectly captured.",
+                couple: "Jessica & David",
+                venue: "Downtown Toronto Rooftop"
+            }
+        ];
+        
+        let currentTestimonial = 0;
+        const testimonialSlide = document.querySelector('.testimonial-slide');
+        const dots = document.querySelectorAll('.carousel-dot');
+        
+        function updateTestimonial(index) {
+            const testimonial = testimonials[index];
+            testimonialSlide.style.opacity = '0';
+            
+            setTimeout(() => {
+                testimonialSlide.querySelector('.testimonial-text').textContent = testimonial.text;
+                testimonialSlide.querySelector('.testimonial-couple').textContent = testimonial.couple;
+                testimonialSlide.querySelector('.testimonial-venue').textContent = testimonial.venue;
+                testimonialSlide.style.opacity = '1';
+                
+                dots.forEach((dot, i) => {
+                    dot.classList.toggle('active', i === index);
+                });
+            }, 300);
+        }
+        
+        document.querySelector('.carousel-prev').addEventListener('click', () => {
+            currentTestimonial = (currentTestimonial - 1 + testimonials.length) % testimonials.length;
+            updateTestimonial(currentTestimonial);
+        });
+        
+        document.querySelector('.carousel-next').addEventListener('click', () => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            updateTestimonial(currentTestimonial);
+        });
+        
+        dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                currentTestimonial = index;
+                updateTestimonial(currentTestimonial);
+            });
+        });
+        
+        // Auto-advance testimonials
+        setInterval(() => {
+            currentTestimonial = (currentTestimonial + 1) % testimonials.length;
+            updateTestimonial(currentTestimonial);
+        }, 5000);
+    </script>
+</body>
+</html>

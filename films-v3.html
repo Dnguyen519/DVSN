@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DVSN Cinema - Premium Film Productions</title>
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Courier+Prime:wght@400;700&family=Oswald:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --cinema-red: #CC2936;
+            --cream: #FFF8E7;
+            --dark-brown: #3E2723;
+            --gold: #D4AF37;
+            --burnt-orange: #E85D04;
+            --shadow: rgba(62, 39, 35, 0.8);
+        }
+
+        body {
+            font-family: 'Oswald', sans-serif;
+            background-color: var(--dark-brown);
+            color: var(--cream);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* Paper texture overlay */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 248, 231, 0.03) 10px, rgba(255, 248, 231, 0.03) 20px),
+                repeating-linear-gradient(-45deg, transparent, transparent 10px, rgba(212, 175, 55, 0.02) 10px, rgba(212, 175, 55, 0.02) 20px);
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        /* Light leak effect */
+        .light-leak {
+            position: fixed;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(232, 93, 4, 0.1) 0%, transparent 70%);
+            animation: lightLeak 20s ease-in-out infinite;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        @keyframes lightLeak {
+            0%, 100% { transform: translate(0, 0) rotate(0deg); opacity: 0.3; }
+            25% { transform: translate(-30%, 30%) rotate(90deg); opacity: 0.5; }
+            50% { transform: translate(30%, -30%) rotate(180deg); opacity: 0.4; }
+            75% { transform: translate(-20%, -20%) rotate(270deg); opacity: 0.6; }
+        }
+
+        /* Header with marquee */
+        header {
+            background-color: var(--cinema-red);
+            padding: 20px 0;
+            position: relative;
+            z-index: 10;
+            box-shadow: 0 4px 20px var(--shadow);
+            border-bottom: 5px solid var(--gold);
+        }
+
+        .header-content {
+            text-align: center;
+            padding: 20px;
+        }
+
+        .cinema-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 4rem;
+            color: var(--cream);
+            text-shadow: 
+                3px 3px 0 var(--dark-brown),
+                6px 6px 20px rgba(232, 93, 4, 0.5);
+            letter-spacing: 0.1em;
+            animation: neonFlicker 2s ease-in-out infinite alternate;
+        }
+
+        @keyframes neonFlicker {
+            0%, 100% { opacity: 1; text-shadow: 3px 3px 0 var(--dark-brown), 6px 6px 20px rgba(232, 93, 4, 0.5), 0 0 30px rgba(232, 93, 4, 0.3); }
+            50% { opacity: 0.9; text-shadow: 3px 3px 0 var(--dark-brown), 6px 6px 25px rgba(232, 93, 4, 0.7), 0 0 40px rgba(232, 93, 4, 0.5); }
+        }
+
+        .tagline {
+            font-family: 'Courier Prime', monospace;
+            font-size: 1.2rem;
+            color: var(--gold);
+            margin-top: 10px;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+        }
+
+        /* Marquee */
+        .marquee-container {
+            background-color: var(--dark-brown);
+            padding: 15px 0;
+            overflow: hidden;
+            position: relative;
+            border-top: 2px solid var(--gold);
+            border-bottom: 2px solid var(--gold);
+        }
+
+        .marquee {
+            display: flex;
+            animation: scroll 30s linear infinite;
+            white-space: nowrap;
+        }
+
+        .marquee-content {
+            display: flex;
+            padding-right: 50px;
+        }
+
+        .marquee span {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 1.5rem;
+            color: var(--gold);
+            padding: 0 30px;
+            letter-spacing: 0.1em;
+        }
+
+        .marquee span::after {
+            content: "★";
+            margin-left: 30px;
+            color: var(--cinema-red);
+        }
+
+        @keyframes scroll {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        /* Film strip decoration */
+        .film-strip {
+            height: 40px;
+            background: linear-gradient(90deg, 
+                var(--dark-brown) 0%, var(--dark-brown) 5%,
+                var(--cream) 5%, var(--cream) 10%,
+                var(--dark-brown) 10%, var(--dark-brown) 15%,
+                var(--cream) 15%, var(--cream) 20%,
+                var(--dark-brown) 20%);
+            background-size: 20% 100%;
+            margin: 30px 0;
+            position: relative;
+            box-shadow: 0 2px 10px var(--shadow);
+        }
+
+        .film-strip::before,
+        .film-strip::after {
+            content: '';
+            position: absolute;
+            top: 5px;
+            bottom: 5px;
+            width: 100%;
+            background: repeating-linear-gradient(90deg,
+                transparent 0, transparent 10px,
+                var(--dark-brown) 10px, var(--dark-brown) 15px,
+                transparent 15px, transparent 20px);
+        }
+
+        /* Main content */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            position: relative;
+            z-index: 5;
+        }
+
+        /* Cinema ticket section */
+        .ticket-section {
+            background: linear-gradient(135deg, var(--cinema-red) 0%, #a02129 100%);
+            padding: 40px;
+            margin: 40px 0;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px var(--shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .ticket-section::before {
+            content: '';
+            position: absolute;
+            top: -5px;
+            bottom: -5px;
+            left: 30px;
+            right: 30px;
+            border: 2px dashed var(--cream);
+            border-left: none;
+            border-right: none;
+        }
+
+        .ticket-content {
+            text-align: center;
+            position: relative;
+        }
+
+        .ticket-content h2 {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        /* Portfolio Grid */
+        .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        /* Movie poster style cards */
+        .movie-poster {
+            background-color: var(--cream);
+            border-radius: 5px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 10px 30px var(--shadow);
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+
+        .movie-poster:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px var(--shadow);
+        }
+
+        .movie-poster::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 2px,
+                rgba(62, 39, 35, 0.03) 2px,
+                rgba(62, 39, 35, 0.03) 4px
+            );
+            pointer-events: none;
+        }
+
+        .poster-image {
+            position: relative;
+            height: 500px;
+            background: linear-gradient(135deg, var(--burnt-orange) 0%, var(--cinema-red) 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+        }
+
+        .poster-image::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(to bottom, transparent 60%, rgba(62, 39, 35, 0.8) 100%);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+
+        .movie-poster:hover .poster-image::after {
+            opacity: 1;
+        }
+
+        .film-reel-icon {
+            width: 150px;
+            height: 150px;
+            fill: var(--cream);
+            opacity: 0.3;
+            animation: reelSpin 10s linear infinite;
+        }
+
+        @keyframes reelSpin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .poster-content {
+            padding: 30px;
+            background-color: var(--cream);
+            color: var(--dark-brown);
+        }
+
+        .movie-title {
+            font-family: 'Bebas Neue', cursive;
+            font-size: 2.5rem;
+            color: var(--cinema-red);
+            margin-bottom: 10px;
+            letter-spacing: 0.05em;
+        }
+
+        .movie-year {
+            font-family: 'Courier Prime', monospace;
+            font-size: 1rem;
+            color: var(--burnt-orange);
+            margin-bottom: 20px;
+        }
+
+        .billing-block {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.7rem;
+            line-height: 1.2;
+            text-transform: uppercase;
+            color: var(--dark-brown);
+            opacity: 0.7;
+            margin-top: 20px;
+            letter-spacing: 0.05em;
+        }
+
+        .movie-description {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 300;
+            line-height: 1.6;
+            margin-bottom: 20px;
+            color: var(--dark-brown);
+        }
+
+        /* Projection effect on hover */
+        .projection-effect {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(45deg, 
+                transparent 30%, 
+                rgba(255, 248, 231, 0.1) 50%, 
+                transparent 70%);
+            transform: translateX(-100%);
+            transition: transform 0.6s ease;
+            pointer-events: none;
+        }
+
+        .movie-poster:hover .projection-effect {
+            transform: translateX(100%);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--cinema-red);
+            padding: 40px 0;
+            text-align: center;
+            margin-top: 80px;
+            border-top: 5px solid var(--gold);
+            position: relative;
+            z-index: 10;
+        }
+
+        .cinema-details {
+            font-family: 'Courier Prime', monospace;
+            font-size: 0.9rem;
+            line-height: 1.8;
+            opacity: 0.9;
+        }
+
+        .cinema-details a {
+            color: var(--gold);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .cinema-details a:hover {
+            color: var(--cream);
+            text-shadow: 0 0 10px rgba(255, 248, 231, 0.5);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .cinema-title {
+                font-size: 3rem;
+            }
+            
+            .portfolio-grid {
+                grid-template-columns: 1fr;
+                gap: 30px;
+            }
+            
+            .movie-title {
+                font-size: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="light-leak"></div>
+    
+    <header>
+        <div class="header-content">
+            <h1 class="cinema-title">DVSN CINEMA</h1>
+            <p class="tagline">Premium Film Productions Since 1975</p>
+        </div>
+        <div class="marquee-container">
+            <div class="marquee">
+                <div class="marquee-content">
+                    <span>NOW SHOWING</span>
+                    <span>FEATURE PRESENTATIONS</span>
+                    <span>COMING ATTRACTIONS</span>
+                    <span>EXCLUSIVE SCREENINGS</span>
+                    <span>NOW SHOWING</span>
+                    <span>FEATURE PRESENTATIONS</span>
+                    <span>COMING ATTRACTIONS</span>
+                    <span>EXCLUSIVE SCREENINGS</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <div class="film-strip"></div>
+
+    <div class="container">
+        <div class="ticket-section">
+            <div class="ticket-content">
+                <h2>FEATURE PRESENTATIONS</h2>
+                <p style="font-family: 'Courier Prime', monospace; font-size: 1.1rem; opacity: 0.9;">
+                    ADMIT ONE • PREMIUM VIEWING EXPERIENCE • RESERVED SEATING
+                </p>
+            </div>
+        </div>
+
+        <div class="portfolio-grid">
+            <div class="movie-poster">
+                <div class="poster-image">
+                    <svg class="film-reel-icon" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="10" fill="currentColor"/>
+                        <circle cx="30" cy="30" r="8" fill="currentColor"/>
+                        <circle cx="70" cy="30" r="8" fill="currentColor"/>
+                        <circle cx="70" cy="70" r="8" fill="currentColor"/>
+                        <circle cx="30" cy="70" r="8" fill="currentColor"/>
+                    </svg>
+                    <div class="projection-effect"></div>
+                </div>
+                <div class="poster-content">
+                    <h3 class="movie-title">THE MIDNIGHT PROJECTOR</h3>
+                    <p class="movie-year">2024 • THRILLER • 120 MIN</p>
+                    <p class="movie-description">
+                        A haunting tale of a vintage cinema where films come to life after midnight. 
+                        Shot on authentic 35mm film with practical effects.
+                    </p>
+                    <div class="billing-block">
+                        DIRECTED BY DAVIS NGUYEN • PRODUCED BY DVSN STUDIOS
+                        CINEMATOGRAPHY BY ALEX CHEN • MUSIC BY SARA MARTINEZ
+                        A DVSN CINEMA PRESENTATION
+                    </div>
+                </div>
+            </div>
+
+            <div class="movie-poster">
+                <div class="poster-image">
+                    <svg class="film-reel-icon" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="10" fill="currentColor"/>
+                        <circle cx="30" cy="30" r="8" fill="currentColor"/>
+                        <circle cx="70" cy="30" r="8" fill="currentColor"/>
+                        <circle cx="70" cy="70" r="8" fill="currentColor"/>
+                        <circle cx="30" cy="70" r="8" fill="currentColor"/>
+                    </svg>
+                    <div class="projection-effect"></div>
+                </div>
+                <div class="poster-content">
+                    <h3 class="movie-title">GOLDEN HOUR DREAMS</h3>
+                    <p class="movie-year">2024 • DRAMA • 95 MIN</p>
+                    <p class="movie-description">
+                        An intimate portrait of three generations connected through a family-owned 
+                        movie theater. A love letter to cinema itself.
+                    </p>
+                    <div class="billing-block">
+                        DIRECTED BY DAVIS NGUYEN • PRODUCED BY DVSN STUDIOS
+                        CINEMATOGRAPHY BY MARIA RODRIGUEZ • EDITED BY JAMES LEE
+                        A DVSN CINEMA PRESENTATION
+                    </div>
+                </div>
+            </div>
+
+            <div class="movie-poster">
+                <div class="poster-image">
+                    <svg class="film-reel-icon" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="10" fill="currentColor"/>
+                        <circle cx="30" cy="30" r="8" fill="currentColor"/>
+                        <circle cx="70" cy="30" r="8" fill="currentColor"/>
+                        <circle cx="70" cy="70" r="8" fill="currentColor"/>
+                        <circle cx="30" cy="70" r="8" fill="currentColor"/>
+                    </svg>
+                    <div class="projection-effect"></div>
+                </div>
+                <div class="poster-content">
+                    <h3 class="movie-title">NEON NIGHTS '85</h3>
+                    <p class="movie-year">2023 • ACTION • 108 MIN</p>
+                    <p class="movie-description">
+                        A stylish neo-noir set in 1985 Los Angeles. Synthesizers, neon lights, 
+                        and high-octane action sequences filmed on location.
+                    </p>
+                    <div class="billing-block">
+                        DIRECTED BY DAVIS NGUYEN • PRODUCED BY DVSN STUDIOS
+                        STUNTS BY TOKYO ACTION TEAM • SCORE BY SYNTHWAVE COLLECTIVE
+                        A DVSN CINEMA PRESENTATION
+                    </div>
+                </div>
+            </div>
+
+            <div class="movie-poster">
+                <div class="poster-image">
+                    <svg class="film-reel-icon" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="10" fill="currentColor"/>
+                        <circle cx="30" cy="30" r="8" fill="currentColor"/>
+                        <circle cx="70" cy="30" r="8" fill="currentColor"/>
+                        <circle cx="70" cy="70" r="8" fill="currentColor"/>
+                        <circle cx="30" cy="70" r="8" fill="currentColor"/>
+                    </svg>
+                    <div class="projection-effect"></div>
+                </div>
+                <div class="poster-content">
+                    <h3 class="movie-title">THE LAST REEL</h3>
+                    <p class="movie-year">2023 • MYSTERY • 115 MIN</p>
+                    <p class="movie-description">
+                        When a lost film from the 1920s resurfaces, it unleashes a century-old 
+                        mystery. A tribute to silent cinema and film preservation.
+                    </p>
+                    <div class="billing-block">
+                        DIRECTED BY DAVIS NGUYEN • PRODUCED BY DVSN STUDIOS
+                        RESTORATION BY FILM ARCHIVE SOCIETY • ORIGINAL SCORE BY SYMPHONY ORCHESTRA
+                        A DVSN CINEMA PRESENTATION
+                    </div>
+                </div>
+            </div>
+
+            <div class="movie-poster">
+                <div class="poster-image">
+                    <svg class="film-reel-icon" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="10" fill="currentColor"/>
+                        <circle cx="30" cy="30" r="8" fill="currentColor"/>
+                        <circle cx="70" cy="30" r="8" fill="currentColor"/>
+                        <circle cx="70" cy="70" r="8" fill="currentColor"/>
+                        <circle cx="30" cy="70" r="8" fill="currentColor"/>
+                    </svg>
+                    <div class="projection-effect"></div>
+                </div>
+                <div class="poster-content">
+                    <h3 class="movie-title">CELLULOID SYMPHONY</h3>
+                    <p class="movie-year">2024 • DOCUMENTARY • 90 MIN</p>
+                    <p class="movie-description">
+                        A documentary exploring the art of film scoring, featuring legendary 
+                        composers and the orchestras that bring movies to life.
+                    </p>
+                    <div class="billing-block">
+                        DIRECTED BY DAVIS NGUYEN • PRODUCED BY DVSN STUDIOS
+                        FEATURING WORLD-RENOWNED COMPOSERS • RECORDED AT ABBEY ROAD
+                        A DVSN CINEMA PRESENTATION
+                    </div>
+                </div>
+            </div>
+
+            <div class="movie-poster">
+                <div class="poster-image">
+                    <svg class="film-reel-icon" viewBox="0 0 100 100">
+                        <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2"/>
+                        <circle cx="50" cy="50" r="10" fill="currentColor"/>
+                        <circle cx="30" cy="30" r="8" fill="currentColor"/>
+                        <circle cx="70" cy="30" r="8" fill="currentColor"/>
+                        <circle cx="70" cy="70" r="8" fill="currentColor"/>
+                        <circle cx="30" cy="70" r="8" fill="currentColor"/>
+                    </svg>
+                    <div class="projection-effect"></div>
+                </div>
+                <div class="poster-content">
+                    <h3 class="movie-title">INTERMISSION</h3>
+                    <p class="movie-year">2024 • COMEDY • 102 MIN</p>
+                    <p class="movie-description">
+                        A heartwarming comedy about the colorful characters who work at a vintage 
+                        movie palace, where life's drama unfolds both on and off screen.
+                    </p>
+                    <div class="billing-block">
+                        DIRECTED BY DAVIS NGUYEN • PRODUCED BY DVSN STUDIOS
+                        ENSEMBLE CAST • FILMED AT THE HISTORIC PALACE THEATER
+                        A DVSN CINEMA PRESENTATION
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="film-strip"></div>
+
+    <footer>
+        <div class="cinema-details">
+            <p>DVSN CINEMA • EST. 1975</p>
+            <p>123 SUNSET BOULEVARD • LOS ANGELES, CA 90028</p>
+            <p>BOX OFFICE: <a href="tel:+13235551234">(323) 555-1234</a></p>
+            <p>EMAIL: <a href="mailto:info@dvsn.studio">info@dvsn.studio</a></p>
+            <p style="margin-top: 20px; font-size: 0.8rem;">
+                © 2024 DVSN STUDIOS • ALL RIGHTS RESERVED • MEMBER MPAA
+            </p>
+        </div>
+    </footer>
+</body>
+</html>
