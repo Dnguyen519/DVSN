@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BRUTALIST ESTATES — Architectural Reality</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@100;200;300;400;500;600;700;800;900&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --black: #000000;
+            --white: #FFFFFF;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1;
+            overflow-x: hidden;
+            cursor: default;
+        }
+        
+        ::selection {
+            background: var(--black);
+            color: var(--white);
+        }
+        
+        /* Grid Lines Overlay */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.05;
+        }
+        
+        .grid-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(0deg, var(--black) 0, var(--black) 1px, transparent 1px, transparent 80px),
+                repeating-linear-gradient(90deg, var(--black) 0, var(--black) 1px, transparent 1px, transparent 80px);
+        }
+        
+        /* Navigation - White on Black */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--black);
+            height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 80px;
+        }
+        
+        .logo {
+            font-weight: 900;
+            font-size: 24px;
+            letter-spacing: -0.05em;
+            color: var(--white);
+            text-transform: uppercase;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 60px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 12px;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            transition: none;
+            position: relative;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 4px;
+            background: var(--white);
+            transition: width 0.2s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        /* Main Content */
+        main {
+            margin-top: 80px;
+        }
+        
+        /* Hero Section - Black Background */
+        .hero {
+            background: var(--black);
+            color: var(--white);
+            min-height: calc(100vh - 80px);
+            display: flex;
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-content {
+            width: 100%;
+            padding: 0 80px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        .hero h1 {
+            font-size: clamp(60px, 12vw, 180px);
+            font-weight: 900;
+            letter-spacing: -0.08em;
+            line-height: 0.85;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+        
+        .hero-tagline {
+            font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 24px;
+            font-weight: 200;
+            letter-spacing: 0.05em;
+            max-width: 600px;
+            line-height: 1.4;
+        }
+        
+        /* Properties Section - Chess Pattern */
+        .properties {
+            background: var(--white);
+            padding: 160px 0;
+        }
+        
+        .section-header {
+            padding: 0 80px;
+            margin-bottom: 80px;
+        }
+        
+        .section-title {
+            font-size: 14px;
+            font-weight: 900;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+        
+        .section-subtitle {
+            font-size: 48px;
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            text-transform: uppercase;
+        }
+        
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 0;
+        }
+        
+        .property-card {
+            aspect-ratio: 1;
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .property-card:nth-child(odd) {
+            background: var(--black);
+            color: var(--white);
+        }
+        
+        .property-card:nth-child(even) {
+            background: var(--white);
+            color: var(--black);
+            border: 2px solid var(--black);
+        }
+        
+        /* Chess pattern for second row */
+        .property-card:nth-child(5),
+        .property-card:nth-child(7) {
+            background: var(--white);
+            color: var(--black);
+            border: 2px solid var(--black);
+        }
+        
+        .property-card:nth-child(6),
+        .property-card:nth-child(8) {
+            background: var(--black);
+            color: var(--white);
+            border: none;
+        }
+        
+        .property-card:hover {
+            transform: scale(0.95);
+            z-index: 10;
+        }
+        
+        .property-content {
+            padding: 40px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .property-number {
+            font-size: 14px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            margin-bottom: 20px;
+        }
+        
+        .property-name {
+            font-size: 32px;
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+            line-height: 0.9;
+            margin-bottom: 20px;
+        }
+        
+        .property-details {
+            font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 14px;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+        
+        .property-price {
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-top: auto;
+        }
+        
+        /* Video Section - Black Background */
+        .video-section {
+            background: var(--black);
+            color: var(--white);
+            padding: 160px 0;
+            position: relative;
+        }
+        
+        .video-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 80px;
+        }
+        
+        .video-header {
+            margin-bottom: 80px;
+        }
+        
+        .video-header h2 {
+            font-size: 72px;
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            text-transform: uppercase;
+            line-height: 0.9;
+            margin-bottom: 40px;
+        }
+        
+        .video-description {
+            font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 20px;
+            font-weight: 200;
+            line-height: 1.6;
+            max-width: 800px;
+        }
+        
+        .video-frame {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: var(--black);
+            border: 4px solid var(--white);
+        }
+        
+        .video-frame iframe {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+        
+        /* Philosophy Section - White Background */
+        .philosophy {
+            background: var(--white);
+            color: var(--black);
+            padding: 240px 0;
+        }
+        
+        .philosophy-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 80px;
+        }
+        
+        .philosophy h2 {
+            font-size: 120px;
+            font-weight: 900;
+            letter-spacing: -0.08em;
+            text-transform: uppercase;
+            line-height: 0.8;
+            margin-bottom: 120px;
+        }
+        
+        .philosophy-text {
+            font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 36px;
+            font-weight: 200;
+            line-height: 1.4;
+            letter-spacing: -0.02em;
+        }
+        
+        .philosophy-text p {
+            margin-bottom: 60px;
+        }
+        
+        .philosophy-text p:first-child::first-letter {
+            font-size: 120px;
+            font-weight: 900;
+            float: left;
+            line-height: 0.8;
+            margin-right: 20px;
+            margin-top: 10px;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+        }
+        
+        /* Contact Section - Black Background */
+        .contact {
+            background: var(--black);
+            color: var(--white);
+            padding: 160px 0;
+            text-align: center;
+        }
+        
+        .contact h2 {
+            font-size: 180px;
+            font-weight: 900;
+            letter-spacing: -0.08em;
+            text-transform: uppercase;
+            line-height: 0.8;
+            margin-bottom: 80px;
+        }
+        
+        .contact-info {
+            font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 32px;
+            font-weight: 200;
+            line-height: 1.6;
+        }
+        
+        .contact-info a {
+            color: var(--white);
+            text-decoration: none;
+            position: relative;
+            display: inline-block;
+            margin: 20px 0;
+        }
+        
+        .contact-info a::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--white);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+        
+        .contact-info a:hover::after {
+            transform: scaleX(1);
+        }
+        
+        /* Footer - White on Black */
+        footer {
+            background: var(--black);
+            color: var(--white);
+            padding: 80px;
+            border-top: 8px solid var(--white);
+        }
+        
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 12px;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+        }
+        
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .properties-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            
+            .property-card:nth-child(odd) {
+                background: var(--black);
+                color: var(--white);
+            }
+            
+            .property-card:nth-child(even) {
+                background: var(--white);
+                color: var(--black);
+                border: 2px solid var(--black);
+            }
+            
+            .property-card:nth-child(3),
+            .property-card:nth-child(4) {
+                background: var(--white);
+                color: var(--black);
+                border: 2px solid var(--black);
+            }
+            
+            .property-card:nth-child(3) {
+                background: var(--black);
+                color: var(--white);
+                border: none;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            nav {
+                padding: 0 40px;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero-content,
+            .section-header,
+            .video-container,
+            .philosophy-container {
+                padding: 0 40px;
+            }
+            
+            .hero h1 {
+                font-size: clamp(48px, 10vw, 100px);
+            }
+            
+            .hero-tagline {
+                font-size: 18px;
+            }
+            
+            .properties-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .philosophy h2 {
+                font-size: 60px;
+                margin-bottom: 60px;
+            }
+            
+            .philosophy-text {
+                font-size: 24px;
+            }
+            
+            .contact h2 {
+                font-size: clamp(60px, 15vw, 120px);
+            }
+            
+            footer {
+                padding: 40px;
+            }
+            
+            .footer-content {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Grid Overlay -->
+    <div class="grid-overlay"></div>
+    
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">BRUTALIST ESTATES</div>
+        <ul class="nav-links">
+            <li><a href="#properties">PROPERTIES</a></li>
+            <li><a href="#philosophy">PHILOSOPHY</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+    
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Concrete<br>Dreams<br>Realized</h1>
+                <p class="hero-tagline">Where architecture meets uncompromising vision. Brutalist properties for those who see beauty in raw form.</p>
+            </div>
+        </section>
+        
+        <!-- Properties Section -->
+        <section id="properties" class="properties">
+            <div class="section-header">
+                <div class="section-title">CURRENT LISTINGS</div>
+                <h2 class="section-subtitle">Architectural Statements</h2>
+            </div>
+            
+            <div class="properties-grid">
+                <div class="property-card">
+                    <div class="property-content">
+                        <div class="property-number">001</div>
+                        <h3 class="property-name">Tower<br>One</h3>
+                        <div class="property-details">
+                            Brutalist Penthouse<br>
+                            240 sqm | 3 Levels<br>
+                            Downtown Core
+                        </div>
+                        <div class="property-price">$4.2M</div>
+                    </div>
+                </div>
+                
+                <div class="property-card">
+                    <div class="property-content">
+                        <div class="property-number">002</div>
+                        <h3 class="property-name">Concrete<br>Villa</h3>
+                        <div class="property-details">
+                            Modernist Estate<br>
+                            480 sqm | 5 Beds<br>
+                            Hillside Location
+                        </div>
+                        <div class="property-price">$6.8M</div>
+                    </div>
+                </div>
+                
+                <div class="property-card">
+                    <div class="property-content">
+                        <div class="property-number">003</div>
+                        <h3 class="property-name">Block<br>House</h3>
+                        <div class="property-details">
+                            Minimal Residence<br>
+                            320 sqm | 4 Beds<br>
+                            Urban District
+                        </div>
+                        <div class="property-price">$3.5M</div>
+                    </div>
+                </div>
+                
+                <div class="property-card">
+                    <div class="property-content">
+                        <div class="property-number">004</div>
+                        <h3 class="property-name">Raw<br>Loft</h3>
+                        <div class="property-details">
+                            Industrial Space<br>
+                            180 sqm | Open Plan<br>
+                            Arts Quarter
+                        </div>
+                        <div class="property-price">$2.1M</div>
+                    </div>
+                </div>
+                
+                <div class="property-card">
+                    <div class="property-content">
+                        <div class="property-number">005</div>
+                        <h3 class="property-name">Fortress<br>Home</h3>
+                        <div class="property-details">
+                            Private Compound<br>
+                            600 sqm | 6 Beds<br>
+                            Coastal Cliffs
+                        </div>
+                        <div class="property-price">$9.2M</div>
+                    </div>
+                </div>
+                
+                <div class="property-card">
+                    <div class="property-content">
+                        <div class="property-number">006</div>
+                        <h3 class="property-name">Mono<br>Unit</h3>
+                        <div class="property-details">
+                            Compact Living<br>
+                            90 sqm | 2 Beds<br>
+                            City Center
+                        </div>
+                        <div class="property-price">$1.3M</div>
+                    </div>
+                </div>
+                
+                <div class="property-card">
+                    <div class="property-content">
+                        <div class="property-number">007</div>
+                        <h3 class="property-name">Cube<br>Estate</h3>
+                        <div class="property-details">
+                            Geometric Marvel<br>
+                            420 sqm | 5 Beds<br>
+                            Mountain View
+                        </div>
+                        <div class="property-price">$5.7M</div>
+                    </div>
+                </div>
+                
+                <div class="property-card">
+                    <div class="property-content">
+                        <div class="property-number">008</div>
+                        <h3 class="property-name">Void<br>Space</h3>
+                        <div class="property-details">
+                            Atrium House<br>
+                            380 sqm | 4 Beds<br>
+                            Garden District
+                        </div>
+                        <div class="property-price">$4.9M</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Video Section -->
+        <section class="video-section">
+            <div class="video-container">
+                <div class="video-header">
+                    <h2>Experience<br>The Brutal<br>Truth</h2>
+                    <p class="video-description">
+                        Step inside our most striking properties. Raw concrete, bold geometries, and spaces that challenge conventional notions of luxury. This is architecture without apology.
+                    </p>
+                </div>
+                <div class="video-frame">
+                    <iframe src="https://player.vimeo.com/video/123456789?color=ffffff&title=0&byline=0&portrait=0" allowfullscreen></iframe>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Philosophy Section -->
+        <section id="philosophy" class="philosophy">
+            <div class="philosophy-container">
+                <h2>Philosophy</h2>
+                <div class="philosophy-text">
+                    <p>We believe architecture should be honest. Raw concrete tells no lies. Sharp angles make no apologies. In a world of facades, we offer truth cast in stone.</p>
+                    <p>Our properties are not for everyone. They are for those who understand that beauty exists in the unadorned, that luxury is found in space and light, not ornament.</p>
+                    <p>Every property in our portfolio represents a commitment to architectural integrity. No compromise. No decoration. Just pure, brutal form.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Contact Section -->
+        <section id="contact" class="contact">
+            <h2>Contact</h2>
+            <div class="contact-info">
+                <a href="tel:+1234567890">+1 234 567 890</a><br>
+                <a href="mailto:inquiries@brutalistestates.com">inquiries@brutalistestates.com</a><br>
+                <p>By Appointment Only</p>
+            </div>
+        </section>
+    </main>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div>© 2024 BRUTALIST ESTATES</div>
+            <div>ARCHITECTURAL REALITY</div>
+        </div>
+    </footer>
+    
+    <script>
+        // Smooth scrolling for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+        
+        // Parallax effect for hero
+        const hero = document.querySelector('.hero h1');
+        const heroTagline = document.querySelector('.hero-tagline');
+        
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxSpeed = 0.5;
+            
+            if (scrolled < window.innerHeight) {
+                hero.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+                heroTagline.style.transform = `translateY(${scrolled * parallaxSpeed * 0.7}px)`;
+            }
+        });
+        
+        // Hover effect for property cards
+        const propertyCards = document.querySelectorAll('.property-card');
+        
+        propertyCards.forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                card.style.zIndex = '100';
+            });
+            
+            card.addEventListener('mouseleave', () => {
+                card.style.zIndex = 'auto';
+            });
+        });
+    </script>
+</body>
+</html>

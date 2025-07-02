@@ -1,0 +1,481 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GRID ESTATE - Architectural Real Estate</title>
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            background: white;
+            color: black;
+            font-size: 12px;
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        /* Grid System */
+        .grid-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .grid-lines {
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, #E5E5E5 0, #E5E5E5 1px, transparent 1px, transparent 40px),
+                repeating-linear-gradient(90deg, #E5E5E5 0, #E5E5E5 1px, transparent 1px, transparent 40px);
+            opacity: 0.8;
+        }
+
+        /* Main Container */
+        .main {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 40px;
+            right: 40px;
+            z-index: 100;
+            background: white;
+            padding: 10px;
+            border: 1px solid #E5E5E5;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 20px;
+        }
+
+        nav a {
+            color: black;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 11px;
+            letter-spacing: 0.5px;
+        }
+
+        nav a:hover {
+            color: #0066CC;
+        }
+
+        /* Grid Coordinates */
+        .grid-coord {
+            position: absolute;
+            font-size: 9px;
+            color: #999;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+        }
+
+        /* Hero Section */
+        .hero {
+            grid-column: 2 / 8;
+            grid-row: 2 / 4;
+            margin-top: 120px;
+            margin-bottom: 160px;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .hero .subtitle {
+            font-size: 14px;
+            color: #666;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            margin-bottom: 40px;
+        }
+
+        .hero .accent {
+            color: #0066CC;
+        }
+
+        /* Section Headers */
+        .section-header {
+            margin: 80px 0 40px;
+            border-bottom: 1px solid #E5E5E5;
+            padding-bottom: 10px;
+            position: relative;
+        }
+
+        .section-header h2 {
+            font-size: 18px;
+            font-weight: 400;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        /* Properties Grid */
+        .properties-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .property-card {
+            border: 1px solid #E5E5E5;
+            padding: 20px;
+            position: relative;
+            background: white;
+            transition: all 0.2s ease;
+        }
+
+        .property-card:hover {
+            border-color: #0066CC;
+            transform: translate(-2px, -2px);
+            box-shadow: 2px 2px 0 #E5E5E5;
+        }
+
+        .property-coords {
+            position: absolute;
+            top: -20px;
+            left: 0;
+            font-size: 9px;
+            color: #999;
+        }
+
+        .property-type {
+            font-size: 10px;
+            color: #666;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 5px;
+        }
+
+        .property-price {
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 10px;
+            color: #0066CC;
+        }
+
+        .property-specs {
+            font-size: 11px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        .property-address {
+            font-size: 12px;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #E5E5E5;
+        }
+
+        /* Services */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-bottom: 80px;
+        }
+
+        .service-item {
+            text-align: center;
+            padding: 40px 20px;
+            border: 1px solid #E5E5E5;
+            position: relative;
+        }
+
+        .service-icon {
+            font-size: 32px;
+            margin-bottom: 20px;
+            display: block;
+            font-weight: 300;
+            color: #0066CC;
+        }
+
+        .service-name {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Contact */
+        .contact {
+            background: #F8F8F8;
+            border: 1px solid #E5E5E5;
+            padding: 40px;
+            margin-bottom: 80px;
+            position: relative;
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .contact-item h3 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 10px;
+            color: #666;
+        }
+
+        .contact-item p {
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .contact-item a {
+            color: #0066CC;
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            border-top: 1px solid #E5E5E5;
+            padding: 40px 0;
+            text-align: center;
+            font-size: 10px;
+            color: #666;
+            letter-spacing: 0.5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .properties-grid,
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+
+            nav {
+                position: static;
+                margin-bottom: 40px;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Grid Background -->
+    <div class="grid-container">
+        <div class="grid-lines"></div>
+    </div>
+
+    <!-- Navigation -->
+    <nav>
+        <span class="grid-coord" style="top: -15px; left: 0;">[28,1]</span>
+        <ul>
+            <li><a href="#properties">PROPERTIES</a></li>
+            <li><a href="#services">SERVICES</a></li>
+            <li><a href="#about">ABOUT</a></li>
+            <li><a href="#contact">CONTACT</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="main">
+        <!-- Hero Section -->
+        <section class="hero">
+            <span class="grid-coord" style="top: -20px; left: 0;">[2,3]</span>
+            <h1>GRID<span class="accent">ESTATE</span></h1>
+            <p class="subtitle">Architectural Real Estate Solutions</p>
+            <p>Where precision meets property.<br>
+            Every space aligned to perfection.</p>
+        </section>
+
+        <!-- Properties Section -->
+        <section id="properties">
+            <div class="section-header">
+                <span class="grid-coord" style="top: -20px; left: 0;">[2,8]</span>
+                <h2>Current Listings</h2>
+            </div>
+            
+            <div class="properties-grid">
+                <div class="property-card">
+                    <span class="property-coords">[2,9]</span>
+                    <div class="property-type">Residential</div>
+                    <div class="property-price">$875,000</div>
+                    <div class="property-specs">
+                        3 BED | 2 BATH | 2,200 SQ FT<br>
+                        LOT: 0.25 ACRES | BUILT: 2019
+                    </div>
+                    <div class="property-address">
+                        Grid Point Alpha<br>
+                        Sector 7, Block 4
+                    </div>
+                </div>
+
+                <div class="property-card">
+                    <span class="property-coords">[10,9]</span>
+                    <div class="property-type">Commercial</div>
+                    <div class="property-price">$2,450,000</div>
+                    <div class="property-specs">
+                        OFFICE SPACE | 8,500 SQ FT<br>
+                        FLOORS: 2 | PARKING: 35
+                    </div>
+                    <div class="property-address">
+                        Grid Point Beta<br>
+                        Sector 3, Block 1
+                    </div>
+                </div>
+
+                <div class="property-card">
+                    <span class="property-coords">[18,9]</span>
+                    <div class="property-type">Industrial</div>
+                    <div class="property-price">$3,200,000</div>
+                    <div class="property-specs">
+                        WAREHOUSE | 15,000 SQ FT<br>
+                        LOADING: 4 BAYS | HEIGHT: 30'
+                    </div>
+                    <div class="property-address">
+                        Grid Point Gamma<br>
+                        Sector 1, Block 9
+                    </div>
+                </div>
+
+                <div class="property-card">
+                    <span class="property-coords">[2,15]</span>
+                    <div class="property-type">Residential</div>
+                    <div class="property-price">$425,000</div>
+                    <div class="property-specs">
+                        2 BED | 1 BATH | 1,100 SQ FT<br>
+                        CONDO | FLOOR: 7 | VIEW: CITY
+                    </div>
+                    <div class="property-address">
+                        Grid Point Delta<br>
+                        Sector 5, Block 2
+                    </div>
+                </div>
+
+                <div class="property-card">
+                    <span class="property-coords">[10,15]</span>
+                    <div class="property-type">Mixed Use</div>
+                    <div class="property-price">$1,850,000</div>
+                    <div class="property-specs">
+                        RETAIL + RESIDENTIAL | 6,000 SQ FT<br>
+                        UNITS: 4 | RETAIL: 2,000 SQ FT
+                    </div>
+                    <div class="property-address">
+                        Grid Point Epsilon<br>
+                        Sector 4, Block 6
+                    </div>
+                </div>
+
+                <div class="property-card">
+                    <span class="property-coords">[18,15]</span>
+                    <div class="property-type">Land</div>
+                    <div class="property-price">$650,000</div>
+                    <div class="property-specs">
+                        VACANT LOT | 2.5 ACRES<br>
+                        ZONING: R-3 | UTILITIES: READY
+                    </div>
+                    <div class="property-address">
+                        Grid Point Zeta<br>
+                        Sector 9, Block 3
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Services Section -->
+        <section id="services">
+            <div class="section-header">
+                <span class="grid-coord" style="top: -20px; left: 0;">[2,22]</span>
+                <h2>Services</h2>
+            </div>
+
+            <div class="services-grid">
+                <div class="service-item">
+                    <span class="grid-coord" style="top: -20px; left: 0;">[2,23]</span>
+                    <span class="service-icon">⊞</span>
+                    <div class="service-name">Property Analysis</div>
+                </div>
+
+                <div class="service-item">
+                    <span class="grid-coord" style="top: -20px; left: 0;">[8,23]</span>
+                    <span class="service-icon">⊟</span>
+                    <div class="service-name">Market Research</div>
+                </div>
+
+                <div class="service-item">
+                    <span class="grid-coord" style="top: -20px; left: 0;">[14,23]</span>
+                    <span class="service-icon">⊡</span>
+                    <div class="service-name">Investment Planning</div>
+                </div>
+
+                <div class="service-item">
+                    <span class="grid-coord" style="top: -20px; left: 0;">[20,23]</span>
+                    <span class="service-icon">⊠</span>
+                    <div class="service-name">Portfolio Management</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <div class="section-header">
+                <span class="grid-coord" style="top: -20px; left: 0;">[2,28]</span>
+                <h2>Contact</h2>
+            </div>
+
+            <div class="contact">
+                <span class="grid-coord" style="top: -20px; left: 0;">[2,29]</span>
+                <div class="contact-grid">
+                    <div class="contact-item">
+                        <h3>Location</h3>
+                        <p>Grid Headquarters<br>
+                        1000 Architecture Ave<br>
+                        Blueprint City, BC 00001</p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h3>Communication</h3>
+                        <p>TEL: <a href="tel:+1234567890">+1 (234) 567-890</a><br>
+                        FAX: +1 (234) 567-891<br>
+                        EMAIL: <a href="mailto:info@gridestate.com">info@gridestate.com</a></p>
+                    </div>
+
+                    <div class="contact-item">
+                        <h3>Operating Hours</h3>
+                        <p>MON-FRI: 09:00-18:00<br>
+                        SAT: 10:00-16:00<br>
+                        SUN: Closed</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <span class="grid-coord" style="position: absolute; left: 40px; top: 10px;">[2,35]</span>
+            GRID ESTATE © 2024 | PRECISION IN EVERY TRANSACTION
+        </footer>
+    </div>
+</body>
+</html>
