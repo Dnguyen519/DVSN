@@ -3,89 +3,349 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DVSN Studios - Cinematic Video Production Toronto</title>
-    <meta name="description" content="Premium cinematic videography in Toronto. Wedding films, real estate video, corporate production.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>DVSN STUDIOS - Grid Directory</title>
+    <meta name="description" content="DVSN Studios grid directory - Film, Real Estate, Studio, and Experimental divisions.">
+    <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'IBM Plex Mono', monospace;
+            background: white;
+            color: black;
+            font-size: 12px;
+            line-height: 1.4;
+            overflow-x: hidden;
+        }
+
+        /* Grid System */
+        .grid-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .grid-lines {
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, #E5E5E5 0, #E5E5E5 1px, transparent 1px, transparent 40px),
+                repeating-linear-gradient(90deg, #E5E5E5 0, #E5E5E5 1px, transparent 1px, transparent 40px);
+            opacity: 0.8;
+        }
+
+        /* Main Container */
+        .main {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px;
+            min-height: 100vh;
+        }
+
+        /* Grid Coordinates */
+        .grid-coord {
+            position: absolute;
+            font-size: 9px;
+            color: #999;
+            font-weight: 300;
+            letter-spacing: 0.5px;
+            top: -16px;
+            left: 0;
+        }
+
+        /* Header */
+        .header {
+            position: relative;
+            margin-top: 40px;
+            margin-bottom: 120px;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: -1px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #666;
+        }
+
+        /* Division Grid */
+        .divisions {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 80px;
+            margin-bottom: 160px;
+        }
+
+        .division {
+            position: relative;
+            border: 1px solid #E5E5E5;
+            padding: 40px;
+            text-decoration: none;
+            color: black;
+            background: white;
+            transition: all 0.2s ease;
+            min-height: 280px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .division:hover {
+            transform: translate(-2px, -2px);
+            box-shadow: 2px 2px 0 black;
+            border-color: black;
+        }
+
+        .division-number {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            font-size: 10px;
+            color: #999;
+        }
+
+        .division-name {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+            letter-spacing: -0.5px;
+        }
+
+        .division-type {
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .division-description {
+            font-size: 11px;
+            line-height: 1.6;
+            color: #333;
+            flex-grow: 1;
+        }
+
+        .division-services {
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px solid #E5E5E5;
+        }
+
+        .division-services-label {
+            font-size: 9px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #999;
+            margin-bottom: 8px;
+        }
+
+        .division-services-list {
+            font-size: 10px;
+            color: #666;
+        }
+
+        /* ASCII Icons */
+        .division-icon {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 24px;
+            color: #E5E5E5;
+            font-weight: 300;
+        }
+
+        .division:hover .division-icon {
+            color: black;
+        }
+
+        /* Status Indicator */
+        .status {
+            position: fixed;
+            bottom: 40px;
+            left: 40px;
+            font-size: 10px;
+            color: #666;
+        }
+
+        .status-dot {
+            display: inline-block;
+            width: 6px;
+            height: 6px;
+            background: #00FF00;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+
+        /* Contact */
+        .contact {
+            position: fixed;
+            bottom: 40px;
+            right: 40px;
+            font-size: 10px;
+            text-align: right;
+        }
+
+        .contact a {
+            color: black;
+            text-decoration: none;
+        }
+
+        .contact a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .main {
+                padding: 20px;
+            }
+            
+            .divisions {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            
+            .header h1 {
+                font-size: 32px;
+            }
+            
+            .status,
+            .contact {
+                position: static;
+                margin-top: 40px;
+                text-align: left;
+            }
+        }
+    </style>
 </head>
 <body>
-    <!-- Film Grain Overlay -->
-    <div class="film-grain"></div>
-    
-    <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">DVSN</a>
-            <div class="nav-links">
-                <a href="films.html" class="nav-link">Films</a>
-                <a href="realestate.html" class="nav-link">Real Estate</a>
-                <a href="studio.html" class="nav-link">Studio</a>
-                <a href="x.html" class="nav-link">X</a>
-                <a href="contact.html" class="nav-link nav-cta">Contact</a>
-            </div>
-        </div>
-    </nav>
-    
-    <div class="container">
-        <header class="hero-section">
-            <h1 class="logo animate-fade-in">DVSN STUDIOS</h1>
-            <p class="tagline animate-fade-in-delay">Cinematic Video Production • Toronto</p>
-            <div class="scroll-indicator">
-                <span>Scroll</span>
-                <div class="scroll-line"></div>
-            </div>
+    <!-- Grid Background -->
+    <div class="grid-container">
+        <div class="grid-lines"></div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main">
+        <!-- Header -->
+        <header class="header">
+            <div class="grid-coord">[2,2]</div>
+            <h1>DVSN STUDIOS</h1>
+            <p>GRID DIRECTORY // TORONTO</p>
         </header>
-        
-        <main>
-            <section class="brands">
-                <a href="films.html" class="brand-card films-card animate-slide-up">
-                    <div class="brand-number">01</div>
-                    <h2>DVSN.Films</h2>
-                    <h3>Wedding Cinematography</h3>
-                    <p>Timeless wedding films that capture every emotion</p>
-                    <div class="brand-arrow">→</div>
-                </a>
-                
-                <a href="realestate.html" class="brand-card media-card animate-slide-up delay-1">
-                    <div class="brand-number">02</div>
-                    <h2>DVSN.RealEstate</h2>
-                    <h3>Real Estate</h3>
-                    <p>Cinematic property showcases that sell homes faster</p>
-                    <div class="brand-arrow">→</div>
-                </a>
-                
-                <a href="studio.html" class="brand-card studio-card animate-slide-up delay-2">
-                    <div class="brand-number">03</div>
-                    <h2>DVSN.Studio</h2>
-                    <h3>Business & Marketing</h3>
-                    <p>Strategic video content for brands</p>
-                    <div class="brand-arrow">→</div>
-                </a>
-                
-                <a href="x.html" class="brand-card x-card animate-slide-up delay-3">
-                    <div class="brand-number">04</div>
-                    <h2>X.DVSN</h2>
-                    <h3>Experimental Films</h3>
-                    <p>Pushing boundaries in visual storytelling</p>
-                    <div class="brand-arrow">→</div>
-                </a>
-            </section>
-            
-            <section class="cta-section">
-                <h2 class="cta-heading">Ready to Create Something Extraordinary?</h2>
-                <a href="contact.html" class="cta-button">Start Your Project</a>
-            </section>
-        </main>
-        
-        <footer>
-            <div class="footer-content">
-                <div class="footer-brand">DVSN Studios</div>
-                <p>© 2024 DVSN Studios • Serving GTA & Southern Ontario</p>
-                <p class="contact">hello@dvsn.studio • (416) 555-DVSN</p>
-            </div>
-        </footer>
+
+        <!-- Divisions Grid -->
+        <div class="divisions">
+            <!-- Films -->
+            <a href="films.html" class="division">
+                <div class="grid-coord">[2,4]</div>
+                <div class="division-number">01</div>
+                <div>
+                    <h2 class="division-name">DVSN.FILMS</h2>
+                    <p class="division-type">WEDDING CINEMATOGRAPHY</p>
+                    <p class="division-description">
+                        Cinematic wedding films that capture every emotion. 
+                        Timeless storytelling through motion picture.
+                    </p>
+                </div>
+                <div class="division-services">
+                    <p class="division-services-label">SERVICES</p>
+                    <p class="division-services-list">FULL DAY | HIGHLIGHT | DOCUMENTARY</p>
+                </div>
+                <div class="division-icon">▶</div>
+            </a>
+
+            <!-- Real Estate -->
+            <a href="realestate.html" class="division">
+                <div class="grid-coord">[14,4]</div>
+                <div class="division-number">02</div>
+                <div>
+                    <h2 class="division-name">DVSN.REALESTATE</h2>
+                    <p class="division-type">PROPERTY VIDEOGRAPHY</p>
+                    <p class="division-description">
+                        Professional video production for real estate. 
+                        Showcasing properties through cinematic lens.
+                    </p>
+                </div>
+                <div class="division-services">
+                    <p class="division-services-label">SERVICES</p>
+                    <p class="division-services-list">PROPERTY TOURS | AERIAL | TWILIGHT</p>
+                </div>
+                <div class="division-icon">⌂</div>
+            </a>
+
+            <!-- Studio -->
+            <a href="studio.html" class="division">
+                <div class="grid-coord">[2,10]</div>
+                <div class="division-number">03</div>
+                <div>
+                    <h2 class="division-name">DVSN.STUDIO</h2>
+                    <p class="division-type">BUSINESS MARKETING</p>
+                    <p class="division-description">
+                        Strategic video content for brands and businesses. 
+                        Digital marketing through visual storytelling.
+                    </p>
+                </div>
+                <div class="division-services">
+                    <p class="division-services-label">SERVICES</p>
+                    <p class="division-services-list">BRAND FILMS | SOCIAL | CAMPAIGNS</p>
+                </div>
+                <div class="division-icon">◆</div>
+            </a>
+
+            <!-- X -->
+            <a href="x.html" class="division">
+                <div class="grid-coord">[14,10]</div>
+                <div class="division-number">04</div>
+                <div>
+                    <h2 class="division-name">X.DVSN</h2>
+                    <p class="division-type">EXPERIMENTAL</p>
+                    <p class="division-description">
+                        Pushing boundaries in visual experimentation. 
+                        Where art meets technology.
+                    </p>
+                </div>
+                <div class="division-services">
+                    <p class="division-services-label">PROJECTS</p>
+                    <p class="division-services-list">ART FILMS | MUSIC VIDEOS | INSTALLATIONS</p>
+                </div>
+                <div class="division-icon">✕</div>
+            </a>
+        </div>
+    </div>
+
+    <!-- Status -->
+    <div class="status">
+        <span class="status-dot"></span>
+        <span>SYSTEM ACTIVE</span>
+    </div>
+
+    <!-- Contact -->
+    <div class="contact">
+        <a href="contact.html">CONTACT</a><br>
+        <span style="color: #999;">416.555.DVSN</span>
     </div>
 </body>
 </html>

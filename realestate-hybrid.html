@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estate & Co. - Systematic Serenity in Real Estate</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #000;
+            background: #fff;
+            font-weight: 400;
+        }
+
+        /* Swiss Grid System with Scandinavian Spacing */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 60px;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+        }
+
+        /* Typography - Inter for Headers */
+        h1, h2, h3, h4 {
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        h1 {
+            font-size: clamp(48px, 8vw, 96px);
+            letter-spacing: -0.02em;
+        }
+
+        h2 {
+            font-size: 48px;
+            margin-bottom: 48px;
+            letter-spacing: -0.01em;
+        }
+
+        h3 {
+            font-size: 24px;
+            margin-bottom: 16px;
+        }
+
+        /* Navigation - Swiss Precision, Scandinavian Simplicity */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            border-bottom: 1px solid #F5F5F5;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 80px;
+        }
+
+        .logo {
+            font-family: 'Inter', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            text-decoration: none;
+            color: #000;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 48px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #000;
+            font-size: 15px;
+            position: relative;
+            transition: opacity 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.6;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: #000;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section - Swiss Split Typography with Scandinavian Space */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding: 120px 0 80px;
+        }
+
+        .hero-content {
+            grid-column: span 12;
+        }
+
+        .hero-title {
+            margin-bottom: 60px;
+        }
+
+        .hero-title span {
+            display: block;
+        }
+
+        .hero-title .line-2 {
+            color: #5B7C99;
+            margin-left: 120px;
+        }
+
+        .hero-subtitle {
+            grid-column: 7 / 13;
+            font-size: 20px;
+            line-height: 1.8;
+            margin-bottom: 48px;
+            color: #333;
+        }
+
+        /* Services Section - Scandinavian List on Swiss Grid */
+        .services {
+            padding: 120px 0;
+            background: #F5F5F5;
+        }
+
+        .services-list {
+            grid-column: span 12;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 60px;
+            margin-top: 80px;
+        }
+
+        .service-item {
+            padding: 48px;
+            background: #fff;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        .service-item:hover {
+            border-color: #5B7C99;
+            transform: translateY(-4px);
+        }
+
+        .service-number {
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #5B7C99;
+            margin-bottom: 24px;
+        }
+
+        .service-description {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #666;
+            margin-top: 16px;
+        }
+
+        /* Properties Section - Swiss Expand with Scandinavian Minimal */
+        .properties {
+            padding: 120px 0;
+        }
+
+        .property-list {
+            grid-column: span 12;
+            margin-top: 60px;
+        }
+
+        .property-item {
+            border-top: 1px solid #F5F5F5;
+            padding: 48px 0;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .property-item:last-child {
+            border-bottom: 1px solid #F5F5F5;
+        }
+
+        .property-header {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            align-items: center;
+            gap: 24px;
+        }
+
+        .property-title {
+            font-family: 'Inter', sans-serif;
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .property-detail {
+            font-size: 15px;
+            color: #666;
+        }
+
+        .property-price {
+            font-family: 'Inter', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            color: #5B7C99;
+            text-align: right;
+        }
+
+        .property-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.4s ease;
+        }
+
+        .property-item.active .property-content {
+            max-height: 400px;
+            padding-top: 48px;
+        }
+
+        .property-description {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .property-description p {
+            font-size: 15px;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        .property-specs {
+            display: flex;
+            gap: 48px;
+            margin-top: 24px;
+        }
+
+        .spec-item {
+            font-size: 14px;
+            color: #000;
+        }
+
+        .spec-label {
+            color: #666;
+            margin-right: 8px;
+        }
+
+        /* Philosophy Section - Scandinavian Manifesto on Swiss Grid */
+        .philosophy {
+            padding: 120px 0;
+            background: #F5F5F5;
+        }
+
+        .philosophy-content {
+            grid-column: 2 / 11;
+        }
+
+        .philosophy-text {
+            font-size: 32px;
+            line-height: 1.5;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+            margin-bottom: 60px;
+        }
+
+        .philosophy-principles {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 48px;
+            margin-top: 80px;
+        }
+
+        .principle {
+            padding: 32px 0;
+            border-top: 1px solid #000;
+        }
+
+        .principle h4 {
+            font-size: 18px;
+            margin-bottom: 16px;
+        }
+
+        .principle p {
+            font-size: 14px;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        /* Footer - Minimal Swiss-Scandinavian */
+        footer {
+            padding: 80px 0 40px;
+            border-top: 1px solid #F5F5F5;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 24px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand {
+            grid-column: span 4;
+        }
+
+        .footer-links {
+            grid-column: span 2;
+        }
+
+        .footer-links h4 {
+            font-size: 14px;
+            margin-bottom: 24px;
+            font-weight: 600;
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links li {
+            margin-bottom: 12px;
+        }
+
+        .footer-links a {
+            color: #666;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #000;
+        }
+
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            border-top: 1px solid #F5F5F5;
+            font-size: 14px;
+            color: #666;
+        }
+
+        /* Button Style */
+        .button {
+            display: inline-block;
+            padding: 16px 48px;
+            background: #000;
+            color: #fff;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            border: 1px solid #000;
+        }
+
+        .button:hover {
+            background: #fff;
+            color: #000;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 24px;
+            }
+
+            .grid {
+                gap: 16px;
+            }
+
+            h2 {
+                font-size: 32px;
+                margin-bottom: 32px;
+            }
+
+            .hero-title .line-2 {
+                margin-left: 0;
+            }
+
+            .services-list,
+            .philosophy-principles {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+
+            .property-header {
+                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+
+            .property-price {
+                text-align: left;
+            }
+
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-content">
+                <a href="#" class="logo">Estate & Co.</a>
+                <ul class="nav-links">
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#properties">Properties</a></li>
+                    <li><a href="#philosophy">Philosophy</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="grid">
+                <div class="hero-content">
+                    <h1 class="hero-title">
+                        <span class="line-1">Systematic</span>
+                        <span class="line-2">Serenity</span>
+                    </h1>
+                    <p class="hero-subtitle">
+                        Where Swiss precision meets Scandinavian tranquility. 
+                        We curate spaces that balance structure with soul, 
+                        creating homes that breathe with purposeful calm.
+                    </p>
+                    <a href="#properties" class="button">Explore Properties</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="grid">
+                <h2>Services</h2>
+                <div class="services-list">
+                    <div class="service-item">
+                        <div class="service-number">01</div>
+                        <h3>Property Curation</h3>
+                        <p class="service-description">
+                            Handpicked estates that embody architectural integrity 
+                            and spatial harmony. Each property selected for its 
+                            ability to enhance daily living.
+                        </p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-number">02</div>
+                        <h3>Design Consultation</h3>
+                        <p class="service-description">
+                            Bridging the gap between systematic planning and 
+                            serene living. We help you envision spaces that 
+                            work as beautifully as they feel.
+                        </p>
+                    </div>
+                    <div class="service-item">
+                        <div class="service-number">03</div>
+                        <h3>Investment Advisory</h3>
+                        <p class="service-description">
+                            Strategic guidance rooted in market precision and 
+                            long-term value. Building portfolios that stand 
+                            the test of time and taste.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Properties Section -->
+    <section class="properties" id="properties">
+        <div class="container">
+            <div class="grid">
+                <h2>Featured Properties</h2>
+                <div class="property-list">
+                    <div class="property-item" onclick="toggleProperty(this)">
+                        <div class="property-header">
+                            <h3 class="property-title">Birch House</h3>
+                            <span class="property-detail">Zurich North</span>
+                            <span class="property-detail">240 m²</span>
+                            <span class="property-price">CHF 2.4M</span>
+                        </div>
+                        <div class="property-content">
+                            <div class="property-description">
+                                <div>
+                                    <p>
+                                        A study in balanced living, where clean lines meet 
+                                        warm materials. Floor-to-ceiling windows frame the 
+                                        surrounding birch forest, bringing nature's calm indoors.
+                                    </p>
+                                    <div class="property-specs">
+                                        <span class="spec-item"><span class="spec-label">Bedrooms:</span>4</span>
+                                        <span class="spec-item"><span class="spec-label">Bathrooms:</span>3</span>
+                                        <span class="spec-item"><span class="spec-label">Year:</span>2021</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p>
+                                        Designed by renowned architect Lars Müller, this home 
+                                        exemplifies the harmony between Swiss precision and 
+                                        Scandinavian warmth. Every detail considered, nothing 
+                                        superfluous.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="property-item" onclick="toggleProperty(this)">
+                        <div class="property-header">
+                            <h3 class="property-title">Grid Residence</h3>
+                            <span class="property-detail">Basel Center</span>
+                            <span class="property-detail">180 m²</span>
+                            <span class="property-price">CHF 1.8M</span>
+                        </div>
+                        <div class="property-content">
+                            <div class="property-description">
+                                <div>
+                                    <p>
+                                        Urban sophistication meets residential tranquility. 
+                                        This penthouse apartment features a modular layout 
+                                        based on mathematical proportions and natural light.
+                                    </p>
+                                    <div class="property-specs">
+                                        <span class="spec-item"><span class="spec-label">Bedrooms:</span>3</span>
+                                        <span class="spec-item"><span class="spec-label">Bathrooms:</span>2</span>
+                                        <span class="spec-item"><span class="spec-label">Year:</span>2023</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p>
+                                        The interior follows a strict 12-column grid, creating 
+                                        spaces that flow seamlessly while maintaining distinct 
+                                        zones for living, working, and resting.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="property-item" onclick="toggleProperty(this)">
+                        <div class="property-header">
+                            <h3 class="property-title">Lake View Studio</h3>
+                            <span class="property-detail">Geneva Lakeside</span>
+                            <span class="property-detail">320 m²</span>
+                            <span class="property-price">CHF 3.2M</span>
+                        </div>
+                        <div class="property-content">
+                            <div class="property-description">
+                                <div>
+                                    <p>
+                                        Where water meets architecture in perfect harmony. 
+                                        This lakeside property features expansive terraces 
+                                        and interior spaces that blur the boundaries.
+                                    </p>
+                                    <div class="property-specs">
+                                        <span class="spec-item"><span class="spec-label">Bedrooms:</span>5</span>
+                                        <span class="spec-item"><span class="spec-label">Bathrooms:</span>4</span>
+                                        <span class="spec-item"><span class="spec-label">Year:</span>2022</span>
+                                    </div>
+                                </div>
+                                <div>
+                                    <p>
+                                        Natural materials - oak, stone, and glass - create 
+                                        a palette that changes with the seasons. A home that 
+                                        breathes with its environment.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy Section -->
+    <section class="philosophy" id="philosophy">
+        <div class="container">
+            <div class="grid">
+                <div class="philosophy-content">
+                    <h2>Our Philosophy</h2>
+                    <p class="philosophy-text">
+                        "In the intersection of order and openness, 
+                        we find homes that serve both mind and spirit. 
+                        Systematic in approach, serene in experience."
+                    </p>
+                </div>
+                <div class="philosophy-principles">
+                    <div class="principle">
+                        <h4>Precision</h4>
+                        <p>
+                            Every measurement matters. From site selection to 
+                            final details, we apply Swiss rigor to create 
+                            spaces that function flawlessly.
+                        </p>
+                    </div>
+                    <div class="principle">
+                        <h4>Simplicity</h4>
+                        <p>
+                            Less, but better. We embrace Scandinavian restraint, 
+                            removing the unnecessary to reveal the essential 
+                            beauty of space.
+                        </p>
+                    </div>
+                    <div class="principle">
+                        <h4>Harmony</h4>
+                        <p>
+                            Balance in all things. Where systematic planning 
+                            meets serene living, we create environments that 
+                            nurture wellbeing.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-content grid">
+                <div class="footer-brand">
+                    <h3>Estate & Co.</h3>
+                    <p style="margin-top: 16px; color: #666; font-size: 15px; line-height: 1.8;">
+                        Curating spaces where systematic design 
+                        meets serene living. Swiss precision, 
+                        Scandinavian soul.
+                    </p>
+                </div>
+                <div class="footer-links">
+                    <h4>Properties</h4>
+                    <ul>
+                        <li><a href="#">Featured</a></li>
+                        <li><a href="#">New Listings</a></li>
+                        <li><a href="#">Investment</a></li>
+                        <li><a href="#">Residential</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="#">Curation</a></li>
+                        <li><a href="#">Consultation</a></li>
+                        <li><a href="#">Advisory</a></li>
+                        <li><a href="#">Management</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><a href="#">hello@estateandco.ch</a></li>
+                        <li><a href="#">+41 44 123 4567</a></li>
+                        <li><a href="#">Bahnhofstrasse 1</a></li>
+                        <li><a href="#">8001 Zurich</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2024 Estate & Co. All rights reserved.</span>
+                <span>Systematic Serenity in Real Estate</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Property toggle functionality
+        function toggleProperty(element) {
+            // Close all other properties
+            const allProperties = document.querySelectorAll('.property-item');
+            allProperties.forEach(prop => {
+                if (prop !== element) {
+                    prop.classList.remove('active');
+                }
+            });
+            
+            // Toggle current property
+            element.classList.toggle('active');
+        }
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add scroll effect to navigation
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            const nav = document.querySelector('nav');
+            
+            if (currentScroll > 100) {
+                nav.style.boxShadow = '0 2px 20px rgba(0,0,0,0.05)';
+            } else {
+                nav.style.boxShadow = 'none';
+            }
+            
+            lastScroll = currentScroll;
+        });
+    </script>
+</body>
+</html>
