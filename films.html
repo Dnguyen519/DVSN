@@ -131,75 +131,196 @@
             overflow: hidden;
         }
         
-        /* Film Grain Effect */
-        .film-grain {
+        /* Film Reel Background */
+        .film-reel {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 200%;
+            height: 200px;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 40px,
+                rgba(255, 255, 255, 0.02) 40px,
+                rgba(255, 255, 255, 0.02) 80px
+            );
+            opacity: 0;
+            animation: reelMove 20s linear infinite, fadeIn 2s ease-out 0.5s forwards;
+        }
+        
+        @keyframes reelMove {
+            0% { transform: translate(-50%, -50%) translateX(0); }
+            100% { transform: translate(-50%, -50%) translateX(-80px); }
+        }
+        
+        /* Film Perforations */
+        .film-perforations {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 100%;
+            pointer-events: none;
+            z-index: 2;
+        }
+        
+        .film-perforations::before,
+        .film-perforations::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            width: 60px;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 20px,
+                rgba(255, 255, 255, 0.05) 20px,
+                rgba(255, 255, 255, 0.05) 30px
+            );
+        }
+        
+        .film-perforations::before {
+            left: 10%;
+        }
+        
+        .film-perforations::after {
+            right: 10%;
+        }
+        
+        /* Cinematic Bars */
+        .cinematic-bars {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
+            right: 0;
+            bottom: 0;
             pointer-events: none;
-            opacity: 0.05;
-            z-index: 1;
-            background-image: 
-                repeating-linear-gradient(
-                    45deg,
-                    transparent,
-                    transparent 2px,
-                    rgba(255, 255, 255, 0.03) 2px,
-                    rgba(255, 255, 255, 0.03) 4px
-                );
-            animation: grain 8s steps(10) infinite;
+            z-index: 3;
         }
         
-        @keyframes grain {
-            0%, 100% { transform: translate(0, 0); }
-            10% { transform: translate(-2%, -5%); }
-            20% { transform: translate(2%, 5%); }
-            30% { transform: translate(-5%, -2%); }
-            40% { transform: translate(5%, 2%); }
-            50% { transform: translate(-2%, 5%); }
-            60% { transform: translate(2%, -5%); }
-            70% { transform: translate(-5%, 2%); }
-            80% { transform: translate(5%, -2%); }
-            90% { transform: translate(-2%, -2%); }
+        .cinematic-bars::before,
+        .cinematic-bars::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            height: 12%;
+            background: #000000;
+        }
+        
+        .cinematic-bars::before {
+            top: 0;
+        }
+        
+        .cinematic-bars::after {
+            bottom: 0;
         }
         
         .cinema-content {
             position: relative;
             z-index: 10;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
         
-        .brand-number {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 3rem;
-            color: #333333;
-            margin-bottom: 1rem;
-            opacity: 0;
-            animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s forwards;
-        }
-        
-        .cinema-logo {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: clamp(4rem, 12vw, 10rem);
-            font-weight: 400;
+        /* Frame Counter */
+        .frame-counter {
+            position: absolute;
+            top: 40px;
+            right: 40px;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 500;
+            color: #666666;
             letter-spacing: 0.1em;
+            z-index: 20;
+            font-variant-numeric: tabular-nums;
+        }
+        
+        .frame-counter::before {
+            content: 'FR ';
+            color: #444444;
+        }
+        
+        /* New Title Design */
+        .cinema-title-wrapper {
+            position: relative;
+            margin-bottom: 2rem;
+            overflow: hidden;
+        }
+        
+        .cinema-subtitle {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            color: #666666;
             margin-bottom: 1rem;
-            background: linear-gradient(to bottom, #FFD700 0%, #B8860B 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
             opacity: 0;
-            animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+            animation: fadeInDown 1s ease-out 0.2s forwards;
+        }
+        
+        .cinema-title {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(3rem, 10vw, 8rem);
+            font-weight: 900;
+            letter-spacing: -0.04em;
+            line-height: 0.9;
+            color: #FFFFFF;
+            margin-bottom: 0.5rem;
+            position: relative;
+            opacity: 0;
+            animation: titleReveal 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94) 0.5s forwards;
+        }
+        
+        .cinema-title span {
+            display: inline-block;
+            position: relative;
+        }
+        
+        .cinema-title .highlight {
+            color: #FF0000;
+        }
+        
+        @keyframes titleReveal {
+            0% {
+                opacity: 0;
+                transform: translateY(100px);
+                filter: blur(10px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+                filter: blur(0);
+            }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .cinema-tagline {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(1.2rem, 3vw, 1.8rem);
-            color: #CCCCCC;
-            letter-spacing: 0.05em;
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(1rem, 2vw, 1.25rem);
+            font-weight: 400;
+            color: #999999;
+            letter-spacing: 0.02em;
+            line-height: 1.5;
+            max-width: 600px;
+            margin: 0 auto;
             opacity: 0;
-            animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1) 0.6s forwards;
+            animation: fadeIn 1s ease-out 1.2s forwards;
         }
         
         @keyframes fadeIn {
@@ -211,6 +332,28 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+        }
+        
+        /* Director Credit */
+        .director-credit {
+            position: absolute;
+            bottom: 60px;
+            left: 40px;
+            font-family: 'Inter', sans-serif;
+            font-size: 11px;
+            color: #666666;
+            letter-spacing: 0.05em;
+            z-index: 20;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 1.5s forwards;
+        }
+        
+        .director-credit::before {
+            content: 'A FILM BY';
+            display: block;
+            font-size: 10px;
+            color: #444444;
+            margin-bottom: 4px;
         }
         
         /* Scroll Indicator */
@@ -548,9 +691,6 @@
     </style>
 </head>
 <body>
-    <!-- Film Grain Overlay -->
-    <div class="film-grain"></div>
-    
     <!-- Navigation -->
     <nav id="navbar">
         <a href="index.html" class="logo">DVSN STUDIO</a>
@@ -565,11 +705,30 @@
     
     <!-- Cinematic Hero Section -->
     <section class="cinema-hero">
+        <!-- Film Effects -->
+        <div class="film-reel"></div>
+        <div class="film-perforations"></div>
+        <div class="cinematic-bars"></div>
+        
+        <!-- Frame Counter -->
+        <div class="frame-counter" id="frameCounter">00000024</div>
+        
+        <!-- Main Content -->
         <div class="cinema-content">
-            <div class="brand-number">01</div>
-            <h1 class="cinema-logo">DVSN.Films</h1>
-            <p class="cinema-tagline">Your Love Story, Cinematically Told</p>
+            <div class="cinema-title-wrapper">
+                <p class="cinema-subtitle">Wedding Cinematography</p>
+                <h1 class="cinema-title">DVSN<span class="highlight">.</span>FILMS</h1>
+            </div>
+            <p class="cinema-tagline">
+                Cinematic storytelling for the most important day of your life.<br>
+                Every frame crafted with intention.
+            </p>
         </div>
+        
+        <!-- Director Credit -->
+        <div class="director-credit">DVSN STUDIOS</div>
+        
+        <!-- Scroll Indicator -->
         <div class="scroll-indicator">
             <span>Scroll</span>
             <div class="scroll-line"></div>
@@ -780,6 +939,14 @@
                 navbar.classList.remove('scrolled');
             }
         });
+        
+        // Frame counter animation
+        const frameCounter = document.getElementById('frameCounter');
+        let frame = 24;
+        setInterval(() => {
+            frame = (frame + 1) % 100000;
+            frameCounter.textContent = String(frame).padStart(8, '0');
+        }, 42); // ~24fps
         
         // Film toggle function
         function toggleFilm(section) {
