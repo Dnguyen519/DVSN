@@ -19,7 +19,10 @@
       "Bash(log show:*)",
       "mcp__ide__getDiagnostics",
       "Bash(git add:*)",
-      "Bash(git init:*)"
+      "Bash(git init:*)",
+      "Bash(git commit:*)",
+      "Bash(git branch:*)",
+      "Bash(git config:*)"
     ],
     "deny": []
   }

@@ -2,9 +2,24 @@
 [build]
   publish = "."
 
+# Auto-deploy settings
+[build.environment]
+  NETLIFY_USE_YARN = "false"
+
+# Headers for security
 [[headers]]
   for = "/*"
   [headers.values]
     X-Frame-Options = "DENY"
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
+
+# Deploy contexts for auto-deploy
+[context.production]
+  publish = "."
+
+[context.deploy-preview]
+  publish = "."
+
+[context.branch-deploy]
+  publish = "."
