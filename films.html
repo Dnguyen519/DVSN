@@ -3,198 +3,710 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DVSN.Films - Wedding Cinematography Toronto</title>
+    <title>DVSN FILMS — WEDDING CINEMATOGRAPHY</title>
     <meta name="description" content="Cinematic wedding films that capture every emotion. Toronto's premier wedding videography studio.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
     <style>
-        .films-hero { background: linear-gradient(180deg, rgba(255,215,0,0.1) 0%, transparent 100%); }
-        .films-accent { color: var(--accent-films); }
-        .portfolio-grid { 
-            display: grid; 
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
-            gap: 2rem; 
-            margin: 4rem 0; 
+        /* Override main styles for Swiss minimalism */
+        body {
+            background: var(--white);
+            color: var(--black-pure);
         }
-        .portfolio-item {
-            position: relative;
-            aspect-ratio: 16/9;
-            background: var(--black-soft);
-            overflow: hidden;
-            cursor: pointer;
-            transition: all 0.4s ease;
+        
+        ::selection {
+            background: var(--black-pure);
+            color: var(--white);
         }
-        .portfolio-item:hover {
-            transform: scale(1.03);
-            box-shadow: 0 20px 40px rgba(255, 215, 0, 0.2);
-        }
-        .portfolio-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(0,0,0,0.9) 0%, transparent 60%);
+        
+        /* Swiss Grid System */
+        .swiss-nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: var(--white);
+            border-bottom: 1px solid var(--black-pure);
+            height: 60px;
             display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-            padding: 2rem;
-            opacity: 0;
-            transition: opacity 0.4s ease;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
         }
-        .portfolio-item:hover .portfolio-overlay {
-            opacity: 1;
+        
+        .swiss-nav .nav-logo {
+            font-family: 'Inter', sans-serif;
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: -0.02em;
+            color: var(--black-pure);
         }
-        .play-icon {
+        
+        .swiss-nav .nav-links {
+            gap: 40px;
+        }
+        
+        .swiss-nav .nav-link {
+            font-family: 'Inter', sans-serif;
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            color: var(--black-pure);
+            transition: none;
+        }
+        
+        .swiss-nav .nav-link:hover {
+            color: var(--gray-medium);
+        }
+        
+        .swiss-nav .nav-link::after {
+            display: none;
+        }
+        
+        .swiss-nav .films-accent {
+            position: relative;
+        }
+        
+        .swiss-nav .films-accent::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: #ff0000;
+            display: block;
+        }
+        
+        /* Main Content */
+        .swiss-main {
+            margin-top: 60px;
+            min-height: 100vh;
+            background: #f5f5f5;
+        }
+        
+        /* Hero Section */
+        .swiss-hero {
+            height: calc(100vh - 60px);
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            grid-template-rows: repeat(12, 1fr);
+            background: #f5f5f5;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-title {
+            grid-column: 2 / 8;
+            grid-row: 3 / 7;
+            z-index: 10;
+        }
+        
+        .hero-title h1 {
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(80px, 15vw, 200px);
+            font-weight: 900;
+            letter-spacing: -0.05em;
+            line-height: 0.8;
+            text-transform: uppercase;
+            color: var(--black-pure);
+        }
+        
+        .hero-subtitle {
+            grid-column: 9 / 12;
+            grid-row: 8 / 10;
+            display: flex;
+            align-items: flex-end;
+        }
+        
+        .hero-subtitle p {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            font-weight: 400;
+            line-height: 1.5;
+            letter-spacing: 0.02em;
+            color: #404040;
+        }
+        
+        .hero-accent {
+            grid-column: 11 / 12;
+            grid-row: 1 / 2;
+            background: #ff0000;
+        }
+        
+        /* Film Grid */
+        .films-container {
+            padding: 120px 0;
+            background: var(--white);
+        }
+        
+        .film-section {
+            border-top: 1px solid var(--black-pure);
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .film-section:hover {
+            background: #f5f5f5;
+        }
+        
+        .film-section.expanded {
+            background: var(--black-pure);
+            color: var(--white);
+        }
+        
+        .film-header {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            padding: 40px;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .film-number {
+            grid-column: 1 / 2;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            font-weight: 500;
+            color: #737373;
+        }
+        
+        .film-section.expanded .film-number {
+            color: #a3a3a3;
+        }
+        
+        .film-title {
+            grid-column: 2 / 7;
+            font-family: 'Inter', sans-serif;
+            font-size: clamp(24px, 4vw, 48px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            text-transform: uppercase;
+        }
+        
+        .film-meta {
+            grid-column: 8 / 11;
+            display: flex;
+            gap: 40px;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            color: #525252;
+        }
+        
+        .film-section.expanded .film-meta {
+            color: #a3a3a3;
+        }
+        
+        .film-meta span {
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+        
+        .film-expand {
+            grid-column: 12 / 13;
+            text-align: right;
+            font-family: 'Inter', sans-serif;
+            font-size: 24px;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+        
+        .film-section.expanded .film-expand {
+            transform: rotate(45deg);
+        }
+        
+        .film-content {
+            display: none;
+            padding: 0 40px 80px;
+        }
+        
+        .film-section.expanded .film-content {
+            display: block;
+        }
+        
+        .film-video {
+            position: relative;
+            width: 100%;
+            padding-bottom: 56.25%;
+            background: #171717;
+            margin-bottom: 40px;
+            border: 1px solid #404040;
+        }
+        
+        .film-video-placeholder {
             position: absolute;
             top: 50%;
             left: 50%;
             transform: translate(-50%, -50%);
-            width: 60px;
-            height: 60px;
-            border: 2px solid white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: all 0.3s ease;
+            color: #737373;
+            font-family: 'Inter', sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
         }
-        .portfolio-item:hover .play-icon {
-            transform: translate(-50%, -50%) scale(1.1);
-            background: rgba(255, 215, 0, 0.9);
-            border-color: var(--accent-films);
-        }
-        .services-list {
+        
+        .film-details {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 3rem 0;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 40px;
+            margin-top: 40px;
         }
-        .service-item {
-            padding: 2rem;
-            background: var(--black-soft);
-            border: 1px solid var(--gray-dark);
-            transition: all 0.3s ease;
+        
+        .film-description {
+            grid-column: 1 / 7;
+            font-family: 'Inter', sans-serif;
+            font-size: 18px;
+            line-height: 1.6;
+            color: #d4d4d4;
         }
-        .service-item:hover {
-            border-color: var(--accent-films);
-            transform: translateY(-4px);
+        
+        .film-info {
+            grid-column: 8 / 11;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .film-info-item {
+            border-bottom: 1px solid #262626;
+            padding-bottom: 10px;
+        }
+        
+        .film-info-label {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: #737373;
+            margin-bottom: 5px;
+        }
+        
+        .film-info-value {
+            font-family: 'Inter', sans-serif;
+            font-size: 16px;
+            color: #e5e5e5;
+        }
+        
+        /* Brutalist Grid Break */
+        .grid-break {
+            height: 200px;
+            background: var(--black-pure);
+            margin: 120px 0;
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            align-items: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .grid-break::before {
+            content: 'TORONTO WEDDING FILMS';
+            position: absolute;
+            font-family: 'Inter', sans-serif;
+            font-size: 200px;
+            font-weight: 900;
+            color: #171717;
+            letter-spacing: -0.05em;
+            white-space: nowrap;
+            animation: scroll 20s linear infinite;
+        }
+        
+        @keyframes scroll {
+            0% { transform: translateX(100%); }
+            100% { transform: translateX(-100%); }
+        }
+        
+        /* Swiss Footer */
+        .swiss-footer {
+            background: var(--white);
+            padding: 80px 40px 40px;
+            border-top: 2px solid var(--black-pure);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+        }
+        
+        .footer-brand {
+            grid-column: 1 / 4;
+        }
+        
+        .footer-brand h3 {
+            font-family: 'Inter', sans-serif;
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 10px;
+            color: var(--black-pure);
+        }
+        
+        .footer-brand p {
+            font-family: 'Inter', sans-serif;
+            color: #737373;
+        }
+        
+        .footer-links {
+            grid-column: 5 / 12;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .footer-column h4 {
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+            color: var(--black-pure);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            font-family: 'Inter', sans-serif;
+            color: #525252;
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-column a:hover {
+            color: var(--black-pure);
+        }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            border-top: 1px solid #e5e5e5;
+            font-family: 'Inter', sans-serif;
+            font-size: 12px;
+            color: #737373;
+        }
+        
+        /* Remove film grain for this page */
+        .film-grain {
+            display: none;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .swiss-nav {
+                padding: 0 20px;
+            }
+            
+            .swiss-nav .nav-links {
+                display: none;
+            }
+            
+            .hero-title {
+                grid-column: 1 / 12;
+                grid-row: 4 / 8;
+                padding: 0 20px;
+            }
+            
+            .hero-subtitle {
+                grid-column: 1 / 12;
+                grid-row: 9 / 11;
+                padding: 0 20px;
+            }
+            
+            .film-header {
+                padding: 20px;
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .film-number,
+            .film-title,
+            .film-meta,
+            .film-expand {
+                grid-column: 1 / -1;
+            }
+            
+            .film-expand {
+                text-align: left;
+            }
+            
+            .film-content {
+                padding: 0 20px 40px;
+            }
+            
+            .film-details {
+                grid-template-columns: 1fr;
+            }
+            
+            .film-description,
+            .film-info {
+                grid-column: 1 / -1;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-brand,
+            .footer-links {
+                grid-column: 1 / -1;
+            }
+            
+            .footer-links {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Film Grain Overlay -->
-    <div class="film-grain"></div>
-    
-    <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">DVSN</a>
-            <div class="nav-links">
-                <a href="films.html" class="nav-link films-accent">Films</a>
-                <a href="media.html" class="nav-link">Media</a>
-                <a href="x.html" class="nav-link">X</a>
-                <a href="contact.html" class="nav-link nav-cta">Contact</a>
-            </div>
+    <!-- Swiss Navigation -->
+    <nav class="swiss-nav">
+        <a href="index.html" class="nav-logo">DVSN STUDIO</a>
+        <div class="nav-links">
+            <a href="films.html" class="nav-link films-accent">FILMS</a>
+            <a href="media.html" class="nav-link">MEDIA</a>
+            <a href="x.html" class="nav-link">X</a>
+            <a href="contact.html" class="nav-link">CONTACT</a>
         </div>
     </nav>
     
-    <div class="container">
-        <header class="hero-section films-hero">
-            <div class="brand-number animate-fade-in">01</div>
-            <h1 class="logo animate-fade-in films-accent">DVSN.Films</h1>
-            <p class="tagline animate-fade-in-delay">Your Love Story, Cinematically Told</p>
-        </header>
-        
-        <main>
-            <!-- Introduction -->
-            <section class="intro-section">
-                <h2 class="section-heading">Wedding Cinematography</h2>
-                <p class="section-text">
-                    We believe every love story deserves to be told with the artistry and emotion of cinema. 
-                    Our approach combines documentary authenticity with cinematic beauty, creating films that 
-                    transport you back to every moment, every emotion, every heartbeat of your wedding day.
-                </p>
-            </section>
-            
-            <!-- Portfolio -->
-            <section class="portfolio-section">
-                <h2 class="section-heading">Featured Films</h2>
-                <div class="portfolio-grid">
-                    <div class="portfolio-item animate-slide-up">
-                        <div class="play-icon">▶</div>
-                        <div class="portfolio-overlay">
-                            <h3>Sarah & Michael</h3>
-                            <p>Casa Loma, Toronto</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item animate-slide-up delay-1">
-                        <div class="play-icon">▶</div>
-                        <div class="portfolio-overlay">
-                            <h3>Emily & James</h3>
-                            <p>Niagara Vineyard Wedding</p>
-                        </div>
-                    </div>
-                    <div class="portfolio-item animate-slide-up delay-2">
-                        <div class="play-icon">▶</div>
-                        <div class="portfolio-overlay">
-                            <h3>Jessica & David</h3>
-                            <p>Downtown Toronto Rooftop</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Services -->
-            <section class="services-section">
-                <h2 class="section-heading">Our Packages</h2>
-                <div class="services-list">
-                    <div class="service-item">
-                        <h3 class="films-accent">Essential</h3>
-                        <p class="service-price">From $2,500</p>
-                        <ul>
-                            <li>6-8 hours coverage</li>
-                            <li>4-6 minute highlight film</li>
-                            <li>Professional color grading</li>
-                            <li>Digital delivery</li>
-                        </ul>
-                    </div>
-                    <div class="service-item">
-                        <h3 class="films-accent">Signature</h3>
-                        <p class="service-price">From $3,500</p>
-                        <ul>
-                            <li>Full day coverage</li>
-                            <li>8-10 minute cinematic film</li>
-                            <li>Drone footage</li>
-                            <li>Raw footage archive</li>
-                        </ul>
-                    </div>
-                    <div class="service-item">
-                        <h3 class="films-accent">Director's Cut</h3>
-                        <p class="service-price">From $5,000</p>
-                        <ul>
-                            <li>Multi-day coverage</li>
-                            <li>20-30 minute documentary</li>
-                            <li>Same-day edit option</li>
-                            <li>Second shooter</li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- CTA -->
-            <section class="cta-section">
-                <h2 class="cta-heading">Let's Tell Your Love Story</h2>
-                <a href="contact.html" class="cta-button">Book a Consultation</a>
-            </section>
-        </main>
-        
-        <footer>
-            <div class="footer-content">
-                <div class="footer-brand">DVSN.Films</div>
-                <p>© 2024 DVSN Studios • Wedding Cinematography</p>
-                <p class="contact">hello@dvsn.studio • (416) 555-DVSN</p>
+    <main class="swiss-main">
+        <section class="swiss-hero">
+            <div class="hero-title">
+                <h1>Wedding<br>Films</h1>
             </div>
-        </footer>
-    </div>
+            <div class="hero-subtitle">
+                <p>Cinematic storytelling<br>for modern couples<br>in Toronto</p>
+            </div>
+            <div class="hero-accent"></div>
+        </section>
+        
+        <div class="films-container">
+            <!-- Film 1 -->
+            <div class="film-section" onclick="toggleFilm(this)">
+                <div class="film-header">
+                    <div class="film-number">01</div>
+                    <h2 class="film-title">Sarah & Michael</h2>
+                    <div class="film-meta">
+                        <span>Casa Loma</span>
+                        <span>2024</span>
+                    </div>
+                    <div class="film-expand">+</div>
+                </div>
+                <div class="film-content">
+                    <div class="film-video">
+                        <div class="film-video-placeholder">Video Coming Soon</div>
+                    </div>
+                    <div class="film-details">
+                        <div class="film-description">
+                            <p>A fairytale celebration in Toronto's castle. Sarah and Michael's day unfolded in the Gothic Revival gardens and grand halls of Casa Loma, creating moments of timeless elegance against the city skyline.</p>
+                        </div>
+                        <div class="film-info">
+                            <div class="film-info-item">
+                                <div class="film-info-label">Venue</div>
+                                <div class="film-info-value">Casa Loma, Toronto</div>
+                            </div>
+                            <div class="film-info-item">
+                                <div class="film-info-label">Season</div>
+                                <div class="film-info-value">Summer</div>
+                            </div>
+                            <div class="film-info-item">
+                                <div class="film-info-label">Style</div>
+                                <div class="film-info-value">Classic Elegance</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Film 2 -->
+            <div class="film-section" onclick="toggleFilm(this)">
+                <div class="film-header">
+                    <div class="film-number">02</div>
+                    <h2 class="film-title">Emily & James</h2>
+                    <div class="film-meta">
+                        <span>Distillery District</span>
+                        <span>2024</span>
+                    </div>
+                    <div class="film-expand">+</div>
+                </div>
+                <div class="film-content">
+                    <div class="film-video">
+                        <div class="film-video-placeholder">Video Coming Soon</div>
+                    </div>
+                    <div class="film-details">
+                        <div class="film-description">
+                            <p>Industrial romance in the heart of Toronto. The historic cobblestone streets and Victorian architecture of the Distillery District provided the perfect backdrop for Emily and James's urban celebration.</p>
+                        </div>
+                        <div class="film-info">
+                            <div class="film-info-item">
+                                <div class="film-info-label">Venue</div>
+                                <div class="film-info-value">Archeo Restaurant</div>
+                            </div>
+                            <div class="film-info-item">
+                                <div class="film-info-label">Season</div>
+                                <div class="film-info-value">Fall</div>
+                            </div>
+                            <div class="film-info-item">
+                                <div class="film-info-label">Style</div>
+                                <div class="film-info-value">Urban Industrial</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Grid Break -->
+            <div class="grid-break"></div>
+            
+            <!-- Film 3 -->
+            <div class="film-section" onclick="toggleFilm(this)">
+                <div class="film-header">
+                    <div class="film-number">03</div>
+                    <h2 class="film-title">Jessica & David</h2>
+                    <div class="film-meta">
+                        <span>Muskoka</span>
+                        <span>2023</span>
+                    </div>
+                    <div class="film-expand">+</div>
+                </div>
+                <div class="film-content">
+                    <div class="film-video">
+                        <div class="film-video-placeholder">Video Coming Soon</div>
+                    </div>
+                    <div class="film-details">
+                        <div class="film-description">
+                            <p>Lakeside luxury in cottage country. Jessica and David exchanged vows on the pristine shores of Lake Muskoka, surrounded by towering pines and the tranquil beauty of Ontario's wilderness.</p>
+                        </div>
+                        <div class="film-info">
+                            <div class="film-info-item">
+                                <div class="film-info-label">Venue</div>
+                                <div class="film-info-value">Windermere House</div>
+                            </div>
+                            <div class="film-info-item">
+                                <div class="film-info-label">Season</div>
+                                <div class="film-info-value">Summer</div>
+                            </div>
+                            <div class="film-info-item">
+                                <div class="film-info-label">Style</div>
+                                <div class="film-info-value">Lakeside Luxury</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Film 4 -->
+            <div class="film-section" onclick="toggleFilm(this)">
+                <div class="film-header">
+                    <div class="film-number">04</div>
+                    <h2 class="film-title">Sophia & Alexander</h2>
+                    <div class="film-meta">
+                        <span>Niagara-on-the-Lake</span>
+                        <span>2023</span>
+                    </div>
+                    <div class="film-expand">+</div>
+                </div>
+                <div class="film-content">
+                    <div class="film-video">
+                        <div class="film-video-placeholder">Video Coming Soon</div>
+                    </div>
+                    <div class="film-details">
+                        <div class="film-description">
+                            <p>Vineyard vows and vintage charm. Among the rolling vineyards of Niagara, Sophia and Alexander celebrated their love with wine country elegance and old-world romance.</p>
+                        </div>
+                        <div class="film-info">
+                            <div class="film-info-item">
+                                <div class="film-info-label">Venue</div>
+                                <div class="film-info-value">Ravine Vineyard</div>
+                            </div>
+                            <div class="film-info-item">
+                                <div class="film-info-label">Season</div>
+                                <div class="film-info-value">Fall</div>
+                            </div>
+                            <div class="film-info-item">
+                                <div class="film-info-label">Style</div>
+                                <div class="film-info-value">Vineyard Romance</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+    
+    <footer class="swiss-footer">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>DVSN FILMS</h3>
+                <p>Cinematic Wedding Films</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Portfolio</h4>
+                    <ul>
+                        <li><a href="#">Featured Films</a></li>
+                        <li><a href="#">Recent Work</a></li>
+                        <li><a href="#">Highlights</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Information</h4>
+                    <ul>
+                        <li><a href="#">Investment</a></li>
+                        <li><a href="#">Process</a></li>
+                        <li><a href="#">FAQ</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Vimeo</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2024 DVSN Studios. All rights reserved.</span>
+            <span>Toronto, Ontario</span>
+        </div>
+    </footer>
+    
+    <script>
+        function toggleFilm(section) {
+            // Close all other sections
+            const allSections = document.querySelectorAll('.film-section');
+            allSections.forEach(s => {
+                if (s !== section) {
+                    s.classList.remove('expanded');
+                }
+            });
+            
+            // Toggle current section
+            section.classList.toggle('expanded');
+            
+            // Smooth scroll to section if expanding
+            if (section.classList.contains('expanded')) {
+                setTimeout(() => {
+                    section.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+                }, 100);
+            }
+        }
+    </script>
 </body>
 </html>
