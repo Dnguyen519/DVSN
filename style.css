@@ -1,0 +1,179 @@
+/* DVSN Studios - Cinematic Dark Theme */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000000;
+    color: #ffffff;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* Header */
+header {
+    text-align: center;
+    padding: 4rem 0;
+}
+
+.logo {
+    font-size: clamp(3rem, 8vw, 6rem);
+    font-weight: 900;
+    letter-spacing: 0.1em;
+    margin-bottom: 1rem;
+    background: linear-gradient(to bottom, #ffffff, #cccccc);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.tagline {
+    font-size: 1.25rem;
+    color: #888888;
+    letter-spacing: 0.05em;
+}
+
+/* Main Content */
+main {
+    padding: 2rem 0;
+}
+
+.brands {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+    margin-bottom: 4rem;
+}
+
+.brand-card {
+    border: 1px solid #333333;
+    padding: 2.5rem;
+    background: #0a0a0a;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.brand-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    transition: all 0.3s ease;
+}
+
+.films-card::before {
+    background: #FFD700;
+}
+
+.media-card::before {
+    background: #4A90E2;
+}
+
+.x-card::before {
+    background: #00FF00;
+}
+
+.brand-card:hover {
+    border-color: #666666;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+}
+
+.brand-card h2 {
+    font-size: 1.75rem;
+    margin-bottom: 0.5rem;
+    font-weight: 700;
+}
+
+.films-card h2 {
+    color: #FFD700;
+}
+
+.media-card h2 {
+    color: #4A90E2;
+}
+
+.x-card h2 {
+    color: #00FF00;
+}
+
+.brand-card h3 {
+    font-size: 1.1rem;
+    color: #cccccc;
+    margin-bottom: 1rem;
+    font-weight: 400;
+}
+
+.brand-card p {
+    color: #888888;
+    font-size: 0.95rem;
+}
+
+/* CTA Section */
+.cta-section {
+    text-align: center;
+    padding: 3rem 0;
+}
+
+.cta-button {
+    display: inline-block;
+    padding: 1rem 3rem;
+    border: 2px solid #ffffff;
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.cta-button:hover {
+    background-color: #ffffff;
+    color: #000000;
+    transform: scale(1.05);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 3rem 0;
+    color: #666666;
+    font-size: 0.875rem;
+}
+
+.contact {
+    margin-top: 0.5rem;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+    
+    .logo {
+        font-size: 2.5rem;
+    }
+    
+    .brands {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+    }
+    
+    .brand-card {
+        padding: 2rem;
+    }
+}
