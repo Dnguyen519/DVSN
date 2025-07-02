@@ -3,454 +3,974 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DVSN.RealEstate - Premium Real Estate Video Production Toronto</title>
-    <meta name="description" content="Cinematic real estate video production in Toronto. Luxury property showcases, aerial footage, and virtual tours that sell homes faster.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>DVSN.RealEstate - Property Videography Portfolio</title>
+    <meta name="description" content="Professional real estate videography portfolio. Cinematic property tours that elevate listings and accelerate sales.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Helvetica+Neue:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        /* Light theme overrides */
+        :root {
+            --primary: #1a1a1a;
+            --accent: #5B7C99;
+            --light-gray: #f5f5f5;
+            --medium-gray: #e0e0e0;
+            --text-gray: #666;
+            --white: #ffffff;
+            --grid-size: 20px;
+            --baseline: 4px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
         body {
-            background-color: #FFFFFF;
-            color: #333333;
+            font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
+            line-height: calc(var(--baseline) * 6);
+            color: var(--primary);
+            background: var(--white);
+            font-variant-numeric: lining-nums proportional-nums;
+            overflow-x: hidden;
         }
-        .main-nav {
-            background: rgba(255,255,255,0.95);
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-        }
-        .nav-logo {
-            color: #333333;
-        }
-        .nav-link {
-            color: #666666;
-        }
-        .nav-link:hover {
-            color: var(--accent-media);
-        }
-        .nav-link::after {
-            background: var(--accent-media);
-        }
-        .nav-cta {
-            border-color: var(--accent-media);
-            color: var(--accent-media);
-        }
-        .nav-cta:hover {
-            background: var(--accent-media);
-            color: #FFFFFF;
-        }
-        .film-grain {
-            display: none;
-        }
-        
-        .media-hero { 
-            background: linear-gradient(180deg, rgba(74,144,226,0.05) 0%, transparent 100%);
-            color: #333333;
-        }
-        .media-accent { color: var(--accent-media); }
-        .logo {
-            background: linear-gradient(to bottom, var(--accent-media) 0%, #3A7BC8 100%);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
-        .tagline {
-            color: #666666;
-        }
-        .brand-number {
-            color: #E5E5E5;
-        }
-        .service-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin: 4rem 0;
-        }
-        .service-card {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: #FFFFFF;
-            border: 1px solid #E5E5E5;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .service-card:hover {
-            transform: translateY(-8px);
-            border-color: var(--accent-media);
-            box-shadow: 0 20px 40px rgba(74, 144, 226, 0.15);
-        }
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.8;
-        }
-        .case-studies {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
-            margin: 4rem 0;
-        }
-        .case-study {
-            position: relative;
-            overflow: hidden;
-            aspect-ratio: 16/10;
-            background: #F5F5F5;
-            cursor: pointer;
-            transition: all 0.4s ease;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-        }
-        .case-study:hover {
-            transform: scale(1.02);
-        }
-        .case-study-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(74,144,226,0.9) 0%, rgba(0,0,0,0.7) 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 2rem;
+
+        /* Grid Background */
+        .grid-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            pointer-events: none;
+            z-index: 1;
             opacity: 0;
-            transition: opacity 0.4s ease;
+            animation: gridFadeIn 1s ease-out 0.5s forwards;
         }
-        .case-study:hover .case-study-overlay {
-            opacity: 1;
+
+        @keyframes gridFadeIn {
+            to { opacity: 1; }
         }
-        .stats-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
-            text-align: center;
-        }
-        .stat-item {
-            padding: 2rem;
-            border: 1px solid #E5E5E5;
-            background: #FFFFFF;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-            transition: all 0.3s ease;
-        }
-        .stat-item:hover {
-            border-color: var(--accent-media);
-        }
-        .stat-number {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 3rem;
-            color: var(--accent-media);
-            margin-bottom: 0.5rem;
-        }
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
-        }
-        .process-step {
-            text-align: center;
-            padding: 2rem;
-            position: relative;
-        }
-        .process-step::after {
-            content: '';
+
+        .grid-lines {
             position: absolute;
-            top: 50%;
-            right: -1rem;
-            width: 2rem;
-            height: 1px;
-            background: #E5E5E5;
-            display: none;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                repeating-linear-gradient(0deg, 
+                    transparent, 
+                    transparent calc(var(--grid-size) - 1px), 
+                    rgba(0,0,0,0.02) calc(var(--grid-size) - 1px), 
+                    rgba(0,0,0,0.02) var(--grid-size)),
+                repeating-linear-gradient(90deg, 
+                    transparent, 
+                    transparent calc(var(--grid-size) - 1px), 
+                    rgba(0,0,0,0.02) calc(var(--grid-size) - 1px), 
+                    rgba(0,0,0,0.02) var(--grid-size));
         }
-        @media (min-width: 768px) {
-            .process-step:not(:last-child)::after {
-                display: block;
+
+        /* Side Navigation */
+        .side-nav {
+            position: fixed;
+            left: 40px;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            opacity: 0;
+            animation: fadeInLeft 0.8s ease-out 1s forwards;
+        }
+
+        @keyframes fadeInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-20px) translateY(-50%);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0) translateY(-50%);
             }
         }
-        .step-number {
-            display: inline-block;
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
-            border: 2px solid var(--accent-media);
-            border-radius: 50%;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.5rem;
-            color: var(--accent-media);
-            margin-bottom: 1rem;
+
+        .nav-indicator {
+            width: 2px;
+            height: 40px;
+            background: var(--medium-gray);
+            position: relative;
+            margin: 20px 0;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            cursor: pointer;
         }
-        
-        /* Additional light theme styles */
-        .section-heading {
-            font-family: 'Playfair Display', serif;
-            font-size: clamp(2rem, 5vw, 3rem);
-            margin-bottom: 2rem;
-            color: #333333;
+
+        .nav-indicator.active {
+            background: var(--accent);
+            height: 60px;
         }
-        .section-text {
-            color: #666666;
-            font-size: 1.1rem;
-            line-height: 1.8;
-            max-width: 800px;
-            margin: 0 auto;
+
+        .nav-indicator:hover {
+            background: var(--primary);
         }
-        footer {
-            background: #F5F5F5;
-            border-top: 1px solid #E5E5E5;
+
+        .nav-tooltip {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: var(--primary);
+            color: var(--white);
+            padding: 8px 16px;
+            font-size: 12px;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.3s;
+            white-space: nowrap;
         }
-        .footer-brand {
-            color: var(--accent-media);
+
+        .nav-indicator:hover .nav-tooltip {
+            opacity: 1;
         }
-        footer p {
-            color: #666666;
+
+        /* Header */
+        header {
+            padding: 40px 80px;
+            position: relative;
+            z-index: 10;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.3s forwards;
         }
-        .cta-button {
-            background: var(--accent-media);
-            color: #FFFFFF;
-            border: 2px solid var(--accent-media);
+
+        @keyframes fadeIn {
+            to { opacity: 1; }
         }
-        .cta-button:hover {
-            background: transparent;
-            color: var(--accent-media);
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: calc(var(--baseline) * 20);
         }
-        .cta-heading {
-            color: #333333;
+
+        .logo {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            text-decoration: none;
+            color: var(--primary);
         }
-        h3 {
-            color: #333333;
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
         }
-        p {
-            color: #666666;
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--primary);
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.3s;
+            position: relative;
         }
-        
-        /* Testimonials section */
-        .testimonials-section {
-            background: #F8F9FA;
-            padding: 4rem 0;
-            margin: 4rem -2rem;
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s;
         }
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 3rem;
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 0 80px 80px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero-content {
             max-width: 1200px;
             margin: 0 auto;
-            padding: 0 2rem;
         }
-        .testimonial {
-            background: #FFFFFF;
-            padding: 2.5rem;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-            border-left: 4px solid var(--accent-media);
+
+        .hero h1 {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: clamp(48px, 8vw, 96px);
+            font-weight: 200;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            margin-bottom: calc(var(--baseline) * 8);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.5s forwards;
         }
-        .testimonial-text {
-            font-style: italic;
-            color: #555555;
-            margin-bottom: 1.5rem;
-            line-height: 1.8;
+
+        .hero h1 span {
+            display: block;
+            margin-left: 15%;
         }
-        .testimonial-author {
-            font-weight: 600;
-            color: #333333;
+
+        .hero-subtitle {
+            font-size: 18px;
+            color: var(--text-gray);
+            max-width: 600px;
+            margin-left: 15%;
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out 0.7s forwards;
         }
-        .testimonial-title {
-            color: var(--accent-media);
-            font-size: 0.9rem;
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Portfolio Section */
+        .portfolio {
+            padding: 80px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .section-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            margin-bottom: 60px;
+        }
+
+        .section-title {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 36px;
+            font-weight: 300;
+            letter-spacing: -1px;
+        }
+
+        .section-number {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        /* Property Grid */
+        .property-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 40px;
+            margin-bottom: 120px;
+        }
+
+        .property-card {
+            position: relative;
+            cursor: pointer;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.320, 1);
+            opacity: 0;
+            animation: fadeInUp 0.8s ease-out forwards;
+        }
+
+        .property-card:nth-child(1) { animation-delay: 0.1s; }
+        .property-card:nth-child(2) { animation-delay: 0.2s; }
+        .property-card:nth-child(3) { animation-delay: 0.3s; }
+        .property-card:nth-child(4) { animation-delay: 0.4s; }
+        .property-card:nth-child(5) { animation-delay: 0.5s; }
+        .property-card:nth-child(6) { animation-delay: 0.6s; }
+
+        .property-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .property-card:hover .property-image {
+            transform: scale(1.05);
+        }
+
+        .property-image-wrapper {
+            position: relative;
+            padding-bottom: 66.67%;
+            background: var(--light-gray);
+            overflow: hidden;
+            margin-bottom: 20px;
+        }
+
+        .property-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .property-number {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: var(--white);
+            padding: 8px 16px;
+            font-size: 12px;
+            font-weight: 500;
+            z-index: 2;
+        }
+
+        .property-details {
+            padding: 0 5px;
+        }
+
+        .property-title {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 20px;
+            font-weight: 500;
+            margin-bottom: 8px;
+            letter-spacing: -0.5px;
+        }
+
+        .property-meta {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 20px 0;
+            border-top: 1px solid var(--medium-gray);
+            border-bottom: 1px solid var(--medium-gray);
+            margin: 20px 0;
+        }
+
+        .meta-item {
+            text-align: center;
+        }
+
+        .meta-value {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 18px;
+            font-weight: 500;
+            font-variant-numeric: tabular-nums;
+            margin-bottom: 4px;
+            transition: color 0.3s;
+        }
+
+        .property-card:hover .meta-value {
+            color: var(--accent);
+        }
+
+        .meta-label {
+            font-size: 12px;
+            color: var(--text-gray);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .property-type {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 8px;
+        }
+
+        .property-client {
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        /* Services Section */
+        .services {
+            padding: 80px;
+            background: var(--light-gray);
+            position: relative;
+            z-index: 10;
+        }
+
+        .services-list {
+            list-style: none;
+            margin-top: 60px;
+        }
+
+        .service-item {
+            padding: 40px 0;
+            border-bottom: 1px solid var(--medium-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.3s;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-item::before {
+            content: '';
+            position: absolute;
+            left: -100%;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            opacity: 0.05;
+            transition: left 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .service-item:hover::before {
+            left: 0;
+        }
+
+        .service-item:hover {
+            padding-left: 20px;
+        }
+
+        .service-name {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 24px;
+            font-weight: 400;
+            letter-spacing: -0.5px;
+        }
+
+        .service-number {
+            font-family: 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        /* Divider */
+        .divider {
+            margin: 120px 80px;
+            position: relative;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .divider-shape {
+            width: 40px;
+            height: 40px;
+            background: var(--accent);
+            transform: rotate(45deg);
+            animation: rotate 10s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(45deg); }
+            to { transform: rotate(405deg); }
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 80px;
+            text-align: center;
+            position: relative;
+            z-index: 10;
+        }
+
+        .contact h2 {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-size: 48px;
+            font-weight: 300;
+            letter-spacing: -1px;
+            margin-bottom: 40px;
+        }
+
+        .contact-button {
+            display: inline-block;
+            padding: 20px 60px;
+            background: var(--primary);
+            color: var(--white);
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 400;
+            transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .contact-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: var(--accent);
+            transition: left 0.5s cubic-bezier(0.23, 1, 0.320, 1);
+        }
+
+        .contact-button:hover::before {
+            left: 0;
+        }
+
+        .contact-button span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .contact-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 80px;
+            border-top: 1px solid var(--medium-gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 14px;
+            color: var(--text-gray);
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100vh;
+            background: var(--white);
+            z-index: 9999;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            animation: fadeOut 0.5s ease-out 1.5s forwards;
+            pointer-events: none;
+        }
+
+        @keyframes fadeOut {
+            to {
+                opacity: 0;
+                visibility: hidden;
+            }
+        }
+
+        .loading-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 40px);
+            grid-template-rows: repeat(3, 40px);
+            gap: 10px;
+        }
+
+        .loading-cell {
+            background: var(--light-gray);
+            animation: loadingPulse 1.5s ease-in-out infinite;
+        }
+
+        .loading-cell:nth-child(2) { animation-delay: 0.1s; }
+        .loading-cell:nth-child(3) { animation-delay: 0.2s; }
+        .loading-cell:nth-child(4) { animation-delay: 0.3s; }
+        .loading-cell:nth-child(5) { animation-delay: 0.4s; }
+        .loading-cell:nth-child(6) { animation-delay: 0.5s; }
+        .loading-cell:nth-child(7) { animation-delay: 0.6s; }
+        .loading-cell:nth-child(8) { animation-delay: 0.7s; }
+        .loading-cell:nth-child(9) { animation-delay: 0.8s; }
+
+        @keyframes loadingPulse {
+            0%, 100% { transform: scale(1); opacity: 0.3; }
+            50% { transform: scale(0.8); opacity: 1; }
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            header, .hero, .portfolio, .services, .contact, footer {
+                padding-left: 20px;
+                padding-right: 20px;
+            }
+            
+            .side-nav {
+                display: none;
+            }
+            
+            .property-grid {
+                grid-template-columns: 1fr;
+                gap: 60px;
+            }
+            
+            .hero h1 span,
+            .hero-subtitle {
+                margin-left: 0;
+            }
+            
+            .service-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 10px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Film Grain Overlay -->
-    <div class="film-grain"></div>
-    
-    <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">DVSN</a>
-            <div class="nav-links">
-                <a href="films.html" class="nav-link">Films</a>
-                <a href="realestate.html" class="nav-link media-accent">Real Estate</a>
-                <a href="x.html" class="nav-link">X</a>
-                <a href="contact.html" class="nav-link nav-cta">Contact</a>
-            </div>
+    <!-- Loading Screen -->
+    <div class="loading-screen">
+        <div class="loading-grid">
+            <div class="loading-cell"></div>
+            <div class="loading-cell"></div>
+            <div class="loading-cell"></div>
+            <div class="loading-cell"></div>
+            <div class="loading-cell"></div>
+            <div class="loading-cell"></div>
+            <div class="loading-cell"></div>
+            <div class="loading-cell"></div>
+            <div class="loading-cell"></div>
+        </div>
+    </div>
+
+    <!-- Grid Overlay -->
+    <div class="grid-overlay">
+        <div class="grid-lines"></div>
+    </div>
+
+    <!-- Side Navigation -->
+    <nav class="side-nav">
+        <div class="nav-indicator active" data-section="hero">
+            <span class="nav-tooltip">Introduction</span>
+        </div>
+        <div class="nav-indicator" data-section="portfolio">
+            <span class="nav-tooltip">Portfolio</span>
+        </div>
+        <div class="nav-indicator" data-section="services">
+            <span class="nav-tooltip">Services</span>
+        </div>
+        <div class="nav-indicator" data-section="contact">
+            <span class="nav-tooltip">Contact</span>
         </div>
     </nav>
-    
-    <div class="container">
-        <header class="hero-section media-hero">
-            <div class="brand-number animate-fade-in">02</div>
-            <h1 class="logo animate-fade-in media-accent">DVSN.RealEstate</h1>
-            <p class="tagline animate-fade-in-delay">Stunning Visual Content for Real Estate Professionals</p>
-        </header>
+
+    <!-- Header -->
+    <header>
+        <nav>
+            <a href="index.html" class="logo">DVSN.RealEstate</a>
+            <ul class="nav-links">
+                <li><a href="films.html">Films</a></li>
+                <li><a href="realestate.html" class="active">Real Estate</a></li>
+                <li><a href="studio.html">Studio</a></li>
+                <li><a href="x.html">X</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="hero">
+        <div class="hero-content">
+            <h1>Property<span>Videography</span></h1>
+            <p class="hero-subtitle">
+                Cinematic real estate films that showcase properties at their finest. 
+                We transform spaces into visual narratives that captivate buyers.
+            </p>
+        </div>
+    </section>
+
+    <!-- Portfolio Section -->
+    <section class="portfolio" id="portfolio">
+        <div class="section-header">
+            <h2 class="section-title">Featured Projects</h2>
+            <span class="section-number">01</span>
+        </div>
         
-        <main>
-            <!-- Introduction -->
-            <section class="intro-section">
-                <h2 class="section-heading">Elevate Your Real Estate Marketing</h2>
-                <p class="section-text">
-                    We partner with Toronto's top real estate professionals to create captivating visual content 
-                    that showcases properties at their absolute best. Our cinematic approach helps agents and 
-                    brokerages stand out in a competitive market, attract more qualified buyers, and sell properties faster.
-                </p>
-            </section>
-            
-            <!-- Services -->
-            <section class="services-section">
-                <h2 class="section-heading">Our Services</h2>
-                <div class="service-grid">
-                    <div class="service-card animate-slide-up">
-                        <div class="service-icon media-accent">🎬</div>
-                        <h3>Luxury Property Tours</h3>
-                        <p>Cinematic video tours that showcase high-end properties with Hollywood-quality production, highlighting every premium detail.</p>
-                    </div>
-                    <div class="service-card animate-slide-up delay-1">
-                        <div class="service-icon media-accent">🚁</div>
-                        <h3>Aerial/Drone Cinematography</h3>
-                        <p>Breathtaking aerial footage that captures properties, estates, and neighborhoods from stunning perspectives.</p>
-                    </div>
-                    <div class="service-card animate-slide-up delay-2">
-                        <div class="service-icon media-accent">🌅</div>
-                        <h3>Twilight Photography</h3>
-                        <p>Dramatic golden hour and blue hour photography that makes properties glow and stand out in listings.</p>
-                    </div>
-                    <div class="service-card animate-slide-up">
-                        <div class="service-icon media-accent">🏡</div>
-                        <h3>Virtual Walkthroughs</h3>
-                        <p>Interactive 3D tours and Matterport experiences that let buyers explore properties remotely with full immersion.</p>
-                    </div>
-                    <div class="service-card animate-slide-up delay-1">
-                        <div class="service-icon media-accent">👤</div>
-                        <h3>Agent Profile Videos</h3>
-                        <p>Professional branding videos that showcase your expertise, personality, and unique value proposition.</p>
-                    </div>
-                    <div class="service-card animate-slide-up delay-2">
-                        <div class="service-icon media-accent">🏙️</div>
-                        <h3>Neighborhood Showcases</h3>
-                        <p>Community lifestyle videos that highlight local amenities, schools, and the unique character of each area.</p>
-                    </div>
+        <div class="property-grid">
+            <article class="property-card">
+                <div class="property-image-wrapper">
+                    <div class="property-number">01</div>
+                    <div class="property-image" style="background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);"></div>
                 </div>
-            </section>
-            
-            <!-- Case Studies -->
-            <section class="case-studies-section">
-                <h2 class="section-heading">Featured Work</h2>
-                <div class="case-studies">
-                    <div class="case-study animate-slide-up">
-                        <div class="case-study-overlay">
-                            <h3>The Miller Group</h3>
-                            <p>Forest Hill Luxury Estate</p>
-                            <p class="media-accent">4K Cinematic Tour + Drone</p>
+                <div class="property-details">
+                    <h3 class="property-title">The Bridle Path Estate</h3>
+                    <div class="property-meta">
+                        <div class="meta-item">
+                            <div class="meta-value" data-count="120">0</div>
+                            <div class="meta-label">Seconds</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-value" data-count="4">0</div>
+                            <div class="meta-label">K Video</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-value" data-count="15">0</div>
+                            <div class="meta-label">Drone Shots</div>
                         </div>
                     </div>
-                    <div class="case-study animate-slide-up delay-1">
-                        <div class="case-study-overlay">
-                            <h3>Sotheby's International</h3>
-                            <p>Yorkville Penthouse Collection</p>
-                            <p class="media-accent">Virtual Tour + Twilight Photography</p>
+                    <p class="property-type">Luxury Estate Tour</p>
+                    <p class="property-client">Sotheby's International Realty</p>
+                </div>
+            </article>
+
+            <article class="property-card">
+                <div class="property-image-wrapper">
+                    <div class="property-number">02</div>
+                    <div class="property-image" style="background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);"></div>
+                </div>
+                <div class="property-details">
+                    <h3 class="property-title">Yorkville Penthouse</h3>
+                    <div class="property-meta">
+                        <div class="meta-item">
+                            <div class="meta-value" data-count="90">0</div>
+                            <div class="meta-label">Seconds</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-value" data-count="4">0</div>
+                            <div class="meta-label">K Video</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-value" data-count="8">0</div>
+                            <div class="meta-label">Rooms</div>
                         </div>
                     </div>
-                    <div class="case-study animate-slide-up delay-2">
-                        <div class="case-study-overlay">
-                            <h3>RE/MAX Hallmark</h3>
-                            <p>Rosedale Agent Branding</p>
-                            <p class="media-accent">Profile Video + Listing Package</p>
+                    <p class="property-type">Modern Condo Showcase</p>
+                    <p class="property-client">RE/MAX Hallmark</p>
+                </div>
+            </article>
+
+            <article class="property-card">
+                <div class="property-image-wrapper">
+                    <div class="property-number">03</div>
+                    <div class="property-image" style="background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);"></div>
+                </div>
+                <div class="property-details">
+                    <h3 class="property-title">Forest Hill Manor</h3>
+                    <div class="property-meta">
+                        <div class="meta-item">
+                            <div class="meta-value" data-count="180">0</div>
+                            <div class="meta-label">Seconds</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-value" data-count="4">0</div>
+                            <div class="meta-label">K Video</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-value" data-count="25">0</div>
+                            <div class="meta-label">Aerial Views</div>
                         </div>
                     </div>
+                    <p class="property-type">Heritage Property Film</p>
+                    <p class="property-client">Chestnut Park Real Estate</p>
                 </div>
-            </section>
-            
-            <!-- Stats -->
-            <section class="stats-section">
-                <div class="stat-item">
-                    <div class="stat-number">750+</div>
-                    <p>Property Videos Created</p>
+            </article>
+
+            <article class="property-card">
+                <div class="property-image-wrapper">
+                    <div class="property-number">04</div>
+                    <div class="property-image" style="background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);"></div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">200+</div>
-                    <p>Agent Clients</p>
+                <div class="property-details">
+                    <h3 class="property-title">King West Loft</h3>
+                    <div class="property-meta">
+                        <div class="meta-item">
+                            <div class="meta-value" data-count="60">0</div>
+                            <div class="meta-label">Seconds</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-value" data-count="4">0</div>
+                            <div class="meta-label">K Video</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-value" data-count="360">0</div>
+                            <div class="meta-label">VR Tour</div>
+                        </div>
+                    </div>
+                    <p class="property-type">Industrial Loft Tour</p>
+                    <p class="property-client">Royal LePage</p>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">48 Hours</div>
-                    <p>Average Turnaround</p>
+            </article>
+
+            <article class="property-card">
+                <div class="property-image-wrapper">
+                    <div class="property-number">05</div>
+                    <div class="property-image" style="background: linear-gradient(135deg, #f5f5f5 0%, #e0e0e0 100%);"></div>
                 </div>
-                <div class="stat-item">
-                    <div class="stat-number">4K/8K</div>
-                    <p>Cinema Quality</p>
+                <div class="property-details">
+                    <h3 class="property-title">Muskoka Waterfront</h3>
+                    <div class="property-meta">
+                        <div class="meta-item">
+                            <div class="meta-value" data-count="150">0</div>
+                            <div class="meta-label">Seconds</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-value" data-count="4">0</div>
+                            <div class="meta-label">K Video</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-value" data-count="30">0</div>
+                            <div class="meta-label">Lake Shots</div>
+                        </div>
+                    </div>
+                    <p class="property-type">Cottage Country Film</p>
+                    <p class="property-client">Harvey Kalles Real Estate</p>
                 </div>
-            </section>
-            
-            <!-- Process -->
-            <section class="process-section">
-                <h2 class="section-heading">Our Process</h2>
-                <div class="process-steps">
-                    <div class="process-step">
-                        <div class="step-number">1</div>
-                        <h3>Discover</h3>
-                        <p>Understanding your listing's unique features and marketing goals</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">2</div>
-                        <h3>Develop</h3>
-                        <p>Creating a shot list that captures the property's essence and lifestyle</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">3</div>
-                        <h3>Produce</h3>
-                        <p>On-location filming with professional cinema cameras and licensed drone pilots</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">4</div>
-                        <h3>Deliver</h3>
-                        <p>Expert editing, color grading, and delivery in multiple formats for MLS, social media, and web</p>
-                    </div>
+            </article>
+
+            <article class="property-card">
+                <div class="property-image-wrapper">
+                    <div class="property-number">06</div>
+                    <div class="property-image" style="background: linear-gradient(135deg, #e0e0e0 0%, #f5f5f5 100%);"></div>
                 </div>
-            </section>
-            
-            <!-- Testimonials -->
-            <section class="testimonials-section">
-                <h2 class="section-heading">What Agents Say About Us</h2>
-                <div class="testimonials-grid">
-                    <div class="testimonial animate-slide-up">
-                        <p class="testimonial-text">
-                            "DVSN's videos have completely transformed how I market luxury properties. 
-                            The cinematic quality sets my listings apart and attracts serious buyers immediately."
-                        </p>
-                        <p class="testimonial-author">Sarah Chen</p>
-                        <p class="testimonial-title">Sotheby's International Realty</p>
+                <div class="property-details">
+                    <h3 class="property-title">Bay Street Tower</h3>
+                    <div class="property-meta">
+                        <div class="meta-item">
+                            <div class="meta-value" data-count="240">0</div>
+                            <div class="meta-label">Seconds</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-value" data-count="4">0</div>
+                            <div class="meta-label">K Video</div>
+                        </div>
+                        <div class="meta-item">
+                            <div class="meta-value" data-count="40">0</div>
+                            <div class="meta-label">Units</div>
+                        </div>
                     </div>
-                    <div class="testimonial animate-slide-up delay-1">
-                        <p class="testimonial-text">
-                            "Their twilight photography and drone footage are simply stunning. 
-                            My listings get 3x more views and sell 40% faster since partnering with DVSN."
-                        </p>
-                        <p class="testimonial-author">Michael Thompson</p>
-                        <p class="testimonial-title">Royal LePage Signature</p>
-                    </div>
-                    <div class="testimonial animate-slide-up delay-2">
-                        <p class="testimonial-text">
-                            "The agent profile video they created for me has been a game-changer. 
-                            It's helped me connect with clients and establish my brand as a luxury specialist."
-                        </p>
-                        <p class="testimonial-author">Jennifer Martinez</p>
-                        <p class="testimonial-title">RE/MAX Hallmark Realty</p>
-                    </div>
+                    <p class="property-type">Commercial Development</p>
+                    <p class="property-client">CBRE Canada</p>
                 </div>
-            </section>
-            
-            <!-- CTA -->
-            <section class="cta-section">
-                <h2 class="cta-heading">Ready to Elevate Your Listings?</h2>
-                <a href="contact.html" class="cta-button">Get a Quote</a>
-            </section>
-        </main>
+            </article>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <h2 class="section-title">Services</h2>
+            <span class="section-number">02</span>
+        </div>
         
-        <footer>
-            <div class="footer-content">
-                <div class="footer-brand">DVSN.RealEstate</div>
-                <p>© 2024 DVSN Studios • Professional Real Estate Videography & Photography</p>
-                <p class="contact">hello@dvsn.studio • (416) 555-DVSN</p>
-            </div>
-        </footer>
+        <ul class="services-list">
+            <li class="service-item">
+                <span class="service-name">Cinematic Property Tours</span>
+                <span class="service-number">01</span>
+            </li>
+            <li class="service-item">
+                <span class="service-name">Aerial & Drone Cinematography</span>
+                <span class="service-number">02</span>
+            </li>
+            <li class="service-item">
+                <span class="service-name">Twilight Photography & Video</span>
+                <span class="service-number">03</span>
+            </li>
+            <li class="service-item">
+                <span class="service-name">360° Virtual Walkthroughs</span>
+                <span class="service-number">04</span>
+            </li>
+            <li class="service-item">
+                <span class="service-name">Agent Profile Videos</span>
+                <span class="service-number">05</span>
+            </li>
+            <li class="service-item">
+                <span class="service-name">Neighborhood Lifestyle Films</span>
+                <span class="service-number">06</span>
+            </li>
+        </ul>
+    </section>
+
+    <!-- Divider -->
+    <div class="divider">
+        <div class="divider-shape"></div>
     </div>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <h2>Ready to Showcase Your Property?</h2>
+        <a href="contact.html" class="contact-button">
+            <span>Start a Project</span>
+        </a>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div>© 2024 DVSN.RealEstate</div>
+        <div>Toronto, Ontario</div>
+    </footer>
+
+    <script>
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallax = document.querySelector('.hero h1');
+            if (parallax) {
+                const speed = 0.5;
+                parallax.style.transform = `translateY(${scrolled * speed}px)`;
+            }
+        });
+
+        // Counter animation for property stats
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+
+        const animateCounter = (element) => {
+            const target = parseInt(element.getAttribute('data-count'));
+            const duration = 1000;
+            const increment = target / (duration / 16);
+            let current = 0;
+
+            const updateCounter = () => {
+                current += increment;
+                if (current < target) {
+                    element.textContent = Math.floor(current);
+                    requestAnimationFrame(updateCounter);
+                } else {
+                    element.textContent = target;
+                }
+            };
+
+            updateCounter();
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting && !entry.target.classList.contains('animated')) {
+                    entry.target.classList.add('animated');
+                    animateCounter(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.meta-value[data-count]').forEach(counter => {
+            observer.observe(counter);
+        });
+
+        // Side navigation
+        const sections = document.querySelectorAll('section[id]');
+        const navIndicators = document.querySelectorAll('.nav-indicator');
+
+        // Click navigation
+        navIndicators.forEach(indicator => {
+            indicator.addEventListener('click', () => {
+                const targetSection = document.getElementById(indicator.getAttribute('data-section'));
+                targetSection.scrollIntoView({ behavior: 'smooth' });
+            });
+        });
+
+        // Scroll spy
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= sectionTop - 200) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navIndicators.forEach(indicator => {
+                indicator.classList.remove('active');
+                if (indicator.getAttribute('data-section') === current) {
+                    indicator.classList.add('active');
+                }
+            });
+        });
+
+        // Grid highlight on property hover
+        document.querySelectorAll('.property-card').forEach(card => {
+            card.addEventListener('mouseenter', () => {
+                document.querySelector('.grid-lines').style.transition = 'opacity 0.3s';
+            });
+        });
+    </script>
 </body>
 </html>

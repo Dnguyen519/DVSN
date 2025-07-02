@@ -3,279 +3,562 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DVSN.Studio - Business & Marketing Video Production Toronto</title>
-    <meta name="description" content="Professional video production for businesses. Corporate videos, marketing content, and brand storytelling in Toronto.">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
+    <title>DVSN.Studio — Digital Marketing & Video Production</title>
+    <meta name="description" content="Strategic video content for brands and businesses. Digital marketing through visual storytelling.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=Helvetica+Neue:wght@300;400;500&display=swap" rel="stylesheet">
     <style>
-        .studio-hero { background: linear-gradient(180deg, rgba(138,43,226,0.1) 0%, transparent 100%); }
-        .studio-accent { color: #8A2BE2; }
-        .service-grid {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --white: #FFFFFF;
+            --light-gray: #FAFAFA;
+            --black: #000000;
+            --purple: #7C3AED;
+            --spacing-unit: 8px;
+        }
+
+        body {
+            font-family: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, sans-serif;
+            font-weight: 300;
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--black);
+            background-color: var(--white);
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 calc(var(--spacing-unit) * 4);
+        }
+
+        /* Grid System */
+        .grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin: 4rem 0;
+            grid-template-columns: repeat(12, 1fr);
+            gap: calc(var(--spacing-unit) * 3);
         }
-        .service-card {
-            text-align: center;
-            padding: 3rem 2rem;
-            background: var(--black-soft);
-            border: 1px solid var(--gray-dark);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--white);
+            z-index: 1000;
+            padding: calc(var(--spacing-unit) * 4) 0;
         }
-        .service-card:hover {
-            transform: translateY(-8px);
-            border-color: #8A2BE2;
-            box-shadow: 0 20px 40px rgba(138, 43, 226, 0.1);
-        }
-        .service-icon {
-            font-size: 3rem;
-            margin-bottom: 1.5rem;
-            opacity: 0.8;
-        }
-        .case-studies {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
-            gap: 3rem;
-            margin: 4rem 0;
-        }
-        .case-study {
-            position: relative;
-            overflow: hidden;
-            aspect-ratio: 16/10;
-            background: var(--black-elevated);
-            cursor: pointer;
-            transition: all 0.4s ease;
-        }
-        .case-study:hover {
-            transform: scale(1.02);
-        }
-        .case-study-overlay {
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(138,43,226,0.9) 0%, rgba(0,0,0,0.7) 100%);
+
+        .nav-container {
             display: flex;
-            flex-direction: column;
-            justify-content: center;
+            justify-content: space-between;
             align-items: center;
-            text-align: center;
-            padding: 2rem;
-            opacity: 0;
-            transition: opacity 0.4s ease;
         }
-        .case-study:hover .case-study-overlay {
-            opacity: 1;
+
+        .logo {
+            font-size: 20px;
+            font-weight: 500;
+            letter-spacing: -0.02em;
+            text-decoration: none;
+            color: var(--black);
         }
-        .stats-section {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
-            text-align: center;
+
+        .nav-links {
+            display: flex;
+            gap: calc(var(--spacing-unit) * 6);
+            list-style: none;
         }
-        .stat-item {
-            padding: 2rem;
-            border: 1px solid var(--gray-dark);
-            transition: all 0.3s ease;
-        }
-        .stat-item:hover {
-            border-color: #8A2BE2;
-        }
-        .stat-number {
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 3rem;
-            color: #8A2BE2;
-            margin-bottom: 0.5rem;
-        }
-        .process-steps {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin: 4rem 0;
-        }
-        .process-step {
-            text-align: center;
-            padding: 2rem;
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--black);
+            font-size: 14px;
+            font-weight: 400;
             position: relative;
+            transition: opacity 0.3s ease;
         }
-        .process-step::after {
+
+        .nav-links a:hover {
+            opacity: 0.6;
+        }
+
+        .nav-links a::after {
             content: '';
             position: absolute;
-            top: 50%;
-            right: -1rem;
-            width: 2rem;
+            bottom: -2px;
+            left: 0;
+            width: 0;
             height: 1px;
-            background: var(--gray-dark);
-            display: none;
+            background-color: var(--black);
+            transition: width 0.3s ease;
         }
-        @media (min-width: 768px) {
-            .process-step:not(:last-child)::after {
-                display: block;
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: calc(var(--spacing-unit) * 16);
+        }
+
+        .hero-content {
+            grid-column: span 12;
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 8vw, 120px);
+            font-weight: 200;
+            line-height: 1;
+            letter-spacing: -0.03em;
+            margin-bottom: calc(var(--spacing-unit) * 4);
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s ease forwards;
+        }
+
+        .hero .tagline {
+            font-size: 24px;
+            font-weight: 300;
+            color: var(--black);
+            opacity: 0;
+            transform: translateY(20px);
+            animation: fadeInUp 1s ease 0.2s forwards;
+        }
+
+        .accent {
+            color: var(--purple);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
             }
         }
-        .step-number {
+
+        /* Sections */
+        section {
+            padding: calc(var(--spacing-unit) * 16) 0;
+        }
+
+        .section-title {
+            font-size: 14px;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: calc(var(--spacing-unit) * 8);
+            opacity: 0.6;
+        }
+
+        /* Services */
+        .services-list {
+            grid-column: span 8;
+            list-style: none;
+        }
+
+        .services-list li {
+            font-size: 32px;
+            font-weight: 300;
+            padding: calc(var(--spacing-unit) * 3) 0;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            position: relative;
+            cursor: pointer;
+            transition: padding-left 0.3s ease;
+        }
+
+        .services-list li:hover {
+            padding-left: calc(var(--spacing-unit) * 2);
+        }
+
+        .services-list li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 2px;
+            background-color: var(--purple);
+            transition: width 0.3s ease;
+        }
+
+        .services-list li:hover::before {
+            width: 24px;
+            left: -32px;
+        }
+
+        /* Case Studies */
+        .case-studies {
+            grid-column: span 12;
+        }
+
+        .case-study {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: calc(var(--spacing-unit) * 3);
+            margin-bottom: calc(var(--spacing-unit) * 12);
+            padding: calc(var(--spacing-unit) * 8) 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+        }
+
+        .case-study-info {
+            grid-column: span 4;
+        }
+
+        .case-study-description {
+            grid-column: span 6;
+            grid-column-start: 7;
+        }
+
+        .case-study h3 {
+            font-size: 24px;
+            font-weight: 400;
+            margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        .case-study .year {
+            font-size: 14px;
+            opacity: 0.6;
+            margin-bottom: calc(var(--spacing-unit) * 4);
+        }
+
+        .case-study p {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .case-study-thumbnail {
+            grid-column: span 2;
+            grid-column-start: 11;
+            height: 120px;
+            background-color: var(--light-gray);
+            transition: transform 0.3s ease;
+        }
+
+        .case-study:hover .case-study-thumbnail {
+            transform: scale(1.05);
+        }
+
+        /* Philosophy */
+        .philosophy-content {
+            grid-column: span 8;
+        }
+
+        .philosophy-content p {
+            font-size: 32px;
+            font-weight: 300;
+            line-height: 1.4;
+            margin-bottom: calc(var(--spacing-unit) * 6);
+        }
+
+        .philosophy-content p:first-child::first-letter {
+            font-size: 64px;
+            font-weight: 200;
+            float: left;
+            line-height: 0.8;
+            margin-right: calc(var(--spacing-unit) * 1);
+            margin-top: calc(var(--spacing-unit) * 1);
+        }
+
+        /* Contact */
+        .contact {
+            min-height: 60vh;
+            display: flex;
+            align-items: center;
+            text-align: center;
+        }
+
+        .contact-content {
+            width: 100%;
+        }
+
+        .contact a {
+            font-size: 48px;
+            font-weight: 200;
+            color: var(--black);
+            text-decoration: none;
+            position: relative;
             display: inline-block;
-            width: 50px;
-            height: 50px;
-            line-height: 50px;
-            border: 2px solid #8A2BE2;
-            border-radius: 50%;
-            font-family: 'Bebas Neue', sans-serif;
-            font-size: 1.5rem;
-            color: #8A2BE2;
-            margin-bottom: 1rem;
+            transition: color 0.3s ease;
+        }
+
+        .contact a:hover {
+            color: var(--purple);
+        }
+
+        .contact a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background-color: var(--purple);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .contact a:hover::after {
+            transform: scaleX(1);
+        }
+
+        /* Footer */
+        footer {
+            padding: calc(var(--spacing-unit) * 8) 0;
+            border-top: 1px solid rgba(0, 0, 0, 0.1);
+            font-size: 12px;
+            opacity: 0.6;
+        }
+
+        .footer-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: clamp(32px, 12vw, 64px);
+            }
+
+            .hero .tagline {
+                font-size: 18px;
+            }
+
+            .services-list {
+                grid-column: span 12;
+            }
+
+            .services-list li {
+                font-size: 24px;
+            }
+
+            .case-study-info,
+            .case-study-description {
+                grid-column: span 12;
+            }
+
+            .case-study-thumbnail {
+                display: none;
+            }
+
+            .philosophy-content {
+                grid-column: span 12;
+            }
+
+            .philosophy-content p {
+                font-size: 24px;
+            }
+
+            .contact a {
+                font-size: 32px;
+            }
+        }
+
+        /* Subtle animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
         }
     </style>
 </head>
 <body>
-    <!-- Film Grain Overlay -->
-    <div class="film-grain"></div>
-    
     <!-- Navigation -->
-    <nav class="main-nav">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">DVSN</a>
-            <div class="nav-links">
-                <a href="films.html" class="nav-link">Films</a>
-                <a href="realestate.html" class="nav-link">Real Estate</a>
-                <a href="studio.html" class="nav-link studio-accent">Studio</a>
-                <a href="x.html" class="nav-link">X</a>
-                <a href="contact.html" class="nav-link nav-cta">Contact</a>
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <a href="index.html" class="logo">DVSN<span class="accent">.</span>STUDIO</a>
+                <ul class="nav-links">
+                    <li><a href="films.html">Films</a></li>
+                    <li><a href="realestate.html">Real Estate</a></li>
+                    <li><a href="studio.html" class="active">Studio</a></li>
+                    <li><a href="x.html">X</a></li>
+                    <li><a href="contact.html">Contact</a></li>
+                </ul>
             </div>
         </div>
     </nav>
-    
-    <div class="container">
-        <header class="hero-section studio-hero">
-            <div class="brand-number animate-fade-in">02</div>
-            <h1 class="logo animate-fade-in studio-accent">DVSN.Studio</h1>
-            <p class="tagline animate-fade-in-delay">Business & Marketing Video Production</p>
-        </header>
-        
-        <main>
-            <!-- Introduction -->
-            <section class="intro-section">
-                <h2 class="section-heading">Elevate Your Brand Story</h2>
-                <p class="section-text">
-                    In today's digital landscape, compelling video content is essential for business success. 
-                    We create professional videos that communicate your brand message, engage your audience, 
-                    and drive measurable results for businesses across Toronto and beyond.
-                </p>
-            </section>
-            
-            <!-- Services -->
-            <section class="services-section">
-                <h2 class="section-heading">Our Services</h2>
-                <div class="service-grid">
-                    <div class="service-card animate-slide-up">
-                        <div class="service-icon studio-accent">📽️</div>
-                        <h3>Corporate Videos</h3>
-                        <p>Brand films, company profiles, training videos, and internal communications that align with your vision.</p>
-                    </div>
-                    <div class="service-card animate-slide-up delay-1">
-                        <div class="service-icon studio-accent">📱</div>
-                        <h3>Social Media Content</h3>
-                        <p>Short-form videos optimized for Instagram, LinkedIn, TikTok, and YouTube to maximize engagement.</p>
-                    </div>
-                    <div class="service-card animate-slide-up delay-2">
-                        <div class="service-icon studio-accent">💼</div>
-                        <h3>Marketing Campaigns</h3>
-                        <p>Product launches, testimonials, and promotional videos that convert viewers into customers.</p>
-                    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="container">
+            <div class="grid">
+                <div class="hero-content">
+                    <h1>Strategic<br>Video<br>Marketing<span class="accent">.</span></h1>
+                    <p class="tagline">Toronto-based video production studio crafting digital experiences.</p>
                 </div>
-            </section>
-            
-            <!-- Case Studies -->
-            <section class="case-studies-section">
-                <h2 class="section-heading">Recent Projects</h2>
-                <div class="case-studies">
-                    <div class="case-study animate-slide-up">
-                        <div class="case-study-overlay">
-                            <h3>Tech Startup Launch</h3>
-                            <p>Brand Story Video</p>
-                            <p class="studio-accent">3M+ views, 400% lead increase</p>
-                        </div>
-                    </div>
-                    <div class="case-study animate-slide-up delay-1">
-                        <div class="case-study-overlay">
-                            <h3>Financial Services</h3>
-                            <p>Client Success Stories</p>
-                            <p class="studio-accent">2x conversion rate</p>
-                        </div>
-                    </div>
-                    <div class="case-study animate-slide-up delay-2">
-                        <div class="case-study-overlay">
-                            <h3>E-commerce Brand</h3>
-                            <p>Product Video Series</p>
-                            <p class="studio-accent">250% ROI on ad spend</p>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- Stats -->
-            <section class="stats-section">
-                <div class="stat-item">
-                    <div class="stat-number">200+</div>
-                    <p>Business Clients</p>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">50M+</div>
-                    <p>Total Views</p>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">98%</div>
-                    <p>Client Retention</p>
-                </div>
-                <div class="stat-item">
-                    <div class="stat-number">24hr</div>
-                    <p>Turnaround Available</p>
-                </div>
-            </section>
-            
-            <!-- Process -->
-            <section class="process-section">
-                <h2 class="section-heading">Our Process</h2>
-                <div class="process-steps">
-                    <div class="process-step">
-                        <div class="step-number">1</div>
-                        <h3>Strategy</h3>
-                        <p>Understanding your goals, audience, and key messaging</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">2</div>
-                        <h3>Creative</h3>
-                        <p>Developing concepts and scripts that resonate</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">3</div>
-                        <h3>Production</h3>
-                        <p>Professional filming with top-tier equipment</p>
-                    </div>
-                    <div class="process-step">
-                        <div class="step-number">4</div>
-                        <h3>Distribution</h3>
-                        <p>Optimized delivery across all marketing channels</p>
-                    </div>
-                </div>
-            </section>
-            
-            <!-- CTA -->
-            <section class="cta-section">
-                <h2 class="cta-heading">Ready to Tell Your Business Story?</h2>
-                <a href="contact.html" class="cta-button">Get a Quote</a>
-            </section>
-        </main>
-        
-        <footer>
-            <div class="footer-content">
-                <div class="footer-brand">DVSN.Studio</div>
-                <p>© 2024 DVSN Studios • Business & Marketing Video Production</p>
-                <p class="contact">hello@dvsn.studio • (416) 555-DVSN</p>
             </div>
-        </footer>
-    </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services">
+        <div class="container">
+            <div class="grid">
+                <div class="section-title">Services</div>
+                <ul class="services-list fade-in">
+                    <li>Brand Storytelling</li>
+                    <li>Social Media Content</li>
+                    <li>Corporate Videos</li>
+                    <li>Product Showcases</li>
+                    <li>Event Coverage</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- Work -->
+    <section id="work">
+        <div class="container">
+            <div class="section-title">Selected Work</div>
+            <div class="case-studies">
+                <div class="case-study fade-in">
+                    <div class="case-study-info">
+                        <h3>Toronto Tech Week</h3>
+                        <div class="year">2024</div>
+                    </div>
+                    <div class="case-study-description">
+                        <p>Complete event coverage for Toronto's premier technology conference. A cinematic approach to capturing innovation, networking, and keynote moments.</p>
+                    </div>
+                    <div class="case-study-thumbnail"></div>
+                </div>
+
+                <div class="case-study fade-in">
+                    <div class="case-study-info">
+                        <h3>Elevate Fitness</h3>
+                        <div class="year">2024</div>
+                    </div>
+                    <div class="case-study-description">
+                        <p>Brand launch campaign for a boutique fitness studio. High-energy content that captures the intensity and community of modern wellness.</p>
+                    </div>
+                    <div class="case-study-thumbnail"></div>
+                </div>
+
+                <div class="case-study fade-in">
+                    <div class="case-study-info">
+                        <h3>Artisan Coffee Co.</h3>
+                        <div class="year">2023</div>
+                    </div>
+                    <div class="case-study-description">
+                        <p>Social media content series showcasing craft coffee culture. From bean to cup, we told the story of Toronto's coffee renaissance.</p>
+                    </div>
+                    <div class="case-study-thumbnail"></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Philosophy -->
+    <section id="philosophy">
+        <div class="container">
+            <div class="grid">
+                <div class="section-title">Philosophy</div>
+                <div class="philosophy-content fade-in">
+                    <p>We believe in the power of visual storytelling. In finding the narrative that resonates, the moment that captivates, the frame that converts viewers into believers.</p>
+                    <p>Good content informs. Great content transforms.</p>
+                    <p>We don't just make videos. We craft experiences that connect brands with their audience on a deeper level. Our work is rooted in strategic thinking, creative excellence, and an unwavering commitment to results.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content fade-in">
+                <a href="contact.html">hello@dvsn.studio</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div>© 2024 DVSN Studio</div>
+                <div>Toronto, Canada</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Parallax effect for hero text
+        let heroText = document.querySelector('.hero h1');
+        let heroTagline = document.querySelector('.hero .tagline');
+
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const parallaxSpeed = 0.5;
+            
+            if (scrolled < window.innerHeight) {
+                heroText.style.transform = `translateY(${scrolled * parallaxSpeed}px)`;
+                heroTagline.style.transform = `translateY(${scrolled * parallaxSpeed * 0.8}px)`;
+                heroText.style.opacity = 1 - (scrolled / window.innerHeight) * 0.8;
+                heroTagline.style.opacity = 1 - (scrolled / window.innerHeight) * 0.8;
+            }
+        });
+
+        // Subtle hover effect for case studies
+        document.querySelectorAll('.case-study').forEach(study => {
+            study.addEventListener('mouseenter', () => {
+                study.style.cursor = 'pointer';
+            });
+        });
+    </script>
 </body>
 </html>
