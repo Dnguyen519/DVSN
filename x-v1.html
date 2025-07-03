@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>X.DVSN — Monochrome Minimalist</title>
+    <meta name="description" content="Personal photography and visual experiments">
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@200;400;700&family=Inter:wght@200;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray-100: #f8f8f8;
+            --gray-200: #e8e8e8;
+            --gray-300: #d0d0d0;
+            --gray-400: #a0a0a0;
+            --gray-500: #707070;
+            --gray-600: #404040;
+            --gray-700: #202020;
+            --gray-800: #101010;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 20px 40px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+
+        nav.scrolled {
+            padding: 15px 40px;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .logo {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 20px;
+            font-weight: 700;
+            text-decoration: none;
+            color: var(--black);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--gray-600);
+            font-size: 14px;
+            font-weight: 400;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--black);
+        }
+
+        .nav-links a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 100%;
+            height: 2px;
+            background: var(--black);
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            background: var(--gray-100);
+        }
+
+        .hero-content {
+            text-align: center;
+            z-index: 1;
+        }
+
+        .hero h1 {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: clamp(60px, 12vw, 180px);
+            font-weight: 200;
+            letter-spacing: -0.05em;
+            line-height: 0.9;
+            margin-bottom: 20px;
+            opacity: 0;
+            animation: fadeIn 1s ease-out forwards;
+        }
+
+        .hero-subtitle {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--gray-600);
+            letter-spacing: 0.3em;
+            text-transform: uppercase;
+            opacity: 0;
+            animation: fadeIn 1s ease-out 0.3s forwards;
+        }
+
+        @keyframes fadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Section Styles */
+        .section {
+            padding: 120px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            margin-bottom: 80px;
+        }
+
+        .section-number {
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 12px;
+            color: var(--gray-500);
+            letter-spacing: 0.2em;
+            margin-bottom: 10px;
+        }
+
+        .section-title {
+            font-size: 48px;
+            font-weight: 200;
+            letter-spacing: -2px;
+            margin-bottom: 20px;
+        }
+
+        .section-description {
+            font-size: 18px;
+            color: var(--gray-600);
+            max-width: 600px;
+            line-height: 1.8;
+        }
+
+        /* Photo Grid */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+
+        .photo-item {
+            position: relative;
+            overflow: hidden;
+            background: var(--gray-100);
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+        .photo-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .photo-item.tall {
+            grid-row: span 2;
+        }
+
+        .photo-item.wide {
+            grid-column: span 2;
+        }
+
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease, filter 0.5s ease;
+        }
+
+        .photo-item:hover img {
+            transform: scale(1.05);
+            filter: contrast(1.1);
+        }
+
+        .photo-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0,0,0,0.8), transparent);
+            color: var(--white);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .photo-item:hover .photo-info {
+            transform: translateY(0);
+        }
+
+        .photo-title {
+            font-size: 18px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .photo-meta {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        /* Portrait Section */
+        .portrait-section {
+            background: var(--black);
+            color: var(--white);
+            padding: 120px 0;
+        }
+
+        .portrait-container {
+            display: flex;
+            gap: 60px;
+            overflow-x: auto;
+            padding: 0 40px;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+
+        .portrait-container::-webkit-scrollbar {
+            display: none;
+        }
+
+        .portrait-item {
+            flex: 0 0 auto;
+            width: 400px;
+            scroll-snap-align: center;
+        }
+
+        .portrait-item img {
+            width: 100%;
+            height: 600px;
+            object-fit: cover;
+            filter: grayscale(100%);
+            transition: filter 0.5s ease;
+        }
+
+        .portrait-item:hover img {
+            filter: grayscale(0%);
+        }
+
+        .portrait-caption {
+            margin-top: 20px;
+            font-family: 'JetBrains Mono', monospace;
+            font-size: 14px;
+            color: var(--gray-400);
+        }
+
+        /* Instagram Section */
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 20px;
+        }
+
+        .insta-item {
+            aspect-ratio: 1;
+            background: var(--gray-200);
+            overflow: hidden;
+            position: relative;
+            cursor: pointer;
+        }
+
+        .insta-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        .insta-item:hover img {
+            transform: scale(1.1);
+            filter: brightness(0.9);
+        }
+
+        /* About Section */
+        .about-section {
+            background: var(--gray-100);
+            text-align: center;
+            padding: 200px 40px;
+        }
+
+        .about-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .about-content h2 {
+            font-size: 36px;
+            font-weight: 300;
+            margin-bottom: 40px;
+            letter-spacing: -1px;
+        }
+
+        .about-content p {
+            font-size: 20px;
+            line-height: 1.8;
+            color: var(--gray-700);
+            margin-bottom: 60px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+        }
+
+        .social-link {
+            font-size: 14px;
+            color: var(--gray-600);
+            text-decoration: none;
+            padding: 10px 20px;
+            border: 1px solid var(--gray-300);
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            color: var(--black);
+            border-color: var(--black);
+            transform: translateY(-2px);
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 40px;
+            background: var(--black);
+            color: var(--white);
+            text-align: center;
+            font-size: 14px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .photo-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .photo-item.wide {
+                grid-column: span 1;
+            }
+
+            .instagram-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 10px;
+            }
+
+            .portrait-item {
+                width: 280px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="logo">X.DVSN</a>
+            <ul class="nav-links">
+                <li><a href="films.html">Films</a></li>
+                <li><a href="realestate.html">Real Estate</a></li>
+                <li><a href="studio.html">Studio</a></li>
+                <li><a href="x.html" class="active">X</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>X.DVSN</h1>
+            <p class="hero-subtitle">Personal × Experimental × Unfiltered</p>
+        </div>
+    </section>
+
+    <!-- Street Photography -->
+    <section class="section">
+        <div class="section-header">
+            <p class="section-number">01 / COLLECTION</p>
+            <h2 class="section-title">Street Photography</h2>
+            <p class="section-description">
+                Toronto streets through my lens. Capturing the raw energy, 
+                geometric patterns, and human moments that define urban life.
+            </p>
+        </div>
+
+        <div class="photo-grid">
+            <div class="photo-item tall">
+                <img src="https://via.placeholder.com/400x800/f0f0f0/666666?text=STREET+01" alt="Street Photo 1">
+                <div class="photo-info">
+                    <h3 class="photo-title">Queen & Spadina</h3>
+                    <p class="photo-meta">March 2024</p>
+                </div>
+            </div>
+            <div class="photo-item">
+                <img src="https://via.placeholder.com/400x400/e8e8e8/666666?text=STREET+02" alt="Street Photo 2">
+                <div class="photo-info">
+                    <h3 class="photo-title">Financial District</h3>
+                    <p class="photo-meta">March 2024</p>
+                </div>
+            </div>
+            <div class="photo-item">
+                <img src="https://via.placeholder.com/400x400/f5f5f5/666666?text=STREET+03" alt="Street Photo 3">
+                <div class="photo-info">
+                    <h3 class="photo-title">Kensington Market</h3>
+                    <p class="photo-meta">February 2024</p>
+                </div>
+            </div>
+            <div class="photo-item wide">
+                <img src="https://via.placeholder.com/800x400/e0e0e0/666666?text=STREET+04" alt="Street Photo 4">
+                <div class="photo-info">
+                    <h3 class="photo-title">Union Station</h3>
+                    <p class="photo-meta">February 2024</p>
+                </div>
+            </div>
+            <div class="photo-item">
+                <img src="https://via.placeholder.com/400x400/f8f8f8/666666?text=STREET+05" alt="Street Photo 5">
+                <div class="photo-info">
+                    <h3 class="photo-title">Distillery District</h3>
+                    <p class="photo-meta">January 2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Portraits -->
+    <section class="portrait-section">
+        <div class="section-header" style="padding: 0 40px; margin-bottom: 80px;">
+            <p class="section-number">02 / COLLECTION</p>
+            <h2 class="section-title" style="color: var(--white);">Portraits</h2>
+            <p class="section-description" style="color: var(--gray-400);">
+                Human stories in monochrome. Each portrait a study in light, 
+                shadow, and the subtle expressions that reveal character.
+            </p>
+        </div>
+
+        <div class="portrait-container">
+            <div class="portrait-item">
+                <img src="https://via.placeholder.com/400x600/333333/cccccc?text=PORTRAIT+01" alt="Portrait 1">
+                <p class="portrait-caption">Sarah — Artist</p>
+            </div>
+            <div class="portrait-item">
+                <img src="https://via.placeholder.com/400x600/404040/cccccc?text=PORTRAIT+02" alt="Portrait 2">
+                <p class="portrait-caption">Marcus — Musician</p>
+            </div>
+            <div class="portrait-item">
+                <img src="https://via.placeholder.com/400x600/2a2a2a/cccccc?text=PORTRAIT+03" alt="Portrait 3">
+                <p class="portrait-caption">Elena — Designer</p>
+            </div>
+            <div class="portrait-item">
+                <img src="https://via.placeholder.com/400x600/383838/cccccc?text=PORTRAIT+04" alt="Portrait 4">
+                <p class="portrait-caption">David — Writer</p>
+            </div>
+            <div class="portrait-item">
+                <img src="https://via.placeholder.com/400x600/303030/cccccc?text=PORTRAIT+05" alt="Portrait 5">
+                <p class="portrait-caption">Maya — Architect</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Instagram -->
+    <section class="section">
+        <div class="section-header">
+            <p class="section-number">03 / SOCIAL</p>
+            <h2 class="section-title">Instagram</h2>
+            <p class="section-description">
+                Daily captures and visual experiments. Follow @x.dvsn for more.
+            </p>
+        </div>
+
+        <div class="instagram-grid">
+            <div class="insta-item">
+                <img src="https://via.placeholder.com/300x300/f0f0f0/666666?text=IG+01" alt="Instagram 1">
+            </div>
+            <div class="insta-item">
+                <img src="https://via.placeholder.com/300x300/e8e8e8/666666?text=IG+02" alt="Instagram 2">
+            </div>
+            <div class="insta-item">
+                <img src="https://via.placeholder.com/300x300/f5f5f5/666666?text=IG+03" alt="Instagram 3">
+            </div>
+            <div class="insta-item">
+                <img src="https://via.placeholder.com/300x300/e0e0e0/666666?text=IG+04" alt="Instagram 4">
+            </div>
+            <div class="insta-item">
+                <img src="https://via.placeholder.com/300x300/f8f8f8/666666?text=IG+05" alt="Instagram 5">
+            </div>
+            <div class="insta-item">
+                <img src="https://via.placeholder.com/300x300/ebebeb/666666?text=IG+06" alt="Instagram 6">
+            </div>
+            <div class="insta-item">
+                <img src="https://via.placeholder.com/300x300/f3f3f3/666666?text=IG+07" alt="Instagram 7">
+            </div>
+            <div class="insta-item">
+                <img src="https://via.placeholder.com/300x300/e5e5e5/666666?text=IG+08" alt="Instagram 8">
+            </div>
+            <div class="insta-item">
+                <img src="https://via.placeholder.com/300x300/fafafa/666666?text=IG+09" alt="Instagram 9">
+            </div>
+            <div class="insta-item">
+                <img src="https://via.placeholder.com/300x300/ededed/666666?text=IG+10" alt="Instagram 10">
+            </div>
+            <div class="insta-item">
+                <img src="https://via.placeholder.com/300x300/f7f7f7/666666?text=IG+11" alt="Instagram 11">
+            </div>
+            <div class="insta-item">
+                <img src="https://via.placeholder.com/300x300/e3e3e3/666666?text=IG+12" alt="Instagram 12">
+            </div>
+        </div>
+    </section>
+
+    <!-- About -->
+    <section class="about-section">
+        <div class="about-content">
+            <h2>About</h2>
+            <p>
+                I'm Davis, a visual artist and filmmaker based in Toronto. 
+                X.DVSN is my personal space—where commercial constraints don't exist 
+                and every frame is an exploration. This is where I document the city 
+                I call home, the people I meet, and the moments that inspire me.
+            </p>
+            <div class="social-links">
+                <a href="#" class="social-link">INSTAGRAM</a>
+                <a href="#" class="social-link">VSCO</a>
+                <a href="#" class="social-link">BEHANCE</a>
+                <a href="#" class="social-link">EMAIL</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2024 X.DVSN — Toronto, Canada</p>
+    </footer>
+
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Smooth scroll for portrait section
+        const portraitContainer = document.querySelector('.portrait-container');
+        let isDown = false;
+        let startX;
+        let scrollLeft;
+
+        portraitContainer.addEventListener('mousedown', (e) => {
+            isDown = true;
+            startX = e.pageX - portraitContainer.offsetLeft;
+            scrollLeft = portraitContainer.scrollLeft;
+        });
+
+        portraitContainer.addEventListener('mouseleave', () => {
+            isDown = false;
+        });
+
+        portraitContainer.addEventListener('mouseup', () => {
+            isDown = false;
+        });
+
+        portraitContainer.addEventListener('mousemove', (e) => {
+            if (!isDown) return;
+            e.preventDefault();
+            const x = e.pageX - portraitContainer.offsetLeft;
+            const walk = (x - startX) * 2;
+            portraitContainer.scrollLeft = scrollLeft - walk;
+        });
+    </script>
+</body>
+</html>
