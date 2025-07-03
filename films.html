@@ -90,9 +90,11 @@
             display: flex;
             gap: 40px;
             list-style: none;
+            align-items: center;
         }
         
-        .nav-links a {
+        .nav-links > a,
+        .nav-dropdown > a {
             text-decoration: none;
             color: var(--white);
             font-weight: 500;
@@ -101,17 +103,20 @@
             text-transform: uppercase;
             transition: all 0.3s ease;
             position: relative;
+            padding: 20px 0;
         }
         
-        .nav-links a:hover {
+        .nav-links > a:hover,
+        .nav-dropdown > a:hover {
             opacity: 0.7;
         }
         
-        nav.scrolled .nav-links a:hover {
+        nav.scrolled .nav-links > a:hover,
+        nav.scrolled .nav-dropdown > a:hover {
             color: var(--gray-600);
         }
         
-        .nav-links a.active::after {
+        .nav-links > a.active::after {
             content: '';
             position: absolute;
             bottom: -2px;
@@ -121,8 +126,94 @@
             background: var(--gold);
         }
         
-        nav.scrolled .nav-links a.active::after {
+        nav.scrolled .nav-links > a.active::after {
             background: var(--accent);
+        }
+        
+        /* Dropdown Container */
+        .nav-dropdown {
+            position: relative;
+        }
+        
+        .nav-dropdown > a::after {
+            content: '▾';
+            margin-left: 5px;
+            font-size: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-dropdown:hover > a::after {
+            transform: rotate(180deg);
+        }
+        
+        /* Dropdown Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--white);
+            min-width: 280px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            margin-top: 10px;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .nav-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 0;
+        }
+        
+        nav.scrolled .dropdown-menu {
+            border: 1px solid var(--black);
+        }
+        
+        /* Dropdown Sections */
+        .dropdown-section {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .dropdown-section:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-title {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray-500);
+            padding: 0 30px;
+            margin-bottom: 10px;
+        }
+        
+        .dropdown-links {
+            list-style: none;
+        }
+        
+        .dropdown-links a {
+            display: block;
+            padding: 10px 30px;
+            color: var(--black);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .dropdown-links a:hover {
+            background: var(--gray-100);
+            padding-left: 35px;
+        }
+        
+        nav.scrolled .dropdown-links a:hover {
+            background: var(--black);
+            color: var(--white);
         }
         
         /* Cinematic Hero Section */
@@ -741,6 +832,39 @@
         <a href="index.html" class="logo">DVSN STUDIO</a>
         <div class="nav-links">
             <a href="films.html" class="active">FILMS</a>
+            
+            <!-- Services Dropdown -->
+            <div class="nav-dropdown">
+                <a href="#" onclick="return false;">SERVICES</a>
+                <div class="dropdown-menu">
+                    <!-- Wedding Videography -->
+                    <div class="dropdown-section">
+                        <div class="dropdown-title">Wedding Videography</div>
+                        <ul class="dropdown-links">
+                            <li><a href="services/wedding-day-video.html">Wedding Day Films</a></li>
+                            <li><a href="services/engagement-video.html">Engagement Sessions</a></li>
+                            <li><a href="services/wedding-trailers.html">Wedding Trailers</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Real Estate -->
+                    <div class="dropdown-section">
+                        <div class="dropdown-title">Real Estate</div>
+                        <ul class="dropdown-links">
+                            <li><a href="realestate.html">Real Estate Videography</a></li>
+                        </ul>
+                    </div>
+                    
+                    <!-- Photography -->
+                    <div class="dropdown-section">
+                        <div class="dropdown-title">Photography</div>
+                        <ul class="dropdown-links">
+                            <li><a href="studio.html">Studio Photography</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            
             <a href="realestate.html">REAL ESTATE</a>
             <a href="studio.html">STUDIO</a>
             <a href="x.html">X</a>

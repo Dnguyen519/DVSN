@@ -16,7 +16,7 @@ $black-elevated: #111111;  // Elevated surfaces
 $black-carbon: #1A1A1A;    // Cards and containers
 
 // Grays - The Supporting Cast
-$gray-dark: #2A2A2A;       // Borders and dividers
+  $gray-dark: #2A2A2A;       // Borders and dividers
 $gray-medium: #4A4A4A;     // Disabled states
 $gray-light: #6A6A6A;      // Subtle text
 $gray-silver: #C0C0C0;     // Body text

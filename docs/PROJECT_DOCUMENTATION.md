@@ -4,45 +4,63 @@
 
 DVSN Studio is a multi-page portfolio website showcasing wedding cinematography, real estate videography, and creative film work. The site features a modern, minimalist design with strong typography and a focus on visual storytelling.
 
+## Live Website
+
+**Production URL**: https://jolly-biscochitos-dcd661.netlify.app/
+
+The website is hosted on Netlify with automatic deployments from the GitHub repository.
+
 ## Website Structure
 
-### Pages
+### Live Page URLs
 
-1. **Home Page (index.html)**
-   - Landing page with hero section
-   - Introduction to DVSN Studio services
-   - Links to main portfolio sections
+#### Main Pages
+1. **Home Page**
+   - File: `index.html`
+   - URL: https://jolly-biscochitos-dcd661.netlify.app/
 
-2. **Films Page (films.html)**
-   - Cinematic hero section with film reel animation
-   - Organized video portfolio with embedded Vimeo players
-   - Categories:
-     - Wedding Films
-     - Engagement Sessions
-     - Wedding Trailers
-     - Promotional Videos
-   - Interactive expandable sections for each video
-   - Personal descriptions for each project
+2. **Films Page**
+   - File: `films.html`
+   - URL: https://jolly-biscochitos-dcd661.netlify.app/films.html
 
-3. **Real Estate Page (realestate.html)**
-   - Real estate videography portfolio
-   - Professional services showcase
-   - Project highlights
+3. **Real Estate Page**
+   - File: `realestate.html`
+   - URL: https://jolly-biscochitos-dcd661.netlify.app/realestate.html
 
-4. **Studio Page (studio.html)**
-   - About DVSN Studio
-   - Team information
-   - Studio philosophy and approach
+4. **Studio Page**
+   - File: `studio.html`
+   - URL: https://jolly-biscochitos-dcd661.netlify.app/studio.html
 
-5. **X.DVSN Page (x.html)**
-   - Personal photography portfolio
-   - Minimalist monochrome design
-   - Grid-based image layout
+5. **X.DVSN Page**
+   - File: `x.html`
+   - URL: https://jolly-biscochitos-dcd661.netlify.app/x.html
 
-6. **Contact Page (contact.html)**
-   - Contact information
-   - Inquiry forms
-   - Social media links
+6. **Contact Page**
+   - File: `contact.html`
+   - URL: https://jolly-biscochitos-dcd661.netlify.app/contact.html
+
+#### Service Pages
+1. **Wedding Day Video**
+   - File: `services/wedding-day-video.html`
+   - URL: https://jolly-biscochitos-dcd661.netlify.app/services/wedding-day-video.html
+
+2. **Engagement Video**
+   - File: `services/engagement-video.html`
+   - URL: https://jolly-biscochitos-dcd661.netlify.app/services/engagement-video.html
+
+3. **Wedding Trailers**
+   - File: `services/wedding-trailers.html`
+   - URL: https://jolly-biscochitos-dcd661.netlify.app/services/wedding-trailers.html
+
+#### SEO Location Pages
+1. **Wedding Videographer Toronto**
+   - File: `wedding-videographer-toronto.html`
+   - URL: https://jolly-biscochitos-dcd661.netlify.app/wedding-videographer-toronto.html
+
+#### Documentation
+1. **Navigation Dropdown Sample**
+   - File: `docs/navigation-dropdown-sample.html`
+   - URL: https://jolly-biscochitos-dcd661.netlify.app/docs/navigation-dropdown-sample.html
 
 ## Design System
 
