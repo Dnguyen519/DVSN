@@ -153,13 +153,14 @@
             left: 50%;
             transform: translateX(-50%);
             background: var(--white);
-            min-width: 280px;
+            min-width: 250px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
             margin-top: 10px;
             border: 1px solid var(--gray-200);
+            padding: 20px 0;
         }
         
         .nav-dropdown:hover .dropdown-menu {
@@ -172,33 +173,13 @@
             border: 1px solid var(--black);
         }
         
-        /* Dropdown Sections */
-        .dropdown-section {
-            padding: 20px 0;
-            border-bottom: 1px solid var(--gray-200);
-        }
-        
-        .dropdown-section:last-child {
-            border-bottom: none;
-        }
-        
-        .dropdown-title {
-            font-size: 12px;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-            color: var(--gray-500);
-            padding: 0 30px;
-            margin-bottom: 10px;
-        }
-        
         .dropdown-links {
             list-style: none;
         }
         
         .dropdown-links a {
             display: block;
-            padding: 10px 30px;
+            padding: 12px 30px;
             color: var(--black);
             text-decoration: none;
             font-size: 14px;
@@ -837,31 +818,11 @@
             <div class="nav-dropdown">
                 <a href="#" onclick="return false;">SERVICES</a>
                 <div class="dropdown-menu">
-                    <!-- Wedding Videography -->
-                    <div class="dropdown-section">
-                        <div class="dropdown-title">Wedding Videography</div>
-                        <ul class="dropdown-links">
-                            <li><a href="services/wedding-day-video.html">Wedding Day Films</a></li>
-                            <li><a href="services/engagement-video.html">Engagement Sessions</a></li>
-                            <li><a href="services/wedding-trailers.html">Wedding Trailers</a></li>
-                        </ul>
-                    </div>
-                    
-                    <!-- Real Estate -->
-                    <div class="dropdown-section">
-                        <div class="dropdown-title">Real Estate</div>
-                        <ul class="dropdown-links">
-                            <li><a href="realestate.html">Real Estate Videography</a></li>
-                        </ul>
-                    </div>
-                    
-                    <!-- Photography -->
-                    <div class="dropdown-section">
-                        <div class="dropdown-title">Photography</div>
-                        <ul class="dropdown-links">
-                            <li><a href="studio.html">Studio Photography</a></li>
-                        </ul>
-                    </div>
+                    <ul class="dropdown-links">
+                        <li><a href="services/wedding-day-video.html">Wedding Day Films</a></li>
+                        <li><a href="services/engagement-video.html">Engagement Sessions</a></li>
+                        <li><a href="services/wedding-trailers.html">Wedding Trailers</a></li>
+                    </ul>
                 </div>
             </div>
             
