@@ -109,7 +109,7 @@
         .engagement-hero {
             position: relative;
             height: 80vh;
-            background: linear-gradient(135deg, #000000 0%, #1a1a1a 100%);
+            background: #000000;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -119,31 +119,17 @@
             margin-top: 60px;
         }
         
-        /* Floating hearts animation */
-        .floating-hearts {
+        .engagement-hero::after {
+            content: '';
             position: absolute;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
             z-index: 1;
         }
         
-        .heart {
-            position: absolute;
-            opacity: 0.1;
-            animation: float 15s infinite;
-        }
-        
-        .heart:nth-child(1) { left: 10%; animation-delay: 0s; font-size: 20px; }
-        .heart:nth-child(2) { left: 30%; animation-delay: 3s; font-size: 35px; }
-        .heart:nth-child(3) { left: 50%; animation-delay: 1s; font-size: 25px; }
-        .heart:nth-child(4) { left: 70%; animation-delay: 4s; font-size: 30px; }
-        .heart:nth-child(5) { left: 90%; animation-delay: 2s; font-size: 22px; }
-        
-        @keyframes float {
-            0% { transform: translateY(100vh) rotate(0deg); }
-            100% { transform: translateY(-100vh) rotate(360deg); }
-        }
         
         .hero-content {
             position: relative;
@@ -722,12 +708,14 @@
     
     <!-- Engagement Hero -->
     <section class="engagement-hero">
-        <div class="floating-hearts">
-            <span class="heart">❤️</span>
-            <span class="heart">💕</span>
-            <span class="heart">❤️</span>
-            <span class="heart">💕</span>
-            <span class="heart">❤️</span>
+        <!-- Hero Video Background -->
+        <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 0;">
+            <iframe src="https://player.vimeo.com/video/354716146?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0&portrait=0" 
+                    style="position: absolute; top: 50%; left: 50%; width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh; transform: translate(-50%, -50%);"
+                    frameborder="0" 
+                    allow="autoplay; fullscreen; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
         </div>
         
         <div class="hero-content">
@@ -752,32 +740,29 @@
         
         <div class="style-grid">
             <div class="style-card">
-                <div class="style-icon">🌿</div>
+                <div class="style-icon" style="font-family: 'Playfair Display', serif; font-size: 72px; line-height: 1; margin-bottom: 20px;">N</div>
                 <h3 class="style-title">Natural & Candid</h3>
                 <p class="style-description">
-                    Authentic moments in beautiful settings. 
-                    Perfect for couples who want genuine, 
-                    unposed interactions.
+                    Documentary-style filmmaking that captures authentic moments and genuine emotions. 
+                    We blend into the background, allowing your true personalities and connection to shine through.
                 </p>
             </div>
             
             <div class="style-card">
-                <div class="style-icon">🏙️</div>
+                <div class="style-icon" style="font-family: 'Playfair Display', serif; font-size: 72px; line-height: 1; margin-bottom: 20px;">U</div>
                 <h3 class="style-title">Urban & Modern</h3>
                 <p class="style-description">
-                    City vibes and architectural backdrops. 
-                    Ideal for couples who love the energy 
-                    of downtown Toronto.
+                    Contemporary cinematography against Toronto's stunning architecture and cityscapes. 
+                    Bold, dynamic shots that reflect the energy and sophistication of metropolitan life.
                 </p>
             </div>
             
             <div class="style-card">
-                <div class="style-icon">✨</div>
-                <h3 class="style-title">Romantic & Dreamy</h3>
+                <div class="style-icon" style="font-family: 'Playfair Display', serif; font-size: 72px; line-height: 1; margin-bottom: 20px;">R</div>
+                <h3 class="style-title">Romantic & Cinematic</h3>
                 <p class="style-description">
-                    Soft light and intimate moments. 
-                    For couples who want that fairytale 
-                    feeling in their film.
+                    Ethereal, dreamy cinematography with soft lighting and artistic composition. 
+                    Every frame is crafted to evoke emotion and create timeless, romantic imagery.
                 </p>
             </div>
         </div>
@@ -793,7 +778,7 @@
             
             <div class="location-grid">
                 <div class="location-item">
-                    <img src="#" alt="Toronto Islands" class="location-image">
+                    <img src="../images/locations/toronto-islands.jpg" alt="Toronto Islands" class="location-image" onerror="this.style.background='#1a1a1a'">
                     <div class="location-info">
                         <h3 class="location-name">Toronto Islands</h3>
                         <p class="location-type">Beach & Skyline Views</p>
@@ -801,7 +786,7 @@
                 </div>
                 
                 <div class="location-item">
-                    <img src="#" alt="Distillery District" class="location-image">
+                    <img src="../images/locations/distillery-district.jpg" alt="Distillery District" class="location-image" onerror="this.style.background='#1a1a1a'">
                     <div class="location-info">
                         <h3 class="location-name">Distillery District</h3>
                         <p class="location-type">Historic & Industrial</p>
@@ -809,7 +794,7 @@
                 </div>
                 
                 <div class="location-item">
-                    <img src="#" alt="High Park" class="location-image">
+                    <img src="../images/locations/high-park.jpg" alt="High Park" class="location-image" onerror="this.style.background='#1a1a1a'">
                     <div class="location-info">
                         <h3 class="location-name">High Park</h3>
                         <p class="location-type">Nature & Gardens</p>
@@ -817,7 +802,7 @@
                 </div>
                 
                 <div class="location-item">
-                    <img src="#" alt="Casa Loma" class="location-image">
+                    <img src="../images/locations/casa-loma.jpg" alt="Casa Loma" class="location-image" onerror="this.style.background='#1a1a1a'">
                     <div class="location-info">
                         <h3 class="location-name">Casa Loma</h3>
                         <p class="location-type">Castle & Gardens</p>
@@ -825,7 +810,7 @@
                 </div>
                 
                 <div class="location-item">
-                    <img src="#" alt="Harbourfront" class="location-image">
+                    <img src="../images/locations/harbourfront.jpg" alt="Harbourfront" class="location-image" onerror="this.style.background='#1a1a1a'">
                     <div class="location-info">
                         <h3 class="location-name">Harbourfront</h3>
                         <p class="location-type">Waterfront & City</p>
@@ -833,7 +818,7 @@
                 </div>
                 
                 <div class="location-item">
-                    <img src="#" alt="Trinity Bellwoods" class="location-image">
+                    <img src="../images/locations/trinity-bellwoods.jpg" alt="Trinity Bellwoods" class="location-image" onerror="this.style.background='#1a1a1a'">
                     <div class="location-info">
                         <h3 class="location-name">Trinity Bellwoods</h3>
                         <p class="location-type">Urban Park</p>
@@ -894,24 +879,29 @@
             </div>
             
             <div class="gallery-grid">
+                <!-- Mike & Jess Engagement -->
                 <div class="gallery-item">
-                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/988498444?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Devin & Yeelok Engagement"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/354716146?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Mike & Jess Engagement"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
                 </div>
                 
+                <!-- Nicole & Mike Engagement -->
                 <div class="gallery-item">
-                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/511889378?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Mike & Jess Engagement"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/358542470?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Nicole & Mike Engagement"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
                 </div>
                 
+                <!-- Marci & Kevin Engagement -->
                 <div class="gallery-item">
-                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/345305892?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="John & Nancy Engagement"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/355698734?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Marci & Kevin Engagement"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
                 </div>
                 
+                <!-- Laura & Anthony Engagement -->
                 <div class="gallery-item">
-                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/339695406?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Star & Pedro Engagement"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/382719476?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Laura & Anthony Engagement"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
                 </div>
                 
+                <!-- Charlene & Zach Engagement -->
                 <div class="gallery-item">
-                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1076577538?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Carmela & Vlad Engagement - DVSN Studio"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/368254329?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Charlene & Zach Engagement"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
                 </div>
             </div>
         </div>
@@ -925,48 +915,78 @@
         
         <div class="faq-item" onclick="toggleFAQ(this)">
             <div class="faq-question">
-                What should we wear?
+                How long is a typical engagement video session?
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
-                We recommend coordinating (not matching) outfits in neutral or earthy tones. 
-                Avoid busy patterns and logos. Bring a second outfit for variety! We'll send 
-                a detailed style guide once you book.
+                Our engagement video sessions typically last 1-2 hours, depending on the package you choose. 
+                The Essential package includes a 1-hour shoot at one location, while our Signature package 
+                offers 2 hours at multiple locations. This gives us plenty of time to capture authentic moments 
+                without feeling rushed.
             </div>
         </div>
         
         <div class="faq-item" onclick="toggleFAQ(this)">
             <div class="faq-question">
-                What happens if it rains?
+                What's the difference between engagement videography and photography?
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
-                Light rain can actually create beautiful, romantic footage! For heavy rain, 
-                we'll reschedule at no extra charge. We monitor weather closely and will 
-                communicate options 24 hours before your session.
+                While photography captures beautiful still moments, videography brings your love story to life 
+                with movement, sound, and emotion. You'll hear each other's laughter, see genuine reactions, 
+                and relive the energy of your relationship. Many couples choose both, but video offers a 
+                uniquely immersive way to remember this special time.
             </div>
         </div>
         
         <div class="faq-item" onclick="toggleFAQ(this)">
             <div class="faq-question">
-                Can we use the video for our wedding?
+                When should we book our engagement video session?
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
-                Absolutely! Your engagement film is perfect for save-the-dates, wedding 
-                websites, or reception displays. We'll provide formats optimized for 
-                different uses.
+                We recommend booking your engagement session 3-6 months before your wedding. This timing 
+                allows you to use the video for save-the-dates and your wedding website. Spring and fall 
+                are particularly popular in Toronto for their beautiful colors and comfortable weather. 
+                Book early to secure your preferred date and location.
             </div>
         </div>
         
         <div class="faq-item" onclick="toggleFAQ(this)">
             <div class="faq-question">
-                Do you travel outside Toronto?
+                How do you make couples feel comfortable on camera?
                 <span class="faq-toggle">+</span>
             </div>
             <div class="faq-answer">
-                Yes! We love exploring new locations. Travel within the GTA is included. 
-                For destinations beyond, we'll provide a custom quote based on location.
+                We understand being on camera can feel awkward at first! Our approach is conversational 
+                and relaxed. We'll guide you through natural movements and prompts that feel like a date 
+                rather than a video shoot. Most couples tell us they forget about the camera within the 
+                first 10 minutes. We focus on capturing your genuine connection, not stiff poses.
+            </div>
+        </div>
+        
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <div class="faq-question">
+                What locations work best for engagement videos in Toronto?
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                Toronto offers incredible variety! Popular spots include the Distillery District for its 
+                historic charm, Toronto Islands for beach and skyline views, High Park for nature settings, 
+                and the Harbourfront for waterfront scenes. We also love discovering meaningful locations 
+                personal to your story - where you first met, had your first date, or got engaged.
+            </div>
+        </div>
+        
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <div class="faq-question">
+                Can we include our pet in the engagement video?
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                Absolutely! Pets are family, and we love including them in your engagement film. Dogs are 
+                the most common, but we've filmed with cats, birds, and even horses. Just let us know in 
+                advance so we can plan for the best locations and ensure your pet feels comfortable too.
             </div>
         </div>
     </section>

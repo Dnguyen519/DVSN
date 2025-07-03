@@ -131,25 +131,25 @@
         .dropdown-menu {
             position: absolute;
             top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
+            left: 0;
             background: var(--white);
             min-width: 280px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
-            margin-top: 10px;
+            margin-top: 20px;
             border: 1px solid var(--gray-200);
         }
         
         .nav-dropdown:hover .dropdown-menu {
             opacity: 1;
             visibility: visible;
-            margin-top: 0;
+            margin-top: 10px;
         }
         
         nav.scrolled .dropdown-menu {
+            background: var(--white);
             border: 1px solid var(--black);
         }
         
@@ -190,6 +190,10 @@
         .dropdown-links a:hover {
             background: var(--gray-100);
             padding-left: 35px;
+        }
+        
+        nav.scrolled .dropdown-links a {
+            color: var(--black);
         }
         
         nav.scrolled .dropdown-links a:hover {
@@ -661,10 +665,88 @@
             margin: 0 auto;
         }
         
+        /* Other Services Section */
+        .other-services-section {
+            padding: 100px 80px;
+            background: var(--gray-100);
+        }
+        
+        .service-cards {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+            max-width: 1200px;
+            margin: 0 auto;
+            margin-top: 60px;
+        }
+        
+        .service-card {
+            background: var(--white);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.1);
+        }
+        
+        .service-card-image {
+            position: relative;
+            overflow: hidden;
+            aspect-ratio: 16/9;
+        }
+        
+        .service-card-content {
+            padding: 40px;
+        }
+        
+        .service-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+            color: var(--black);
+        }
+        
+        .service-card p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--gray-600);
+            margin-bottom: 25px;
+        }
+        
+        .service-card-link {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--black);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .service-card-link::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--black);
+            transition: width 0.3s ease;
+        }
+        
+        .service-card-link:hover::after {
+            width: 100%;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .process-steps,
-            .packages-grid {
+            .packages-grid,
+            .service-cards {
                 grid-template-columns: 1fr;
             }
             
@@ -722,7 +804,7 @@
     <!-- Hero Section -->
     <section class="wedding-hero">
         <div class="hero-video">
-            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1092325630?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&muted=1#t=6s" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Vlad & Carmela - Wedding Day - DVSN Studio"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1092325630?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479&autoplay=1&loop=1&muted=1#t=7s" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Vlad & Carmela - Wedding Day - DVSN Studio"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
         </div>
         <div class="hero-overlay"></div>
         <div class="hero-content">
@@ -900,10 +982,6 @@
                     <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/331764175?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Dan + Marissa Wedding Video"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
                 </div>
                 
-                <!-- Carmela & Vlad Trailer -->
-                <div class="gallery-item" style="grid-column: span 1; aspect-ratio: 16/9;">
-                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1076579324?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Carmela & Vlad Wedding Trailer"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-                </div>
             </div>
         </div>
     </section>
@@ -1008,6 +1086,38 @@
                 Yes, we're licensed drone operators and include aerial footage when venue permits allow. Drone shots 
                 add cinematic scope to your wedding film, especially for outdoor ceremonies, waterfront venues, and 
                 grand entrances. We handle all permits and follow Transport Canada regulations for safe, legal operation.
+            </div>
+        </div>
+    </section>
+    
+    <!-- Other Services Section -->
+    <section class="other-services-section">
+        <div class="section-header">
+            <h2>EXPLORE MORE OPTIONS</h2>
+            <p>Complete your wedding video package with these additional services</p>
+        </div>
+        
+        <div class="service-cards">
+            <div class="service-card">
+                <div class="service-card-image">
+                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1076579324?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479&background=1&muted=1&loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Wedding Trailer"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                </div>
+                <div class="service-card-content">
+                    <h3>Wedding Trailers</h3>
+                    <p>60-90 second cinematic highlights perfect for sharing on social media. Delivered within 48 hours of your wedding day.</p>
+                    <a href="wedding-trailers.html" class="service-card-link">Learn More →</a>
+                </div>
+            </div>
+            
+            <div class="service-card">
+                <div class="service-card-image">
+                    <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/368254329?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479&background=1&muted=1&loop=1" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Engagement Session"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                </div>
+                <div class="service-card-content">
+                    <h3>Engagement Sessions</h3>
+                    <p>Capture your love story before the big day. Perfect for save-the-dates, wedding websites, or reception displays.</p>
+                    <a href="engagement-video.html" class="service-card-link">Learn More →</a>
+                </div>
             </div>
         </div>
     </section>
