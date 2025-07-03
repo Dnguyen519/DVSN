@@ -10,7 +10,7 @@ Home    |    Films    |    Services ▾    |    Studio    |    Contact
 
 #### **Wedding Videography**
 - Engagement Sessions — `/services/engagement-video.html`
-- Wedding Day Films — `/services/wedding-day-video.html`
+- Wedding Day Films — `/services/wedding-videographer.html`
 - Wedding Trailers — `/services/wedding-trailers.html`
 - Same Day Edits — `/services/same-day-edit.html`
 - Highlight Reels — `/services/wedding-highlight.html`
@@ -31,7 +31,7 @@ Home    |    Films    |    Services ▾    |    Studio    |    Contact
 
 ## 📄 Service Page Strategy
 
-Each service page (e.g., `/services/wedding-day-video.html`) will include:
+Each service page (e.g., `/services/wedding-videographer.html`) will include:
 
 - **H1 Tag:** Optimized title like “Wedding Day Videography in Ontario”
 - **Embedded Video Sample**

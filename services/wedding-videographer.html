@@ -270,6 +270,29 @@
             margin: 0 auto;
         }
         
+        .hero-play-button {
+            margin-top: 2rem;
+            padding: 15px 40px;
+            background: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+            font-size: 14px;
+            font-weight: 600;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero-play-button:hover {
+            background: var(--white);
+            color: var(--black);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.2);
+        }
+        
         /* Featured Film Section */
         .featured-section {
             padding: 120px 40px;
@@ -742,6 +765,127 @@
             width: 100%;
         }
         
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--white);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled .hamburger span {
+            background: var(--black);
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        /* Mobile Navigation Overlay */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--black);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .nav-links.active {
+                transform: translateX(0);
+            }
+            
+            .nav-links > a,
+            .nav-dropdown > a {
+                color: var(--white);
+                font-size: 18px;
+            }
+            
+            nav.scrolled .nav-links {
+                background: var(--white);
+            }
+            
+            nav.scrolled .nav-links > a,
+            nav.scrolled .nav-dropdown > a {
+                color: var(--black);
+            }
+            
+            /* Mobile Dropdown */
+            .nav-dropdown {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                transform: none;
+                background: transparent;
+                box-shadow: none;
+                border: none;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                opacity: 1;
+                visibility: visible;
+                margin-top: 0;
+            }
+            
+            .nav-dropdown.active .dropdown-menu {
+                max-height: 300px;
+                margin-top: 20px;
+            }
+            
+            .dropdown-links a {
+                color: var(--gray-300);
+                font-size: 16px;
+            }
+            
+            nav.scrolled .dropdown-links a {
+                color: var(--gray-600);
+            }
+            
+            .dropdown-links a:hover {
+                background: transparent;
+                padding-left: 30px;
+                color: var(--white);
+            }
+            
+            nav.scrolled .dropdown-links a:hover {
+                color: var(--black);
+                background: transparent;
+            }
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             .process-steps,
@@ -779,7 +923,15 @@
     <!-- Navigation -->
     <nav id="navbar">
         <a href="../index.html" class="logo">DVSN STUDIO</a>
-        <div class="nav-links">
+        
+        <!-- Hamburger Menu -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <div class="nav-links" id="nav-links">
             <a href="../films.html">FILMS</a>
             
             <!-- Services Dropdown -->
@@ -787,7 +939,7 @@
                 <a href="#" onclick="return false;">SERVICES</a>
                 <div class="dropdown-menu">
                     <ul class="dropdown-links">
-                        <li><a href="wedding-day-video.html">Wedding Day Films</a></li>
+                        <li><a href="wedding-videographer.html">Wedding Day Films</a></li>
                         <li><a href="engagement-video.html">Engagement Sessions</a></li>
                         <li><a href="wedding-trailers.html">Wedding Trailers</a></li>
                     </ul>
@@ -818,6 +970,7 @@
                 We capture the emotions, moments, and magic of your wedding day 
                 through cinematic storytelling.
             </p>
+            <button class="hero-play-button" onclick="scrollToFeaturedFilm()">PLAY</button>
         </div>
     </section>
     
@@ -829,8 +982,8 @@
                 <p>Our latest work showcasing what we do best</p>
             </div>
             
-            <div class="featured-video">
-                <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1092325630?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Vlad & Carmela - Wedding Day - DVSN Studio"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            <div class="featured-video" id="featured-video">
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe id="featured-iframe" src="https://player.vimeo.com/video/1092325630?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Vlad & Carmela - Wedding Day - DVSN Studio"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
             </div>
             
             <div class="featured-info">
@@ -1145,7 +1298,7 @@
                 <div class="footer-column">
                     <h4>Services</h4>
                     <ul>
-                        <li><a href="wedding-day-video.html">Wedding Films</a></li>
+                        <li><a href="wedding-videographer.html">Wedding Films</a></li>
                         <li><a href="engagement-video.html">Engagement</a></li>
                         <li><a href="wedding-trailers.html">Trailers</a></li>
                     </ul>
@@ -1185,6 +1338,33 @@
             }
         });
         
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const navDropdown = document.querySelector('.nav-dropdown');
+        
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 768) {
+            navDropdown.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.classList.toggle('active');
+            });
+        }
+        
+        // Close menu when clicking a link
+        const navItems = document.querySelectorAll('.nav-links > a');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
         // FAQ toggle
         function toggleFAQ(item) {
             const allFAQs = document.querySelectorAll('.faq-item');
@@ -1195,6 +1375,23 @@
             });
             
             item.classList.toggle('active');
+        }
+        
+        // Scroll to featured film and autoplay
+        function scrollToFeaturedFilm() {
+            const featuredSection = document.querySelector('.featured-section');
+            const iframe = document.getElementById('featured-iframe');
+            
+            // Scroll to the featured section
+            featuredSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            
+            // Autoplay the video using Vimeo Player API
+            setTimeout(() => {
+                const player = new Vimeo.Player(iframe);
+                player.play().catch(error => {
+                    console.log('Autoplay was prevented:', error);
+                });
+            }, 1000);
         }
     </script>
 </body>

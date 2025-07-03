@@ -27,7 +27,8 @@
       "Bash(git remote add:*)",
       "Bash(cp:*)",
       "Bash(mv:*)",
-      "Bash(touch:*)"
+      "Bash(touch:*)",
+      "Bash(rg:*)"
     ],
     "deny": []
   }

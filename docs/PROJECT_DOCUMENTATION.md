@@ -41,8 +41,8 @@ The website is hosted on Netlify with automatic deployments from the GitHub repo
 
 #### Service Pages
 1. **Wedding Day Video**
-   - File: `services/wedding-day-video.html`
-   - URL: https://jolly-biscochitos-dcd661.netlify.app/services/wedding-day-video.html
+   - File: `services/wedding-videographer.html`
+   - URL: https://jolly-biscochitos-dcd661.netlify.app/services/wedding-videographer.html
 
 2. **Engagement Video**
    - File: `services/engagement-video.html`
