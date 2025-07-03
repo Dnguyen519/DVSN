@@ -1,0 +1,812 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Trailers | Short Cinematic Teasers - DVSN Studios</title>
+    <meta name="description" content="Create excitement with a wedding trailer. 60-90 second cinematic teasers perfect for social media and save-the-dates. Quick turnaround available.">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-300: #d4d4d4;
+            --gray-400: #a3a3a3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --gray-900: #171717;
+            --accent: #ff0000;
+            --gold: #FFD700;
+        }
+        
+        html {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1;
+            overflow-x: hidden;
+            cursor: default;
+            max-width: 100%;
+            position: relative;
+        }
+        
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            background: var(--white);
+            border-bottom: 1px solid var(--black);
+        }
+        
+        nav.scrolled .logo,
+        nav.scrolled .nav-links a {
+            color: var(--black);
+        }
+        
+        .logo {
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: -0.02em;
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        /* Trailer Hero */
+        .trailer-hero {
+            position: relative;
+            height: 70vh;
+            background: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+        
+        /* Animated film strip background */
+        .film-strip {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            opacity: 0.1;
+            background: repeating-linear-gradient(
+                90deg,
+                transparent,
+                transparent 50px,
+                var(--white) 50px,
+                var(--white) 100px
+            );
+            animation: filmMove 10s linear infinite;
+        }
+        
+        @keyframes filmMove {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(100px); }
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: var(--white);
+            max-width: 900px;
+            padding: 0 40px;
+        }
+        
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 20px;
+            border: 1px solid var(--gold);
+            color: var(--gold);
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+        }
+        
+        .hero-title {
+            font-size: clamp(3rem, 8vw, 5rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+        }
+        
+        .hero-title span {
+            color: var(--gold);
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            font-weight: 300;
+            color: var(--gray-300);
+            line-height: 1.5;
+        }
+        
+        /* Trailer Types Section */
+        .types-section {
+            padding: 120px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+        
+        .types-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .type-card {
+            background: var(--gray-100);
+            padding: 60px 40px;
+            text-align: center;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .type-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: var(--gold);
+            transform: translateX(-100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .type-card:hover::before {
+            transform: translateX(0);
+        }
+        
+        .type-card:hover {
+            background: var(--white);
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        
+        .type-duration {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 10px;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+        
+        .type-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .type-description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--gray-600);
+        }
+        
+        /* Features Section */
+        .features-section {
+            background: var(--black);
+            color: var(--white);
+            padding: 120px 40px;
+        }
+        
+        .features-container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .features-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .features-header h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 1rem;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 60px;
+        }
+        
+        .feature-item {
+            display: flex;
+            gap: 30px;
+        }
+        
+        .feature-icon {
+            flex-shrink: 0;
+            width: 60px;
+            height: 60px;
+            background: var(--gold);
+            color: var(--black);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: 700;
+        }
+        
+        .feature-content h3 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        
+        .feature-content p {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--gray-300);
+        }
+        
+        /* Examples Section */
+        .examples-section {
+            padding: 120px 0;
+            background: var(--gray-100);
+        }
+        
+        .examples-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .example-item {
+            position: relative;
+            overflow: hidden;
+            cursor: pointer;
+            background: var(--black);
+        }
+        
+        .example-item:nth-child(1) { grid-column: span 12; aspect-ratio: 21/9; }
+        .example-item:nth-child(2) { grid-column: span 6; aspect-ratio: 16/9; }
+        .example-item:nth-child(3) { grid-column: span 6; aspect-ratio: 16/9; }
+        
+        .example-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.7);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            color: var(--white);
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .example-item:hover .example-overlay {
+            opacity: 1;
+        }
+        
+        .play-icon {
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+            font-size: 24px;
+        }
+        
+        .example-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+        
+        .example-type {
+            font-size: 14px;
+            color: var(--gold);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        /* Pricing Section */
+        .pricing-section {
+            padding: 120px 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        .pricing-card {
+            background: var(--white);
+            border: 3px solid var(--black);
+            padding: 80px 60px;
+            margin-top: 60px;
+        }
+        
+        .pricing-title {
+            font-size: 36px;
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+        
+        .pricing-price {
+            font-size: 72px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 30px;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+        
+        .pricing-features {
+            list-style: none;
+            font-size: 18px;
+            line-height: 2;
+            margin-bottom: 40px;
+        }
+        
+        .pricing-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .pricing-cta {
+            display: inline-block;
+            padding: 20px 60px;
+            background: var(--black);
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+        
+        .pricing-cta:hover {
+            background: var(--gold);
+            color: var(--black);
+            transform: translateY(-2px);
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--black) 0%, var(--gray-900) 100%);
+            color: var(--white);
+            padding: 120px 40px;
+            text-align: center;
+        }
+        
+        .cta-content h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 24px;
+            color: var(--gray-300);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--white);
+            padding: 80px 40px 40px;
+            border-top: 2px solid var(--black);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .footer-brand {
+            grid-column: 1 / 4;
+        }
+        
+        .footer-brand h3 {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+        
+        .footer-links {
+            grid-column: 5 / 12;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .footer-column h4 {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-column a:hover {
+            color: var(--black);
+        }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--gray-200);
+            font-size: 12px;
+            color: var(--gray-500);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .types-grid,
+            .features-grid,
+            .examples-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .example-item {
+                grid-column: span 12 !important;
+                aspect-ratio: 16/9 !important;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-brand,
+            .footer-links {
+                grid-column: 1 / -1;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="../index.html" class="logo">DVSN STUDIO</a>
+        <div class="nav-links">
+            <a href="../films.html">FILMS</a>
+            <a href="#" class="active">SERVICES</a>
+            <a href="../realestate.html">REAL ESTATE</a>
+            <a href="../studio.html">STUDIO</a>
+            <a href="../contact.html">CONTACT</a>
+        </div>
+    </nav>
+    
+    <!-- Trailer Hero -->
+    <section class="trailer-hero">
+        <div class="film-strip"></div>
+        <div class="hero-content">
+            <div class="hero-badge">QUICK TURNAROUND</div>
+            <h1 class="hero-title">
+                WEDDING<br>
+                <span>TRAILERS</span>
+            </h1>
+            <p class="hero-subtitle">
+                60-90 second cinematic teasers that capture the 
+                essence of your day. Perfect for sharing the excitement.
+            </p>
+        </div>
+    </section>
+    
+    <!-- Trailer Types -->
+    <section class="types-section">
+        <div class="section-header">
+            <h2>CHOOSE YOUR TRAILER STYLE</h2>
+            <p>Different formats for different moments</p>
+        </div>
+        
+        <div class="types-grid">
+            <div class="type-card">
+                <div class="type-duration">60s</div>
+                <h3 class="type-name">Instagram Reel</h3>
+                <p class="type-description">
+                    Quick, punchy, and perfect for social media. 
+                    Optimized for vertical and square formats.
+                </p>
+            </div>
+            
+            <div class="type-card">
+                <div class="type-duration">90s</div>
+                <h3 class="type-name">Classic Teaser</h3>
+                <p class="type-description">
+                    The perfect length to tell your story. 
+                    Ideal for save-the-dates and websites.
+                </p>
+            </div>
+            
+            <div class="type-card">
+                <div class="type-duration">2-3m</div>
+                <h3 class="type-name">Extended Preview</h3>
+                <p class="type-description">
+                    A mini-film that showcases more moments. 
+                    Great for sharing with distant family.
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Features Section -->
+    <section class="features-section">
+        <div class="features-container">
+            <div class="features-header">
+                <h2>WHAT MAKES OUR TRAILERS SPECIAL</h2>
+                <p style="color: var(--gray-400);">Every second counts in a wedding trailer</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-icon">⚡</div>
+                    <div class="feature-content">
+                        <h3>Quick Delivery</h3>
+                        <p>
+                            Get your trailer within 48-72 hours. Perfect for 
+                            sharing the excitement while it's fresh.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">🎵</div>
+                    <div class="feature-content">
+                        <h3>Perfect Music Sync</h3>
+                        <p>
+                            Every cut, movement, and moment is perfectly 
+                            synchronized to create maximum impact.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">📱</div>
+                    <div class="feature-content">
+                        <h3>Social Media Ready</h3>
+                        <p>
+                            Optimized for Instagram, Facebook, and TikTok 
+                            with proper formatting and compression.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="feature-item">
+                    <div class="feature-icon">🎬</div>
+                    <div class="feature-content">
+                        <h3>Cinematic Style</h3>
+                        <p>
+                            Same high-end production value as our full films, 
+                            condensed into a powerful short format.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Examples Section -->
+    <section class="examples-section">
+        <div class="examples-container">
+            <div class="section-header">
+                <h2>RECENT WEDDING TRAILERS</h2>
+                <p>See how we capture the essence of a wedding day in under 90 seconds</p>
+            </div>
+            
+            <div class="examples-grid">
+                <div class="example-item">
+                    <div class="example-overlay">
+                        <div class="play-icon">▶</div>
+                        <h3 class="example-title">Carmela & Vlad</h3>
+                        <p class="example-type">90 Second Teaser</p>
+                    </div>
+                </div>
+                
+                <div class="example-item">
+                    <div class="example-overlay">
+                        <div class="play-icon">▶</div>
+                        <h3 class="example-title">Sarah & Michael</h3>
+                        <p class="example-type">60 Second Instagram</p>
+                    </div>
+                </div>
+                
+                <div class="example-item">
+                    <div class="example-overlay">
+                        <div class="play-icon">▶</div>
+                        <h3 class="example-title">Emily & James</h3>
+                        <p class="example-type">Extended Preview</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Pricing Section -->
+    <section class="pricing-section">
+        <div class="section-header">
+            <h2>SIMPLE, TRANSPARENT PRICING</h2>
+            <p>Add a trailer to any wedding package or book standalone</p>
+        </div>
+        
+        <div class="pricing-card">
+            <h3 class="pricing-title">WEDDING TRAILER</h3>
+            <div class="pricing-price">$600</div>
+            <ul class="pricing-features">
+                <li>60-90 second cinematic teaser</li>
+                <li>48-72 hour delivery</li>
+                <li>Professional color grading</li>
+                <li>Licensed music</li>
+                <li>Social media optimized formats</li>
+                <li>4K master file included</li>
+            </ul>
+            <a href="../contact.html" class="pricing-cta">Book Your Trailer</a>
+        </div>
+        
+        <p style="margin-top: 40px; font-size: 18px; color: var(--gray-600);">
+            Save $200 when bundled with any wedding videography package
+        </p>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>READY TO CREATE YOUR TRAILER?</h2>
+            <p>Let's make something amazing in 90 seconds or less</p>
+            <a href="../contact.html" class="pricing-cta">Get Started</a>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>DVSN STUDIOS</h3>
+                <p>Cinematic Wedding Trailers</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="wedding-day-video.html">Wedding Films</a></li>
+                        <li><a href="engagement-video.html">Engagement</a></li>
+                        <li><a href="wedding-trailers.html">Trailers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Portfolio</h4>
+                    <ul>
+                        <li><a href="../films.html">Recent Work</a></li>
+                        <li><a href="../films.html#trailers">Trailers</a></li>
+                        <li><a href="../films.html#weddings">Weddings</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Vimeo</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2025 DVSN Studios. All rights reserved.</span>
+            <span>Toronto, Ontario</span>
+        </div>
+    </footer>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wedding Day Videography | Cinematic Wedding Films - DVSN Studios</title>
+    <meta name="description" content="Capture every moment of your wedding day with cinematic videography. Full-day coverage, multiple cameras, and professional editing. Toronto & GTA wedding videographer.">
+    <meta property="og:title" content="Wedding Day Videography - DVSN Studios">
+    <meta property="og:description" content="Cinematic wedding films that tell your love story. Professional wedding videography in Toronto.">
+    <meta property="og:type" content="website">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=Bebas+Neue&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        :root {
+            --black: #000000;
+            --white: #ffffff;
+            --gray-100: #f5f5f5;
+            --gray-200: #e5e5e5;
+            --gray-300: #d4d4d4;
+            --gray-400: #a3a3a3;
+            --gray-500: #737373;
+            --gray-600: #525252;
+            --gray-700: #404040;
+            --gray-800: #262626;
+            --gray-900: #171717;
+            --accent: #ff0000;
+            --gold: #FFD700;
+        }
+        
+        html {
+            overflow-x: hidden;
+            max-width: 100%;
+        }
+        
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--white);
+            color: var(--black);
+            line-height: 1;
+            overflow-x: hidden;
+            cursor: default;
+            max-width: 100%;
+            position: relative;
+        }
+        
+        ::selection {
+            background: var(--black);
+            color: var(--white);
+        }
+        
+        /* Navigation - Matches films.html */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(10px);
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 40px;
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled {
+            background: var(--white);
+            border-bottom: 1px solid var(--black);
+        }
+        
+        nav.scrolled .logo,
+        nav.scrolled .nav-links a {
+            color: var(--black);
+        }
+        
+        .logo {
+            font-weight: 900;
+            font-size: 18px;
+            letter-spacing: -0.02em;
+            color: var(--white);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 500;
+            font-size: 14px;
+            letter-spacing: 0.02em;
+            text-transform: uppercase;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        /* Service Hero Section */
+        .service-hero {
+            position: relative;
+            height: 70vh;
+            background: #000000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            overflow: hidden;
+            margin-top: 60px;
+        }
+        
+        .service-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(180deg, rgba(0,0,0,0.3) 0%, rgba(0,0,0,0.7) 100%);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        .service-badge {
+            font-size: 12px;
+            font-weight: 600;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--gold);
+            margin-bottom: 1rem;
+        }
+        
+        .service-title {
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 900;
+            letter-spacing: -0.03em;
+            line-height: 0.9;
+            color: var(--white);
+            margin-bottom: 1.5rem;
+        }
+        
+        .service-subtitle {
+            font-size: clamp(1.2rem, 2vw, 1.5rem);
+            font-weight: 400;
+            color: var(--gray-300);
+            line-height: 1.4;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        /* Service Intro Section */
+        .service-intro {
+            padding: 120px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .intro-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 40px;
+            align-items: center;
+        }
+        
+        .intro-content {
+            grid-column: 1 / 7;
+        }
+        
+        .intro-content h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            letter-spacing: -0.02em;
+            margin-bottom: 2rem;
+            line-height: 1.1;
+        }
+        
+        .intro-content p {
+            font-size: 18px;
+            line-height: 1.7;
+            color: var(--gray-600);
+            margin-bottom: 1.5rem;
+        }
+        
+        .intro-stats {
+            grid-column: 8 / 13;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        
+        .stat-box {
+            text-align: center;
+            padding: 40px;
+            border: 1px solid var(--gray-200);
+            transition: all 0.3s ease;
+        }
+        
+        .stat-box:hover {
+            background: var(--black);
+            color: var(--white);
+            transform: translateY(-5px);
+        }
+        
+        .stat-number {
+            font-size: 48px;
+            font-weight: 900;
+            color: var(--gold);
+            margin-bottom: 10px;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        /* Packages Section */
+        .packages-section {
+            background: var(--gray-100);
+            padding: 120px 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .section-header h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            margin-bottom: 1rem;
+        }
+        
+        .section-header p {
+            font-size: 20px;
+            color: var(--gray-600);
+        }
+        
+        .packages-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        .package-item {
+            border-top: 2px solid var(--black);
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+        
+        .package-item:hover {
+            background: var(--white);
+        }
+        
+        .package-item.expanded {
+            background: var(--black);
+            color: var(--white);
+        }
+        
+        .package-header {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            padding: 40px;
+            align-items: center;
+            gap: 20px;
+        }
+        
+        .package-name {
+            grid-column: 1 / 5;
+            font-size: clamp(24px, 3vw, 36px);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+        
+        .package-duration {
+            grid-column: 5 / 7;
+            font-size: 16px;
+            color: var(--gray-500);
+        }
+        
+        .package-price {
+            grid-column: 8 / 10;
+            font-size: 32px;
+            font-weight: 300;
+        }
+        
+        .package-expand {
+            grid-column: 12 / 13;
+            text-align: right;
+            font-size: 24px;
+            font-weight: 300;
+            transition: transform 0.3s ease;
+        }
+        
+        .package-item.expanded .package-expand {
+            transform: rotate(45deg);
+        }
+        
+        .package-content {
+            display: none;
+            padding: 0 40px 60px;
+        }
+        
+        .package-item.expanded .package-content {
+            display: block;
+        }
+        
+        .package-details {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 40px;
+        }
+        
+        .package-features {
+            grid-column: 1 / 7;
+        }
+        
+        .package-features h4 {
+            font-size: 20px;
+            margin-bottom: 20px;
+            color: var(--gold);
+        }
+        
+        .package-features ul {
+            list-style: none;
+        }
+        
+        .package-features li {
+            padding: 10px 0;
+            border-bottom: 1px solid var(--gray-800);
+            font-size: 16px;
+            line-height: 1.5;
+        }
+        
+        .package-cta {
+            grid-column: 8 / 12;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .cta-button {
+            display: inline-block;
+            padding: 20px 40px;
+            background: var(--gold);
+            color: var(--black);
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+            text-align: center;
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        /* Process Section */
+        .process-section {
+            padding: 120px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .process-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            margin-top: 80px;
+        }
+        
+        .process-step {
+            text-align: center;
+        }
+        
+        .step-number {
+            font-size: 72px;
+            font-weight: 900;
+            color: var(--gray-200);
+            margin-bottom: 20px;
+            font-family: 'Bebas Neue', sans-serif;
+        }
+        
+        .step-title {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 15px;
+        }
+        
+        .step-description {
+            font-size: 16px;
+            line-height: 1.6;
+            color: var(--gray-600);
+        }
+        
+        /* Sample Videos Section */
+        .samples-section {
+            background: var(--black);
+            padding: 120px 0;
+            color: var(--white);
+        }
+        
+        .samples-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        .sample-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+            margin-top: 60px;
+        }
+        
+        .sample-item {
+            position: relative;
+            aspect-ratio: 16 / 9;
+            background: var(--gray-900);
+            overflow: hidden;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .sample-item:hover {
+            transform: scale(0.98);
+        }
+        
+        .sample-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.6);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+        }
+        
+        .sample-item:hover .sample-overlay {
+            opacity: 1;
+        }
+        
+        .play-button {
+            width: 80px;
+            height: 80px;
+            border: 2px solid var(--white);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        
+        .play-button::after {
+            content: '▶';
+            font-size: 24px;
+            margin-left: 5px;
+        }
+        
+        .sample-title {
+            font-size: 20px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        /* FAQ Section */
+        .faq-section {
+            padding: 120px 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        
+        .faq-item {
+            border-bottom: 1px solid var(--gray-200);
+            padding: 30px 0;
+            cursor: pointer;
+        }
+        
+        .faq-question {
+            font-size: 20px;
+            font-weight: 600;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .faq-toggle {
+            font-size: 24px;
+            transition: transform 0.3s ease;
+        }
+        
+        .faq-item.active .faq-toggle {
+            transform: rotate(45deg);
+        }
+        
+        .faq-answer {
+            display: none;
+            margin-top: 20px;
+            font-size: 16px;
+            line-height: 1.7;
+            color: var(--gray-600);
+        }
+        
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+        
+        /* CTA Section */
+        .cta-section {
+            background: var(--black);
+            color: var(--white);
+            padding: 120px 40px;
+            text-align: center;
+        }
+        
+        .cta-content h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+        }
+        
+        .cta-content p {
+            font-size: 24px;
+            color: var(--gray-300);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        
+        .cta-primary {
+            background: var(--gold);
+            color: var(--black);
+            padding: 20px 60px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid var(--white);
+            padding: 18px 58px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            transition: all 0.3s ease;
+        }
+        
+        .cta-primary:hover,
+        .cta-secondary:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--white);
+            padding: 80px 40px 40px;
+            border-top: 2px solid var(--black);
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 40px;
+            margin-bottom: 60px;
+            max-width: 1400px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .footer-brand {
+            grid-column: 1 / 4;
+        }
+        
+        .footer-brand h3 {
+            font-size: 24px;
+            font-weight: 900;
+            margin-bottom: 10px;
+        }
+        
+        .footer-links {
+            grid-column: 5 / 12;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+        }
+        
+        .footer-column h4 {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            margin-bottom: 20px;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-column a {
+            color: var(--gray-600);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.2s ease;
+        }
+        
+        .footer-column a:hover {
+            color: var(--black);
+        }
+        
+        .footer-bottom {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 40px;
+            border-top: 1px solid var(--gray-200);
+            font-size: 12px;
+            color: var(--gray-500);
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .intro-grid,
+            .package-header,
+            .package-details,
+            .process-grid,
+            .sample-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .intro-content,
+            .intro-stats,
+            .package-name,
+            .package-duration,
+            .package-price,
+            .package-expand,
+            .package-features,
+            .package-cta {
+                grid-column: 1 / -1;
+            }
+            
+            .process-grid {
+                gap: 60px;
+            }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .footer-brand,
+            .footer-links {
+                grid-column: 1 / -1;
+            }
+            
+            .footer-bottom {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="navbar">
+        <a href="../index.html" class="logo">DVSN STUDIO</a>
+        <div class="nav-links">
+            <a href="../films.html">FILMS</a>
+            <a href="#" class="active">SERVICES</a>
+            <a href="../realestate.html">REAL ESTATE</a>
+            <a href="../studio.html">STUDIO</a>
+            <a href="../contact.html">CONTACT</a>
+        </div>
+    </nav>
+    
+    <!-- Service Hero -->
+    <section class="service-hero">
+        <div class="hero-content">
+            <div class="service-badge">Premium Service</div>
+            <h1 class="service-title">WEDDING DAY<br>VIDEOGRAPHY</h1>
+            <p class="service-subtitle">
+                Full-day cinematic coverage that captures every emotion, 
+                every moment, every detail of your celebration
+            </p>
+        </div>
+    </section>
+    
+    <!-- Service Introduction -->
+    <section class="service-intro">
+        <div class="intro-grid">
+            <div class="intro-content">
+                <h2>Your Love Story,<br>Cinematically Told</h2>
+                <p>
+                    From the nervous excitement of getting ready to the last dance of the night, 
+                    we're there to capture it all. Our wedding day videography service combines 
+                    artistic vision with technical excellence to create films that transport you 
+                    back to every moment.
+                </p>
+                <p>
+                    Using cinema-grade equipment and a documentary approach, we blend into your 
+                    day while capturing the authentic emotions and candid moments that make your 
+                    wedding uniquely yours.
+                </p>
+            </div>
+            <div class="intro-stats">
+                <div class="stat-box">
+                    <div class="stat-number">12+</div>
+                    <div class="stat-label">Hours Coverage</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">2-3</div>
+                    <div class="stat-label">Videographers</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">4K</div>
+                    <div class="stat-label">Cinema Quality</div>
+                </div>
+                <div class="stat-box">
+                    <div class="stat-number">∞</div>
+                    <div class="stat-label">Memories</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Packages Section -->
+    <section class="packages-section">
+        <div class="section-header">
+            <h2>WEDDING FILM PACKAGES</h2>
+            <p>Choose the perfect coverage for your special day</p>
+        </div>
+        
+        <div class="packages-container">
+            <!-- Essential Package -->
+            <div class="package-item" onclick="togglePackage(this)">
+                <div class="package-header">
+                    <h3 class="package-name">ESSENTIAL</h3>
+                    <span class="package-duration">6 Hours</span>
+                    <span class="package-price">$2,500</span>
+                    <span class="package-expand">+</span>
+                </div>
+                <div class="package-content">
+                    <div class="package-details">
+                        <div class="package-features">
+                            <h4>What's Included</h4>
+                            <ul>
+                                <li>6 hours of coverage</li>
+                                <li>1 videographer</li>
+                                <li>3-5 minute highlight film</li>
+                                <li>Ceremony & speeches coverage</li>
+                                <li>Professional color grading</li>
+                                <li>Licensed music</li>
+                                <li>Online delivery within 8 weeks</li>
+                            </ul>
+                        </div>
+                        <div class="package-cta">
+                            <a href="../contact.html" class="cta-button">Check Availability</a>
+                            <p style="color: var(--gray-400); margin-top: 20px;">
+                                Perfect for intimate weddings and shorter celebrations
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Signature Package -->
+            <div class="package-item" onclick="togglePackage(this)">
+                <div class="package-header">
+                    <h3 class="package-name">SIGNATURE</h3>
+                    <span class="package-duration">10 Hours</span>
+                    <span class="package-price">$3,800</span>
+                    <span class="package-expand">+</span>
+                </div>
+                <div class="package-content">
+                    <div class="package-details">
+                        <div class="package-features">
+                            <h4>What's Included</h4>
+                            <ul>
+                                <li>10 hours of coverage</li>
+                                <li>2 videographers</li>
+                                <li>5-7 minute cinematic film</li>
+                                <li>30-45 minute documentary edit</li>
+                                <li>Full ceremony & reception coverage</li>
+                                <li>Drone footage (weather permitting)</li>
+                                <li>Professional audio recording</li>
+                                <li>Same-day Instagram teaser</li>
+                                <li>Online delivery within 10 weeks</li>
+                            </ul>
+                        </div>
+                        <div class="package-cta">
+                            <a href="../contact.html" class="cta-button">Check Availability</a>
+                            <p style="color: var(--gray-400); margin-top: 20px;">
+                                Our most popular package for full-day weddings
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Luxury Package -->
+            <div class="package-item" onclick="togglePackage(this)">
+                <div class="package-header">
+                    <h3 class="package-name">LUXURY</h3>
+                    <span class="package-duration">Full Day</span>
+                    <span class="package-price">$5,500</span>
+                    <span class="package-expand">+</span>
+                </div>
+                <div class="package-content">
+                    <div class="package-details">
+                        <div class="package-features">
+                            <h4>What's Included</h4>
+                            <ul>
+                                <li>Unlimited hours coverage</li>
+                                <li>3 videographers</li>
+                                <li>8-10 minute feature film</li>
+                                <li>60+ minute documentary edit</li>
+                                <li>Raw footage delivery</li>
+                                <li>Rehearsal dinner coverage</li>
+                                <li>Multiple drone sessions</li>
+                                <li>Same-day highlight reel</li>
+                                <li>Guest interviews</li>
+                                <li>Priority editing (6 weeks)</li>
+                            </ul>
+                        </div>
+                        <div class="package-cta">
+                            <a href="../contact.html" class="cta-button">Check Availability</a>
+                            <p style="color: var(--gray-400); margin-top: 20px;">
+                                The ultimate wedding film experience
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Process Section -->
+    <section class="process-section">
+        <div class="section-header">
+            <h2>OUR PROCESS</h2>
+            <p>From first contact to final delivery</p>
+        </div>
+        
+        <div class="process-grid">
+            <div class="process-step">
+                <div class="step-number">01</div>
+                <h3 class="step-title">Consultation</h3>
+                <p class="step-description">
+                    We discuss your vision, style preferences, and wedding day timeline
+                </p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">02</div>
+                <h3 class="step-title">Planning</h3>
+                <p class="step-description">
+                    Detailed shot list creation and coordination with your photographer
+                </p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">03</div>
+                <h3 class="step-title">Filming</h3>
+                <p class="step-description">
+                    Discreet, professional coverage capturing every precious moment
+                </p>
+            </div>
+            <div class="process-step">
+                <div class="step-number">04</div>
+                <h3 class="step-title">Editing</h3>
+                <p class="step-description">
+                    Crafting your story with music, color, and cinematic techniques
+                </p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Sample Videos -->
+    <section class="samples-section">
+        <div class="samples-container">
+            <div class="section-header" style="color: var(--white);">
+                <h2>RECENT WEDDING FILMS</h2>
+                <p style="color: var(--gray-400);">See our cinematic style in action</p>
+            </div>
+            
+            <div class="sample-grid">
+                <div class="sample-item">
+                    <div class="sample-overlay">
+                        <div class="play-button"></div>
+                        <h3 class="sample-title">Sarah & Michael • Casa Loma</h3>
+                    </div>
+                </div>
+                <div class="sample-item">
+                    <div class="sample-overlay">
+                        <div class="play-button"></div>
+                        <h3 class="sample-title">Jessica & David • Muskoka</h3>
+                    </div>
+                </div>
+                <div class="sample-item">
+                    <div class="sample-overlay">
+                        <div class="play-button"></div>
+                        <h3 class="sample-title">Emily & James • Distillery</h3>
+                    </div>
+                </div>
+                <div class="sample-item">
+                    <div class="sample-overlay">
+                        <div class="play-button"></div>
+                        <h3 class="sample-title">Sophia & Alex • Niagara</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="section-header">
+            <h2>FREQUENTLY ASKED QUESTIONS</h2>
+        </div>
+        
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <div class="faq-question">
+                How long will our wedding film be?
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                The length depends on your package. Our highlight films range from 3-10 minutes, 
+                while documentary edits can be 30-60+ minutes. We focus on quality storytelling 
+                rather than just duration, ensuring every moment serves your story.
+            </div>
+        </div>
+        
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <div class="faq-question">
+                Do you use drones?
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                Yes! Drone footage is included in our Signature and Luxury packages. We're 
+                licensed drone operators and will capture stunning aerial shots of your venue 
+                and celebration, weather and venue restrictions permitting.
+            </div>
+        </div>
+        
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <div class="faq-question">
+                How do you work with photographers?
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                We work seamlessly with photographers, often sharing key moments and positions. 
+                We're experienced in coordinating shots without interfering with each other's 
+                work. We'll connect with your photographer before the wedding to ensure smooth 
+                collaboration.
+            </div>
+        </div>
+        
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <div class="faq-question">
+                Can we choose our own music?
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                Absolutely! We can use your song choices where possible, or we'll select from 
+                our library of licensed music that matches your style. We ensure all music is 
+                properly licensed for online sharing.
+            </div>
+        </div>
+        
+        <div class="faq-item" onclick="toggleFAQ(this)">
+            <div class="faq-question">
+                What's your turnaround time?
+                <span class="faq-toggle">+</span>
+            </div>
+            <div class="faq-answer">
+                Delivery times vary by package: Essential (8 weeks), Signature (10 weeks), 
+                Luxury (6 weeks priority). We also offer rush delivery for an additional fee 
+                if you need your film sooner.
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="cta-content">
+            <h2>READY TO TELL YOUR STORY?</h2>
+            <p>Let's create something beautiful together</p>
+            <div class="cta-buttons">
+                <a href="../contact.html" class="cta-primary">Check Availability</a>
+                <a href="../films.html" class="cta-secondary">View Portfolio</a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <h3>DVSN STUDIOS</h3>
+                <p>Cinematic Wedding Films</p>
+            </div>
+            <div class="footer-links">
+                <div class="footer-column">
+                    <h4>Services</h4>
+                    <ul>
+                        <li><a href="wedding-day-video.html">Wedding Films</a></li>
+                        <li><a href="engagement-video.html">Engagement</a></li>
+                        <li><a href="same-day-edit.html">Same Day Edit</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Portfolio</h4>
+                    <ul>
+                        <li><a href="../films.html">Recent Work</a></li>
+                        <li><a href="../films.html#weddings">Weddings</a></li>
+                        <li><a href="../films.html#engagements">Engagements</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Connect</h4>
+                    <ul>
+                        <li><a href="#">Instagram</a></li>
+                        <li><a href="#">Vimeo</a></li>
+                        <li><a href="../contact.html">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <span>&copy; 2025 DVSN Studios. All rights reserved.</span>
+            <span>Toronto, Ontario</span>
+        </div>
+    </footer>
+    
+    <script>
+        // Navbar scroll effect
+        window.addEventListener('scroll', function() {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+        
+        // Package toggle
+        function togglePackage(item) {
+            // Close all other packages
+            const allPackages = document.querySelectorAll('.package-item');
+            allPackages.forEach(p => {
+                if (p !== item) {
+                    p.classList.remove('expanded');
+                }
+            });
+            
+            // Toggle current package
+            item.classList.toggle('expanded');
+        }
+        
+        // FAQ toggle
+        function toggleFAQ(item) {
+            // Close all other FAQs
+            const allFAQs = document.querySelectorAll('.faq-item');
+            allFAQs.forEach(f => {
+                if (f !== item) {
+                    f.classList.remove('active');
+                }
+            });
+            
+            // Toggle current FAQ
+            item.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>
