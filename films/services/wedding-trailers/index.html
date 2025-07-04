@@ -358,6 +358,52 @@
             margin-top: 60px;
         }
         
+        .hero-video {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: 1;
+            opacity: 0.3;
+        }
+        
+        .hero-play-btn {
+            position: absolute;
+            bottom: 40px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 80px;
+            background: var(--white);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .hero-play-btn:hover {
+            transform: translateX(-50%) scale(1.1);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+        
+        .hero-play-btn::after {
+            content: '';
+            width: 0;
+            height: 0;
+            border-left: 20px solid var(--black);
+            border-top: 12px solid transparent;
+            border-bottom: 12px solid transparent;
+            margin-left: 5px;
+        }
+        
         /* Animated film strip background */
         .film-strip {
             position: absolute;
@@ -559,6 +605,12 @@
             background: var(--gray-100);
         }
         
+        @media (max-width: 768px) {
+            .examples-section {
+                padding: 60px 0;
+            }
+        }
+        
         .examples-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -569,7 +621,7 @@
             display: grid;
             grid-template-columns: repeat(12, 1fr);
             gap: 40px;
-            margin-top: 60px;
+            margin-top: 30px;
         }
         
         .example-item {
@@ -848,6 +900,7 @@
     
     <!-- Trailer Hero -->
     <section class="trailer-hero">
+        <div style="padding:56.25% 0 0 0;position:relative;width:100%;height:100%;"><iframe class="hero-video" src="https://player.vimeo.com/video/1089926329?background=1&autoplay=1&loop=1&byline=0&title=0&muted=1" frameborder="0" allow="autoplay; fullscreen" style="position:absolute;top:0;left:0;width:100%;height:100%;" allowfullscreen></iframe></div>
         <div class="film-strip"></div>
         <div class="hero-content">
             <div class="hero-badge">TRAILER</div>
@@ -859,6 +912,7 @@
                 Your wedding, thoughtfully captured and presented like a cinematic experience.
             </p>
         </div>
+        <button class="hero-play-btn" onclick="document.getElementById('recent-trailers').scrollIntoView({ behavior: 'smooth' })" aria-label="Watch trailer"></button>
     </section>
     
     <!-- The Process -->
@@ -871,28 +925,25 @@
         <div class="types-grid">
             <div class="type-card">
                 <div class="type-duration">1</div>
-                <h3 class="type-name">The Trailer Drop</h3>
+                <h3 class="type-name">Trailer Preview</h3>
                 <p class="type-description">
-                    Just like Hollywood, we release your wedding trailer first. 
-                    Build excitement and give everyone a tantalizing preview.
+                    We start by delivering a short wedding trailer. It's a quick way to relive the day and share a sneak peek with your friends and family.
                 </p>
             </div>
             
             <div class="type-card">
                 <div class="type-duration">2</div>
-                <h3 class="type-name">The Main Feature</h3>
+                <h3 class="type-name">Full Feature Film</h3>
                 <p class="type-description">
-                    Your full wedding film premieres next. Friends and family 
-                    are already hyped from the trailer they've seen.
+                    Next comes the full-length film—crafted to tell your complete story with all the important moments, big and small.
                 </p>
             </div>
             
             <div class="type-card">
                 <div class="type-duration">3</div>
-                <h3 class="type-name">The Audience Reaction</h3>
+                <h3 class="type-name">Shareable Memories</h3>
                 <p class="type-description">
-                    Watch as loved ones share, comment, and relive your special 
-                    day. Your wedding becomes the movie everyone's talking about.
+                    Once your films are ready, we make it easy to share. Watch as your loved ones enjoy, comment, and revisit the day with you.
                 </p>
             </div>
         </div>
@@ -955,7 +1006,7 @@
     </section>
     
     <!-- Examples Section -->
-    <section class="examples-section">
+    <section class="examples-section" id="recent-trailers">
         <div class="examples-container">
             <div class="section-header">
                 <h2>RECENT WEDDING TRAILERS</h2>
