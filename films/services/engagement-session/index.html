@@ -781,6 +781,33 @@
             padding: 120px 0;
         }
         
+        .pause-button {
+            background: var(--white);
+            color: var(--black);
+            border: 2px solid var(--white);
+            padding: 12px 24px;
+            margin-top: 20px;
+            cursor: pointer;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            font-size: 14px;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .pause-button:hover {
+            background: transparent;
+            color: var(--white);
+            border-color: var(--white);
+        }
+        
+        .pause-icon, .play-icon {
+            font-size: 16px;
+        }
+        
         .gallery-container {
             max-width: 1400px;
             margin: 0 auto;
@@ -1293,6 +1320,11 @@
             <div class="gallery-header">
                 <h2>RECENT ENGAGEMENT FILMS</h2>
                 <p style="color: var(--gray-400);">Click to watch our latest love stories</p>
+                <button id="pauseAllVideos" class="pause-button" onclick="toggleAllVideos()">
+                    <span class="pause-icon">❚❚</span>
+                    <span class="play-icon" style="display: none;">▶</span>
+                    <span class="button-text">Pause All</span>
+                </button>
             </div>
             
             <div class="gallery-grid" id="engagement-gallery">
@@ -1531,6 +1563,42 @@
                 observer.observe(item);
             });
         });
+        
+        // Pause/Play all videos functionality
+        let videosPlaying = true;
+        
+        function toggleAllVideos() {
+            const button = document.getElementById('pauseAllVideos');
+            const pauseIcon = button.querySelector('.pause-icon');
+            const playIcon = button.querySelector('.play-icon');
+            const buttonText = button.querySelector('.button-text');
+            
+            if (videosPlaying) {
+                // Pause all videos
+                const iframes = document.querySelectorAll('#engagement-gallery iframe');
+                iframes.forEach(iframe => {
+                    const player = new Vimeo.Player(iframe);
+                    player.pause();
+                });
+                
+                pauseIcon.style.display = 'none';
+                playIcon.style.display = 'inline';
+                buttonText.textContent = 'Play All';
+                videosPlaying = false;
+            } else {
+                // Play all videos
+                const iframes = document.querySelectorAll('#engagement-gallery iframe');
+                iframes.forEach(iframe => {
+                    const player = new Vimeo.Player(iframe);
+                    player.play();
+                });
+                
+                pauseIcon.style.display = 'inline';
+                playIcon.style.display = 'none';
+                buttonText.textContent = 'Pause All';
+                videosPlaying = true;
+            }
+        }
     </script>
 </body>
 </html>

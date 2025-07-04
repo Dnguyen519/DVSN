@@ -38,12 +38,11 @@ This document contains all the Vimeo embed codes for DVSN Studios videos, organi
 - **Category**: Engagement Session
 - **Year**: 2024
 
-### 2. Carmela & Vlad - Engagement Session (2024)
+### 2. Carmela & Vlad - 30s Trailer (2024)
 ```html
-<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1076577538?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Carmela & Vlad Engagement - DVSN Studio"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1038019787?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Carmela & Vlad 30s Trailer"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 ```
-- **Video ID**: 1076577538 (Note: Returns 403 Forbidden - video may be private)
+- **Video ID**: 1038019787 (30 second trailer version)
 - **Category**: Engagement Session
 - **Year**: 2024
 
