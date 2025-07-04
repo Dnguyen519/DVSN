@@ -75,7 +75,7 @@
         }
         
         nav.scrolled .logo,
-        nav.scrolled .nav-links > a {
+        nav.scrolled .nav-links a {
             color: var(--black);
         }
         
@@ -118,6 +118,20 @@
             color: var(--gray-600);
         }
         
+        .nav-links > a.active::after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: var(--gold);
+        }
+        
+        nav.scrolled .nav-links > a.active::after {
+            background: var(--accent);
+        }
+        
         /* Dropdown Container */
         .nav-dropdown {
             position: relative;
@@ -140,13 +154,14 @@
             top: 100%;
             left: 0;
             background: var(--white);
-            min-width: 280px;
+            min-width: 250px;
             box-shadow: 0 10px 40px rgba(0,0,0,0.1);
             opacity: 0;
             visibility: hidden;
             transition: all 0.3s ease;
             margin-top: 20px;
             border: 1px solid var(--gray-200);
+            padding: 20px 0;
         }
         
         .nav-dropdown:hover .dropdown-menu {
@@ -156,7 +171,6 @@
         }
         
         nav.scrolled .dropdown-menu {
-            background: var(--white);
             border: 1px solid var(--black);
         }
         
@@ -186,7 +200,7 @@
         
         .dropdown-links a {
             display: block;
-            padding: 10px 30px;
+            padding: 12px 30px;
             color: var(--black);
             text-decoration: none;
             font-size: 14px;
@@ -542,6 +556,130 @@
             color: var(--gray-300);
             text-transform: uppercase;
             letter-spacing: 0.1em;
+        }
+        
+        /* Vibes Section */
+        .vibes-section {
+            background: var(--black);
+            color: var(--white);
+            padding: 100px 0;
+            position: relative;
+        }
+        
+        .vibes-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+        }
+        
+        .vibes-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+        
+        .vibes-header h2 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 900;
+            letter-spacing: -0.02em;
+            margin-bottom: 20px;
+        }
+        
+        .vibes-header p {
+            font-size: 20px;
+            color: var(--gray-300);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .vibe-category {
+            margin-bottom: 100px;
+        }
+        
+        .vibe-category:last-child {
+            margin-bottom: 0;
+        }
+        
+        .vibe-title {
+            margin-bottom: 40px;
+        }
+        
+        .vibe-title h3 {
+            font-size: 36px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 10px;
+            color: var(--gold);
+        }
+        
+        .vibe-title p {
+            font-size: 18px;
+            color: var(--gray-400);
+        }
+        
+        .vibe-videos {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 40px;
+        }
+        
+        .vibe-item {
+            position: relative;
+            overflow: hidden;
+            background: var(--gray-900);
+            transition: all 0.3s ease;
+        }
+        
+        .vibe-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+        }
+        
+        .video-wrapper {
+            width: 100%;
+            background: var(--black);
+        }
+        
+        .vibe-info {
+            padding: 20px;
+            background: var(--gray-900);
+            border-top: 1px solid var(--gray-800);
+        }
+        
+        .vibe-info h4 {
+            font-size: 20px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: var(--white);
+        }
+        
+        .vibe-info p {
+            font-size: 14px;
+            color: var(--gray-400);
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        @media (max-width: 768px) {
+            .vibes-section {
+                padding: 60px 0;
+            }
+            
+            .vibes-header {
+                margin-bottom: 40px;
+            }
+            
+            .vibe-category {
+                margin-bottom: 60px;
+            }
+            
+            .vibe-videos {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .vibe-title h3 {
+                font-size: 28px;
+            }
         }
         
         /* Packages Section */
@@ -1013,60 +1151,94 @@
         </div>
     </section>
     
-    <!-- Locations Section -->
-    <section class="locations-section">
-        <div class="locations-container">
-            <div class="locations-header">
-                <h2>POPULAR TORONTO LOCATIONS</h2>
-                <p>From urban landscapes to natural beauty, we know all the best spots</p>
+    <!-- Vibes Section -->
+    <section class="vibes-section">
+        <div class="vibes-container">
+            <div class="vibes-header">
+                <h2>FIND YOUR VIBE</h2>
+                <p>Every couple has their own unique style. Which one speaks to you?</p>
             </div>
             
-            <div class="location-grid">
-                <div class="location-item">
-                    <img src="../images/locations/toronto-islands.jpg" alt="Toronto Islands" class="location-image" onerror="this.style.background='#1a1a1a'">
-                    <div class="location-info">
-                        <h3 class="location-name">Toronto Islands</h3>
-                        <p class="location-type">Beach & Skyline Views</p>
+            <!-- Natural & Candid -->
+            <div class="vibe-category">
+                <div class="vibe-title">
+                    <h3>Natural & Candid</h3>
+                    <p>Authentic moments in beautiful outdoor settings</p>
+                </div>
+                <div class="vibe-videos">
+                    <div class="vibe-item">
+                        <div class="video-wrapper">
+                            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/352842917?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="John & Nancy"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                        </div>
+                        <div class="vibe-info">
+                            <h4>John & Nancy</h4>
+                            <p>Toronto Island</p>
+                        </div>
+                    </div>
+                    <div class="vibe-item">
+                        <div class="video-wrapper">
+                            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/352844836?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Star & Pedro"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                        </div>
+                        <div class="vibe-info">
+                            <h4>Star & Pedro</h4>
+                            <p>Lakefront</p>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="location-item">
-                    <img src="../images/locations/distillery-district.jpg" alt="Distillery District" class="location-image" onerror="this.style.background='#1a1a1a'">
-                    <div class="location-info">
-                        <h3 class="location-name">Distillery District</h3>
-                        <p class="location-type">Historic & Industrial</p>
+            </div>
+            
+            <!-- Urban & Modern -->
+            <div class="vibe-category">
+                <div class="vibe-title">
+                    <h3>Urban & Modern</h3>
+                    <p>City vibes with contemporary elegance</p>
+                </div>
+                <div class="vibe-videos">
+                    <div class="vibe-item">
+                        <div class="video-wrapper">
+                            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/879540357?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="David & Courtney"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                        </div>
+                        <div class="vibe-info">
+                            <h4>David & Courtney</h4>
+                            <p>Downtown Toronto</p>
+                        </div>
+                    </div>
+                    <div class="vibe-item">
+                        <div class="video-wrapper">
+                            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/371011770?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Dan & Marissa"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                        </div>
+                        <div class="vibe-info">
+                            <h4>Dan & Marissa</h4>
+                            <p>City Architecture</p>
+                        </div>
                     </div>
                 </div>
-                
-                <div class="location-item">
-                    <img src="../images/locations/high-park.jpg" alt="High Park" class="location-image" onerror="this.style.background='#1a1a1a'">
-                    <div class="location-info">
-                        <h3 class="location-name">High Park</h3>
-                        <p class="location-type">Nature & Gardens</p>
-                    </div>
+            </div>
+            
+            <!-- Romantic & Cinematic -->
+            <div class="vibe-category">
+                <div class="vibe-title">
+                    <h3>Romantic & Cinematic</h3>
+                    <p>Dreamy storytelling with emotional depth</p>
                 </div>
-                
-                <div class="location-item">
-                    <img src="../images/locations/casa-loma.jpg" alt="Casa Loma" class="location-image" onerror="this.style.background='#1a1a1a'">
-                    <div class="location-info">
-                        <h3 class="location-name">Casa Loma</h3>
-                        <p class="location-type">Castle & Gardens</p>
+                <div class="vibe-videos">
+                    <div class="vibe-item">
+                        <div class="video-wrapper">
+                            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/518215376?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Mike & Jess"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                        </div>
+                        <div class="vibe-info">
+                            <h4>Mike & Jess</h4>
+                            <p>High Park</p>
+                        </div>
                     </div>
-                </div>
-                
-                <div class="location-item">
-                    <img src="../images/locations/harbourfront.jpg" alt="Harbourfront" class="location-image" onerror="this.style.background='#1a1a1a'">
-                    <div class="location-info">
-                        <h3 class="location-name">Harbourfront</h3>
-                        <p class="location-type">Waterfront & City</p>
-                    </div>
-                </div>
-                
-                <div class="location-item">
-                    <img src="../images/locations/trinity-bellwoods.jpg" alt="Trinity Bellwoods" class="location-image" onerror="this.style.background='#1a1a1a'">
-                    <div class="location-info">
-                        <h3 class="location-name">Trinity Bellwoods</h3>
-                        <p class="location-type">Urban Park</p>
+                    <div class="vibe-item">
+                        <div class="video-wrapper">
+                            <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1043016799?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Devin & Yeelok"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+                        </div>
+                        <div class="vibe-info">
+                            <h4>Devin & Yeelok</h4>
+                            <p>Golden Hour Magic</p>
+                        </div>
                     </div>
                 </div>
             </div>
