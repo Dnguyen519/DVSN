@@ -22,9 +22,9 @@ This document contains all the Vimeo embed codes for DVSN Studios videos, organi
 
 ### 3. Dan & Marissa - Wedding Film (2019)
 ```html
-<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/331764175?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Dan + Marissa Wedding Video"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/371011770?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Dan & Marissa Wedding Video"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 ```
-- **Video ID**: 331764175
+- **Video ID**: 371011770
 - **Category**: Wedding Film
 - **Year**: 2019
 
@@ -49,25 +49,33 @@ This document contains all the Vimeo embed codes for DVSN Studios videos, organi
 
 ### 3. Mike & Jess - Engagement Session (2021)
 ```html
-<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/511889378?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Mike & Jess Engagement"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/518215376?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Mike & Jess Engagement"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 ```
-- **Video ID**: 511889378
+- **Video ID**: 518215376
 - **Category**: Engagement Session
 - **Year**: 2021
 
 ### 4. John & Nancy - Engagement Session (2019)
 ```html
-<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/345305892?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="John & Nancy Engagement"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/352842917?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="John & Nancy Engagement"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 ```
-- **Video ID**: 345305892
+- **Video ID**: 352842917
 - **Category**: Engagement Session
 - **Year**: 2019
 
-### 5. Star & Pedro - Engagement Session (2019)
+### 5. Devin & Yeelok - Engagement Session 2 (2024)
 ```html
-<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/339695406?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Star & Pedro Engagement"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1043016799?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Devin & Yeelok Engagement"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 ```
-- **Video ID**: 339695406
+- **Video ID**: 1043016799
+- **Category**: Engagement Session
+- **Year**: 2024
+
+### 6. Star & Pedro - Engagement Session (2019)
+```html
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/352844836?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Star & Pedro Engagement"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+```
+- **Video ID**: 352844836
 - **Category**: Engagement Session
 - **Year**: 2019
 
