@@ -32,9 +32,9 @@ This document contains all the Vimeo embed codes for DVSN Studios videos, organi
 
 ### 1. Devin & Yeelok - Engagement Session (2024)
 ```html
-<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/988498444?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Devin & Yeelok Engagement"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1043016799?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Devin & Yeelok Engagement"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 ```
-- **Video ID**: 988498444
+- **Video ID**: 1043016799 (Note: 988498444 returns 404)
 - **Category**: Engagement Session
 - **Year**: 2024
 
@@ -43,7 +43,7 @@ This document contains all the Vimeo embed codes for DVSN Studios videos, organi
 <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1076577538?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Carmela & Vlad Engagement - DVSN Studio"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 
 ```
-- **Video ID**: 1076577538
+- **Video ID**: 1076577538 (Note: Returns 403 Forbidden - video may be private)
 - **Category**: Engagement Session
 - **Year**: 2024
 
@@ -63,15 +63,7 @@ This document contains all the Vimeo embed codes for DVSN Studios videos, organi
 - **Category**: Engagement Session
 - **Year**: 2019
 
-### 5. Devin & Yeelok - Engagement Session 2 (2024)
-```html
-<div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/1043016799?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Devin & Yeelok Engagement"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
-```
-- **Video ID**: 1043016799
-- **Category**: Engagement Session
-- **Year**: 2024
-
-### 6. Star & Pedro - Engagement Session (2019)
+### 5. Star & Pedro - Engagement Session (2019)
 ```html
 <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/352844836?title=0&byline=0&portrait=0&badge=0&autopause=0&player_id=0&app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Star & Pedro Engagement"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
 ```
