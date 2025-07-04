@@ -68,7 +68,7 @@
         }
         
         nav.scrolled .logo,
-        nav.scrolled .nav-links a {
+        nav.scrolled .nav-links > a {
             color: var(--black);
         }
         
@@ -85,9 +85,11 @@
             display: flex;
             gap: 40px;
             list-style: none;
+            align-items: center;
         }
         
-        .nav-links a {
+        .nav-links > a,
+        .nav-dropdown > a {
             text-decoration: none;
             color: var(--white);
             font-weight: 500;
@@ -96,6 +98,228 @@
             text-transform: uppercase;
             transition: all 0.3s ease;
             position: relative;
+            padding: 20px 0;
+        }
+        
+        .nav-links > a:hover,
+        .nav-dropdown > a:hover {
+            opacity: 0.7;
+        }
+        
+        nav.scrolled .nav-links > a:hover,
+        nav.scrolled .nav-dropdown > a:hover {
+            color: var(--gray-600);
+        }
+        
+        /* Dropdown Container */
+        .nav-dropdown {
+            position: relative;
+        }
+        
+        .nav-dropdown > a::after {
+            content: '▾';
+            margin-left: 5px;
+            font-size: 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .nav-dropdown:hover > a::after {
+            transform: rotate(180deg);
+        }
+        
+        /* Dropdown Menu */
+        .dropdown-menu {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            background: var(--white);
+            min-width: 280px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            margin-top: 20px;
+            border: 1px solid var(--gray-200);
+        }
+        
+        .nav-dropdown:hover .dropdown-menu {
+            opacity: 1;
+            visibility: visible;
+            margin-top: 10px;
+        }
+        
+        nav.scrolled .dropdown-menu {
+            background: var(--white);
+            border: 1px solid var(--black);
+        }
+        
+        /* Dropdown Sections */
+        .dropdown-section {
+            padding: 20px 0;
+            border-bottom: 1px solid var(--gray-200);
+        }
+        
+        .dropdown-section:last-child {
+            border-bottom: none;
+        }
+        
+        .dropdown-title {
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+            color: var(--gray-500);
+            padding: 0 30px;
+            margin-bottom: 10px;
+        }
+        
+        .dropdown-links {
+            list-style: none;
+        }
+        
+        .dropdown-links a {
+            display: block;
+            padding: 10px 30px;
+            color: var(--black);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.2s ease;
+            position: relative;
+        }
+        
+        .dropdown-links a:hover {
+            background: var(--gray-100);
+            padding-left: 35px;
+        }
+        
+        nav.scrolled .dropdown-links a {
+            color: var(--black);
+        }
+        
+        nav.scrolled .dropdown-links a:hover {
+            background: var(--black);
+            color: var(--white);
+        }
+        
+        /* Hamburger Menu */
+        .hamburger {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 10px;
+            z-index: 1001;
+        }
+        
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background: var(--white);
+            margin: 5px 0;
+            transition: all 0.3s ease;
+        }
+        
+        nav.scrolled .hamburger span {
+            background: var(--black);
+        }
+        
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+        }
+        
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(7px, -6px);
+        }
+        
+        /* Mobile Navigation Overlay */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+            
+            .nav-links {
+                position: fixed;
+                top: 60px;
+                left: 0;
+                right: 0;
+                bottom: 0;
+                background: var(--black);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 30px;
+                transform: translateX(100%);
+                transition: transform 0.3s ease;
+            }
+            
+            .nav-links.active {
+                transform: translateX(0);
+            }
+            
+            .nav-links > a,
+            .nav-dropdown > a {
+                color: var(--white);
+                font-size: 18px;
+            }
+            
+            nav.scrolled .nav-links {
+                background: var(--white);
+            }
+            
+            nav.scrolled .nav-links > a,
+            nav.scrolled .nav-dropdown > a {
+                color: var(--black);
+            }
+            
+            /* Mobile Dropdown */
+            .nav-dropdown {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .dropdown-menu {
+                position: static;
+                transform: none;
+                background: transparent;
+                box-shadow: none;
+                border: none;
+                max-height: 0;
+                overflow: hidden;
+                transition: max-height 0.3s ease;
+                opacity: 1;
+                visibility: visible;
+                margin-top: 0;
+            }
+            
+            .nav-dropdown.active .dropdown-menu {
+                max-height: 300px;
+                margin-top: 20px;
+            }
+            
+            .dropdown-links a {
+                color: var(--gray-300);
+                font-size: 16px;
+            }
+            
+            nav.scrolled .dropdown-links a {
+                color: var(--gray-600);
+            }
+            
+            .dropdown-links a:hover {
+                background: transparent;
+                padding-left: 30px;
+                color: var(--white);
+            }
+            
+            nav.scrolled .dropdown-links a:hover {
+                color: var(--black);
+                background: transparent;
+            }
         }
         
         /* Trailer Hero */
@@ -567,13 +791,33 @@
 <body>
     <!-- Navigation -->
     <nav id="navbar">
-        <a href="../index.html" class="logo">DVSN STUDIO</a>
-        <div class="nav-links">
-            <a href="../films.html">FILMS</a>
-            <a href="#" class="active">SERVICES</a>
-            <a href="../realestate.html">REAL ESTATE</a>
-            <a href="../studio.html">STUDIO</a>
-            <a href="../contact.html">CONTACT</a>
+        <a href="/films/" class="logo">DVSN FILMS</a>
+        
+        <!-- Hamburger Menu -->
+        <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+        
+        <div class="nav-links" id="nav-links">
+            <a href="/films/">FILMS</a>
+            
+            <!-- Services Dropdown -->
+            <div class="nav-dropdown">
+                <a href="#" onclick="return false;">SERVICES</a>
+                <div class="dropdown-menu">
+                    <ul class="dropdown-links">
+                        <li><a href="/films/services/wedding-videographer/">Wedding Day Films</a></li>
+                        <li><a href="/films/services/engagement-video/">Engagement Sessions</a></li>
+                        <li><a href="/films/services/wedding-trailers/">Wedding Trailers</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <a href="/films/locations/toronto/">LOCATIONS</a>
+            <a href="/studio/">ABOUT</a>
+            <a href="/contact.html">CONTACT</a>
         </div>
     </nav>
     
@@ -794,6 +1038,33 @@
             } else {
                 navbar.classList.remove('scrolled');
             }
+        });
+        
+        // Hamburger menu toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('nav-links');
+        const navDropdown = document.querySelector('.nav-dropdown');
+        
+        hamburger.addEventListener('click', function() {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        // Mobile dropdown toggle
+        if (window.innerWidth <= 768) {
+            navDropdown.addEventListener('click', function(e) {
+                e.preventDefault();
+                this.classList.toggle('active');
+            });
+        }
+        
+        // Close menu when clicking a link
+        const navItems = document.querySelectorAll('.nav-links > a');
+        navItems.forEach(item => {
+            item.addEventListener('click', function() {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
         });
     </script>
 </body>

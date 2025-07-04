@@ -15,16 +15,24 @@ This is the DVSN Studio website - a cinematic wedding videography portfolio site
 ```
 /
 ├── index.html              # Home page
-├── films.html              # Video portfolio
-├── realestate.html         # Real estate videography
-├── studio.html             # About page
-├── x.html                  # Personal photography
 ├── contact.html            # Contact page
-├── wedding-videographer-toronto.html  # SEO location page
-├── services/
-│   ├── wedding-videographer.html
-│   ├── engagement-video.html
-│   └── wedding-trailers.html
+├── studio.html             # Studio/About page
+├── x.html                  # Personal photography
+├── films/
+│   ├── index.html          # Films main page
+│   ├── services/
+│   │   ├── wedding-videographer/
+│   │   │   └── index.html
+│   │   ├── engagement-video/
+│   │   │   └── index.html
+│   │   └── wedding-trailers/
+│   │       └── index.html
+│   └── locations/
+│       └── toronto/
+│           └── index.html  # Toronto location page
+├── real-estate/
+│   ├── index.html          # Real estate main page
+│   └── services/           # Future real estate services
 └── docs/
     ├── PROJECT_DOCUMENTATION.md
     ├── DVSN_Films_Structure_and_SEO.md
@@ -39,6 +47,20 @@ All pages now feature:
 - Services dropdown (wedding services only for Films pages)
 - Consistent styling across all business verticals
 - Separate navigation structures per business (Films, Real Estate, Studio)
+
+### ✅ URL Structure Reorganization
+The site has been reorganized with business-specific directories:
+- **Films**: `/films/` with services under `/films/services/[service-name]/`
+- **Real Estate**: `/real-estate/` with future services under `/real-estate/services/`
+- **Studio**: `/studio/` (to be implemented)
+- **X (Photography)**: `/x/` (to be implemented)
+
+### Business-Specific Navigation
+Each business vertical has its own navigation:
+- **Films pages**: Show only Films, Services (dropdown), Locations, About, Contact
+- **Real Estate pages**: Show only Real Estate, Services, Portfolio, About, Contact
+- **Studio pages**: Show only Studio, Portfolio, About, Contact
+- **X pages**: Show only X, Portfolio, About, Contact
 
 ### Mobile Navigation Implementation
 - Breakpoint: 768px
@@ -74,6 +96,13 @@ All videos are hosted on Vimeo and embedded using their iframe embed code. When 
 1. Get the embed code from Vimeo
 2. Wrap in a responsive container
 3. Include title and description sections
+
+### Featured Wedding Film
+The Films page now includes a featured wedding film section:
+- Play button in hero section smoothly scrolls to featured video
+- Featured video: Dan & Marissa's wedding (Vimeo ID: 371011770)
+- Section designed to fit title and video on one screen
+- Responsive design adjusts for mobile devices
 
 ## SEO Considerations
 - Each page needs proper meta tags

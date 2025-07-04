@@ -754,6 +754,88 @@
             transform: rotate(-45deg) translate(7px, -6px);
         }
         
+        /* Play Button */
+        .play-button {
+            position: absolute;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: var(--white);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            z-index: 10;
+            opacity: 0;
+            animation: fadeInUp 1s ease-out 1.5s forwards;
+        }
+        
+        .play-button:hover {
+            transform: translateX(-50%) scale(1.1);
+            color: var(--gold);
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+        
+        /* Featured Section */
+        .featured-section {
+            min-height: 100vh;
+            padding: 40px 0;
+            background: var(--white);
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+        
+        .featured-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 40px;
+            width: 100%;
+        }
+        
+        .featured-title {
+            font-size: clamp(36px, 5vw, 64px);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -0.02em;
+            margin-bottom: 40px;
+            text-align: center;
+        }
+        
+        .featured-video {
+            margin-bottom: 40px;
+            background: var(--black);
+            border: 2px solid var(--black);
+        }
+        
+        .featured-info {
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .featured-info h3 {
+            font-size: 32px;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            margin-bottom: 16px;
+            text-transform: uppercase;
+        }
+        
+        .featured-info p {
+            font-size: 18px;
+            color: var(--gray-600);
+            line-height: 1.6;
+        }
+        
         /* Responsive */
         @media (max-width: 768px) {
             /* Prevent horizontal scrolling */
@@ -921,13 +1003,44 @@
             .film-perforations {
                 display: none;
             }
+            
+            /* Featured Section Mobile */
+            .featured-section {
+                min-height: auto;
+                padding: 20px 0;
+            }
+            
+            .featured-container {
+                padding: 0 20px;
+            }
+            
+            .featured-title {
+                font-size: 32px;
+                margin-bottom: 20px;
+            }
+            
+            .featured-video {
+                margin-bottom: 20px;
+            }
+            
+            .featured-info h3 {
+                font-size: 24px;
+            }
+            
+            .featured-info p {
+                font-size: 16px;
+            }
+            
+            .play-button {
+                bottom: 80px;
+            }
         }
     </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav id="navbar">
-        <a href="index.html" class="logo">DVSN STUDIO</a>
+        <a href="/films/" class="logo">DVSN FILMS</a>
         
         <!-- Hamburger Menu -->
         <button class="hamburger" id="hamburger" aria-label="Toggle navigation">
@@ -937,24 +1050,23 @@
         </button>
         
         <div class="nav-links" id="nav-links">
-            <a href="films.html" class="active">FILMS</a>
+            <a href="/films/" class="active">FILMS</a>
             
             <!-- Services Dropdown -->
             <div class="nav-dropdown">
                 <a href="#" onclick="return false;">SERVICES</a>
                 <div class="dropdown-menu">
                     <ul class="dropdown-links">
-                        <li><a href="services/wedding-videographer.html">Wedding Day Films</a></li>
-                        <li><a href="services/engagement-video.html">Engagement Sessions</a></li>
-                        <li><a href="services/wedding-trailers.html">Wedding Trailers</a></li>
+                        <li><a href="/films/services/wedding-videographer/">Wedding Day Films</a></li>
+                        <li><a href="/films/services/engagement-video/">Engagement Sessions</a></li>
+                        <li><a href="/films/services/wedding-trailers/">Wedding Trailers</a></li>
                     </ul>
                 </div>
             </div>
             
-            <a href="realestate.html">REAL ESTATE</a>
-            <a href="studio.html">STUDIO</a>
-            <a href="x.html">X</a>
-            <a href="contact.html">CONTACT</a>
+            <a href="/films/locations/toronto/">LOCATIONS</a>
+            <a href="/studio/">ABOUT</a>
+            <a href="/contact.html">CONTACT</a>
         </div>
     </nav>
     
@@ -978,6 +1090,14 @@
                 Cinematic storytelling for the most important day of your life.<br>
                 Every frame crafted with intention.
             </p>
+            
+            <!-- Play Button -->
+            <a href="#featured-film" class="play-button" aria-label="Watch Featured Film">
+                <svg width="80" height="80" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <circle cx="40" cy="40" r="39" stroke="currentColor" stroke-width="2"/>
+                    <path d="M32 28L52 40L32 52V28Z" fill="currentColor"/>
+                </svg>
+            </a>
         </div>
         
         <!-- Director Credit -->
@@ -987,6 +1107,20 @@
         <div class="scroll-indicator">
             <span>Scroll</span>
             <div class="scroll-line"></div>
+        </div>
+    </section>
+    
+    <!-- Featured Wedding Film Section -->
+    <section id="featured-film" class="featured-section">
+        <div class="featured-container">
+            <h2 class="featured-title">Featured Wedding Film</h2>
+            <div class="featured-video">
+                <div style="padding:56.25% 0 0 0;position:relative;"><iframe src="https://player.vimeo.com/video/371011770?title=0&amp;byline=0&amp;portrait=0&amp;badge=0&amp;autopause=0&amp;player_id=0&amp;app_id=58479" frameborder="0" allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" style="position:absolute;top:0;left:0;width:100%;height:100%;" title="Wedding Video - Dan and Marissa"></iframe></div><script src="https://player.vimeo.com/api/player.js"></script>
+            </div>
+            <div class="featured-info">
+                <h3>Dan & Marissa</h3>
+                <p>A cinematic celebration of love, laughter, and new beginnings.</p>
+            </div>
         </div>
     </section>
     
@@ -1458,7 +1592,7 @@
                     <ul>
                         <li><a href="#">Instagram</a></li>
                         <li><a href="#">Vimeo</a></li>
-                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="/contact.html">Contact</a></li>
                     </ul>
                 </div>
             </div>
@@ -1514,6 +1648,19 @@
             frame = (frame + 1) % 100000;
             frameCounter.textContent = String(frame).padStart(8, '0');
         }, 42); // ~24fps
+        
+        // Smooth scroll for play button
+        document.querySelector('.play-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            const target = document.querySelector('#featured-film');
+            const navHeight = 60;
+            const targetPosition = target.getBoundingClientRect().top + window.pageYOffset - navHeight;
+            
+            window.scrollTo({
+                top: targetPosition,
+                behavior: 'smooth'
+            });
+        });
         
         // Film toggle function
         function toggleFilm(section) {
