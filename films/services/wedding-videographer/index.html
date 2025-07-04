@@ -698,6 +698,7 @@
             opacity: 0;
             transform: translateY(20px);
             transition: all 0.3s ease;
+            pointer-events: none;
         }
         
         .portfolio-item:hover .portfolio-overlay {
@@ -711,6 +712,7 @@
             color: var(--white);
             margin-bottom: 8px;
             text-transform: uppercase;
+            pointer-events: auto;
         }
         
         .portfolio-overlay p {
@@ -718,6 +720,7 @@
             color: var(--gray-300);
             text-transform: uppercase;
             letter-spacing: 0.1em;
+            pointer-events: auto;
         }
         
         @media (max-width: 768px) {
