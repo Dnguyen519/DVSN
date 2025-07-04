@@ -100,7 +100,7 @@ All videos are hosted on Vimeo and embedded using their iframe embed code. When 
 ### Featured Wedding Film
 The Films page now includes a featured wedding film section:
 - Play button in hero section smoothly scrolls to featured video
-- Featured video: Dan & Marissa's wedding (Vimeo ID: 371011770)
+- Featured video: Carmela & Vlad's wedding trailer (Vimeo ID: 1089926329)
 - Section designed to fit title and video on one screen
 - Responsive design adjusts for mobile devices
 
