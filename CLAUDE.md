@@ -23,7 +23,7 @@ This is the DVSN Studio website - a cinematic wedding videography portfolio site
 │   ├── services/
 │   │   ├── wedding-videographer/
 │   │   │   └── index.html
-│   │   ├── engagement-video/
+│   │   ├── engagement-session/
 │   │   │   └── index.html
 │   │   └── wedding-trailers/
 │   │       └── index.html
@@ -51,6 +51,9 @@ All pages now feature:
 ### ✅ URL Structure Reorganization
 The site has been reorganized with business-specific directories:
 - **Films**: `/films/` with services under `/films/services/[service-name]/`
+  - Wedding videographer: `/films/services/wedding-videographer/`
+  - Engagement sessions: `/films/services/engagement-session/`
+  - Wedding trailers: `/films/services/wedding-trailers/`
 - **Real Estate**: `/real-estate/` with future services under `/real-estate/services/`
 - **Studio**: `/studio/` (to be implemented)
 - **X (Photography)**: `/x/` (to be implemented)
