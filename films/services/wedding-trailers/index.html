@@ -251,6 +251,13 @@
             transform: rotate(-45deg) translate(7px, -6px);
         }
         
+        /* Fix for nav transition at 768-769px breakpoint */
+        @media (min-width: 769px) {
+            .nav-links {
+                visibility: visible !important;
+            }
+        }
+        
         /* Mobile Navigation Overlay */
         @media (max-width: 768px) {
             .hamburger {
@@ -270,10 +277,12 @@
                 gap: 30px;
                 transform: translateX(100%);
                 transition: transform 0.3s ease;
+                visibility: hidden;
             }
             
             .nav-links.active {
                 transform: translateX(0);
+                visibility: visible;
             }
             
             .nav-links > a,

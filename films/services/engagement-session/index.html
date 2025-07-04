@@ -257,6 +257,13 @@
             transform: rotate(-45deg) translate(7px, -6px);
         }
         
+        /* Fix for nav transition at 768-769px breakpoint */
+        @media (min-width: 769px) {
+            .nav-links {
+                visibility: visible !important;
+            }
+        }
+        
         /* Mobile Navigation Overlay */
         @media (max-width: 768px) {
             .hamburger {
@@ -276,10 +283,12 @@
                 gap: 30px;
                 transform: translateX(100%);
                 transition: transform 0.3s ease;
+                visibility: hidden;
             }
             
             .nav-links.active {
                 transform: translateX(0);
+                visibility: visible;
             }
             
             .nav-links > a,
@@ -1121,7 +1130,7 @@
         <!-- Hero Video Background -->
         <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; overflow: hidden; z-index: 0;">
             <iframe src="https://player.vimeo.com/video/518215376?background=1&autoplay=1&loop=1&muted=1&byline=0&title=0&portrait=0#t=30s" 
-                    style="position: absolute; top: 50%; left: 50%; min-width: 100%; min-height: 100%; width: auto; height: auto; transform: translate(-50%, -50%) scale(1.1);"
+                    style="position: absolute; top: 50%; left: 50%; width: 100vw; height: 56.25vw; min-height: 100vh; min-width: 177.77vh; transform: translate(-50%, -50%);"
                     frameborder="0" 
                     allow="autoplay; fullscreen; picture-in-picture" 
                     allowfullscreen>
